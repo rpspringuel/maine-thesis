@@ -7,7 +7,7 @@ To install this class file simply copy or link `maine-thesis.cls` to your texmf 
 
 ``cp maine-thesis.cls `kpsewhich --var-value TEXMFHOME```
 
-``ln maine-thesis.cls `kpsewhich --var-balue TEXMFHOME```
+``ln maine-thesis.cls `kpsewhich --var-value TEXMFHOME```
 
 The advantage to linking over copying is that once you've set this up, you need only use `git fetch` to make updates (assuming you keep your clone of the repository).
 
