@@ -1,0 +1,74 @@
+\BOOKMARK [0][-]{chapter*.3}{PREFACE}{}% 1
+\BOOKMARK [1][-]{section*.4}{Preface from the 2003 version}{chapter*.3}% 2
+\BOOKMARK [1][-]{section*.7}{Preface to version 1.5}{chapter*.3}% 3
+\BOOKMARK [0][-]{chapter*.8}{DEDICATION}{}% 4
+\BOOKMARK [0][-]{chapter*.9}{ACKNOWLEDGEMENTS}{}% 5
+\BOOKMARK [0][-]{chapter*.11}{LIST OF TABLES}{}% 6
+\BOOKMARK [0][-]{chapter*.12}{LIST OF FIGURES}{}% 7
+\BOOKMARK [0][-]{chapter*.13}{LIST OF Whatever}{}% 8
+\BOOKMARK [0][-]{chapter.1}{ Introduction}{}% 9
+\BOOKMARK [1][-]{section.1.1}{ Installation}{chapter.1}% 10
+\BOOKMARK [1][-]{section.1.2}{ Organizing your Thesis}{chapter.1}% 11
+\BOOKMARK [1][-]{section.1.3}{ Organization of this document}{chapter.1}% 12
+\BOOKMARK [1][-]{section.1.4}{ Reporting a Bug or Formatting Problem}{chapter.1}% 13
+\BOOKMARK [0][-]{chapter.2}{ Main.tex}{}% 14
+\BOOKMARK [1][-]{section.2.1}{ Class and Package Loading}{chapter.2}% 15
+\BOOKMARK [1][-]{section.2.2}{ Variable Declarations}{chapter.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.1}{ Describe Yourself}{section.2.2}% 17
+\BOOKMARK [2][-]{subsection.2.2.2}{ Describe Your Committee}{section.2.2}% 18
+\BOOKMARK [2][-]{subsection.2.2.3}{ Number of Appendices}{section.2.2}% 19
+\BOOKMARK [2][-]{subsection.2.2.4}{ Document Type}{section.2.2}% 20
+\BOOKMARK [1][-]{section.2.3}{ Title page}{chapter.2}% 21
+\BOOKMARK [1][-]{section.2.4}{ File Coordination}{chapter.2}% 22
+\BOOKMARK [1][-]{section.2.5}{ Bibliography}{chapter.2}% 23
+\BOOKMARK [2][-]{subsection.2.5.1}{ BibTeX}{section.2.5}% 24
+\BOOKMARK [2][-]{subsection.2.5.2}{ Bibliographies by hand}{section.2.5}% 25
+\BOOKMARK [1][-]{section.2.6}{ More File Coordination}{chapter.2}% 26
+\BOOKMARK [1][-]{section.2.7}{ Biography}{chapter.2}% 27
+\BOOKMARK [1][-]{section.2.8}{ Using the File Coordination}{chapter.2}% 28
+\BOOKMARK [-1][-]{section.2.8}{VOLUME }{}% 29
+\BOOKMARK [0][-]{chapter*.14}{TABLE OF CONTENTS}{section.2.8}% 30
+\BOOKMARK [0][-]{chapter*.15}{LIST OF TABLES}{section.2.8}% 31
+\BOOKMARK [0][-]{chapter.3}{ Front.tex}{section.2.8}% 32
+\BOOKMARK [1][-]{section.3.1}{ Special Pages}{chapter.3}% 33
+\BOOKMARK [1][-]{section.3.2}{ Abstract\(s\)}{chapter.3}% 34
+\BOOKMARK [1][-]{section.3.3}{ Dedication}{chapter.3}% 35
+\BOOKMARK [1][-]{section.3.4}{ Preface}{chapter.3}% 36
+\BOOKMARK [1][-]{section.3.5}{ Acknowledgements}{chapter.3}% 37
+\BOOKMARK [1][-]{section.3.6}{ Table of Contents}{chapter.3}% 38
+\BOOKMARK [1][-]{section.3.7}{ File Close}{chapter.3}% 39
+\BOOKMARK [0][-]{chapter.4}{ Chapters and Appendices}{section.2.8}% 40
+\BOOKMARK [1][-]{section.4.1}{ Chapters}{chapter.4}% 41
+\BOOKMARK [1][-]{section.4.2}{ Appendices}{chapter.4}% 42
+\BOOKMARK [1][-]{section.4.3}{ Headings}{chapter.4}% 43
+\BOOKMARK [0][-]{chapter.5}{ Other Stuff}{section.2.8}% 44
+\BOOKMARK [1][-]{section.5.1}{ \134ignore}{chapter.5}% 45
+\BOOKMARK [1][-]{section.5.2}{ \134comment}{chapter.5}% 46
+\BOOKMARK [1][-]{section.5.3}{ \134highlight}{chapter.5}% 47
+\BOOKMARK [1][-]{section.5.4}{ \134pocket}{chapter.5}% 48
+\BOOKMARK [1][-]{section.5.5}{ \134toclabel}{chapter.5}% 49
+\BOOKMARK [1][-]{section.5.6}{ \134compresstitlepage}{chapter.5}% 50
+\BOOKMARK [1][-]{section.5.7}{ verbatim and \134verb}{chapter.5}% 51
+\BOOKMARK [1][-]{section.5.8}{ Widows and Clubs}{chapter.5}% 52
+\BOOKMARK [1][-]{section.5.9}{ Two Volume Thesis}{chapter.5}% 53
+\BOOKMARK [1][-]{section.5.10}{ Thesis in a Foreign Language}{chapter.5}% 54
+\BOOKMARK [1][-]{section.5.11}{ Hyphenation \046 Justification}{chapter.5}% 55
+\BOOKMARK [1][-]{section.5.12}{ 5-dot Leader Minimum in TOC}{chapter.5}% 56
+\BOOKMARK [0][-]{section.5.12}{REFERENCES}{section.2.8}% 57
+\BOOKMARK [0][-]{appendix.A}{APPENDIX A \205 Other Packages}{section.2.8}% 58
+\BOOKMARK [1][-]{section.A.1}{ Working Packages}{appendix.A}% 59
+\BOOKMARK [1][-]{section.A.2}{ caption and subfig}{appendix.A}% 60
+\BOOKMARK [1][-]{section.A.3}{ color}{appendix.A}% 61
+\BOOKMARK [1][-]{section.A.4}{ footmisc}{appendix.A}% 62
+\BOOKMARK [1][-]{section.A.5}{ hyperref}{appendix.A}% 63
+\BOOKMARK [1][-]{section.A.6}{ hyperref and ifthen}{appendix.A}% 64
+\BOOKMARK [1][-]{section.A.7}{ soul}{appendix.A}% 65
+\BOOKMARK [1][-]{section.A.8}{ tocvsec2}{appendix.A}% 66
+\BOOKMARK [1][-]{section.A.9}{ hyphenat}{appendix.A}% 67
+\BOOKMARK [0][-]{appendix.B}{APPENDIX B \205 Change Log}{section.2.8}% 68
+\BOOKMARK [1][-]{section.B.1}{ Changes since v1.7}{appendix.B}% 69
+\BOOKMARK [1][-]{section.B.2}{ Changes since v1.6}{appendix.B}% 70
+\BOOKMARK [1][-]{section.B.3}{ Changes since v1.5}{appendix.B}% 71
+\BOOKMARK [1][-]{section.B.4}{ Changes since v1.1}{appendix.B}% 72
+\BOOKMARK [1][-]{section.B.5}{ Changes between v1 and v1.1}{appendix.B}% 73
+\BOOKMARK [0][-]{appendix*.18}{BIOGRAPHY OF THE AUTHOR}{section.2.8}% 74

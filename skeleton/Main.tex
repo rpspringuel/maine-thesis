@@ -1,0 +1,56 @@
+\documentclass{maine-thesis}  % Default options 12pt and final copy
+
+% Include necessary packages here
+% \usepackage{...}
+
+% Replace contents of {...} with your own information.
+\title{...}					% Title of thesis
+\author{...}					% Author's name: First Middle Last
+\degreesheld{...}			% Previously earned degree(s), institution(s) and year(s).  
+\degree{...}  				% Degree to be granted
+\program{...}				% Degree granting department or program
+\submitdate{...}				% Month, year of graduation
+
+\principaladvisor{...} 			% Advisors name, title
+% If you have more than one advisor then you'll also need the following command, otherwise comment out or delete it
+\secondadvisor{...}
+
+% Include all committee members names and titles
+\firstreader{...}        
+\secondreader{...}
+% If necessary (i.e. for a doctorate), include extra committee members.  Else, comment out or delete any that are unnecessary
+\thirdreader{...}
+\fourthreader{...}
+\fifthreader{...}
+
+\principalshort{...} 			% Shortened advisor name for abstract.  See guidelines for example.
+								 
+% If the thesis has MORE than one appendix, leave the following command in.  Else, comment it out.
+\multipleappendicestrue 
+
+% Begin the document.
+\begin{document}
+\preliminary
+\titlepage
+
+\include{Front}
+
+% Main text of the thesis.  Use of the `\input' command will make later editing much easier.
+\include{Ch1}				% Chapter 1
+\include{Ch2}				% Chapter 2
+\include{Ch3}				% Chapter 3, etc.
+
+% Bibliography files are included here.  Separate with a comma if more than one
+\bibfiles{..., ...}
+\bibliographystyle{...} 		% Appropriate bibliography style
+% Appropriate bibliography title, default is REFERENCES, Uncomment to change it.
+% \bibtitle{...}
+\references				% Inserts and formats the reference section.
+
+\appendix					% Include this before any appendices.
+\include{AppA}				% First appendix.
+\include{AppB}				% Second appendix, etc.
+
+\include{Biography}
+
+\end{document}

@@ -1,0 +1,72 @@
+% !TEX root =  Main.tex
+\chapter{Change Log}
+Changes in Bold were required by the Graduate School
+
+\section{Changes since v1.7}
+\begin{itemize}
+\item{\textbf{Hyphenation disabled.}}
+\item{\textbf{Full justification disabled.}}
+\end{itemize}
+
+\section{Changes since v1.6}
+\begin{itemize}
+\item{Added \verb=\highlight= command.}
+\item{Modifications to \verb=\pocket= to make its ToC entries match other chapter-level entries.}
+\item{Added two-volume support.}
+\item{Made some modifications to help with widow/orphan control in the ToC.}
+\end{itemize}
+
+\section{Changes since v1.5}
+\begin{itemize}
+\item{\textbf{Changed line length for multiple line entires in the ToC.}}
+\item{\textbf{Removed the multiple appendices ``Appendices'' header from the ToC.}}
+\item{Added twoside option.}
+\item{Added unbound option.}
+\item{Added hooks to alter heading styles.}
+\item{Added chicago and apa option to switch headings automatically to the appropriate style.}
+\end{itemize}
+
+\section{Changes since v1.1}
+\begin{itemize}
+\item{License Changed to LPPL v1.3c.}
+\item{Generalized Dissertation Acceptance Page.}
+\item{Changed to signature line on Library Rights Page.}
+\item{Fixed delimiter in figure and table captions.}
+\item{Unified \verb=\copyrightyear{...}= and \verb=\copyrightpage= into single command.}
+\item{Refined support for two advisors and number of committee members.}
+\item{Removed support for External Reader on title page.}
+\item{Created patch code to fix list of tables and list of figures when hyperref is used.}
+\item{Added layabstract environment.}
+\item{Added listof environment.}
+\item{Changed font for verbatim environment and \verb=\verb= command.}
+\item{Fixed typesetting of dedication.}
+\item{General file maintenance.}
+\item{Added insertion of ``Appendices'' to ToC when there are multiple appendices.}
+\item{Modified biography environment to auto-generate the last sentence.}
+\item{Made identification of number of advisors and committee members automatic.}
+\item{Removed \verb=\appsection{...}= as it is redundant with \verb=\section*{...}=.}
+\item{Changed way ``Chapters'' and ``Appendices'' are added to the TOC.}
+\item{Added tocvsec2 dependance to make the change in TOC depth for the front matter and appendices automatic.}
+\item{Modified preface environment to make the non-numbering of its sections, subsections, etc automatic.}
+\item{Reserved \verb=\part= for multiple volume support.}
+\item{Added \verb=\pocket=.}
+\item{Defined a pseudo \verb=\texorpdfstring= command for use in chapter titles.  When hyperref is loaded (and defines the command properly) this has the effect of hiding \verb=\MakeUppercase= commands from hyperref.}
+\item{Made Preface, Dedication, and Acknowledgements double spaced.}
+\item{Created type variables and commands that allows switching to ``thesis'' or ``project'' instead of ``dissertation.''}
+\item{Removed footnote rule.}
+\item{Renamed \verb=\labelchaptersintoc= to \verb=\toclabel=, generalized its function, and made it compatible with hyperref.}
+\item{Added commands to compress title page when needed.}
+\end{itemize}
+
+\section{Changes between v1 and v1.1}
+This list is not entirely complete but is a best reconstruction as I can manage.  Changes were not logged prior to v1.5.
+\begin{itemize}
+\item{Added Dissertation Acceptance Page}
+\item{Added support for 6 member committees}
+\item{Removed Boldface from TOC entries}
+\item{Reduced size of chapter and section headers to match text font, both in place and TOC entries}
+\item{Added support for two advisors}
+
+\end{itemize}
+
+\endinput

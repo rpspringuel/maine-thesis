@@ -1,0 +1,202 @@
+% !TEX root =  Main.tex
+\chapter{Main.tex}
+Main.tex is responsible for 5 things:
+\begin{enumerate}
+\item{the loading of the class file and any packages you need to properly typeset your thesis,}
+\item{the declaration of the principal variables in the thesis (author, title, advisor, etc.),}
+\item{coordinating which files should be typeset at this particular time,}
+\item{typesetting the title page of the thesis, and}
+\item{placing and typesetting the references according to the style file you select.}
+\end{enumerate}
+We shall deal with each of these, though not necessarily in the order listed above.
+
+\section{Class and Package Loading}\label{class}
+Like any other \LaTeX\ project, a thesis set using maine-thesis.cls must start with a declaration of the document class:
+
+\begin{verbatim}
+\documentclass[options]{maine-thesis}
+\end{verbatim}
+
+It should be noted that while the class file does have several options, the official copy that you produce to submit to the graduate school should be typeset without any.  The options are simply to help you create copies of your thesis which are intended for some other purpose.  Unless the option specifically states that it is allowed on an official copy, then using the option will suppress the Dissertation Acceptance and Library Rights pages.  This serves to distinguish these unofficial copies from the official one and saves you a couple of pages when printing them.
+
+\pagebreak[3]The options are as follows:
+\begin{description}
+\item[10pt]{This option sets the font size to 10pt.  This option is allowed by the graduate school for an official copy, but is not recommended (the smaller font size doesn't convert to microfilm as well as the default).}
+\item[11pt]{This option sets the font size to 11pt.  This option is allowed by the graduate school for an official copy, but is not recommended (the smaller font size doesn't convert to microfilm as well as the default).}
+\item[12pt]{This option sets the font size to 12pt.  This is the default option, and doesn't normally need to be issued.}
+\item[apa]{This option changes the headings to follow the American Psychology Association style with one exception: italics are replaced by underlines (since italics in the headings is prohibited by the Graduate School).  These heading styles are unnumbered and thus cross references using \verb=\ref= will point to just the chapter.  This option is allowed for an official copy of your thesis.}
+\item[chicago]{This option changes the headings to follow the Chicago style guidelines.  These heading styles are unnumbered and thus cross references using \verb=\ref= will point to just the chapter.  This option is allowed for an official copy of your thesis.}
+\item[draft]{This option does a few things:
+	\begin{itemize}
+	\item{it marks the copy of the file as a draft by placing DRAFT in all four corners of each page (moving the page number to the bottom center if the top page style was selected),}
+	\item{it marks any over full line with a black rectangle at the end,}
+	\item{it allows \verb=\comment{...}= commands to show in the outside margin (right-hand normally, but if twoside is also given, then it's the left-hand margin on even pages),}
+	\item{it places the current date in the top center of each page, and}
+	\item{it sets the font size to 10pt to reduce the document page count and save paper.}
+	\end{itemize}
+Taken together, these changes make this option useful when you want to distribute copies of your thesis (or parts thereof) to someone for feedback prior to completing it.}
+\item[twoside]{This option sets the margins to allow for binding of a two sided printing.  Thus odd number pages have a larger left-hand margin while even number pages have a larger right-hand margin.  Chapters (or chapter equivalent elements) will always begin on an odd page.  It also moves the page number for even pages to the upper left-hand corner for the top page style so that page numbers are always on the outer edge of the bound copy. 
+Taken together, these changes make this option useful for producing extra copies of your thesis that you want bound for your advisor, your committee members, yourself, or other people.  It will reduce your paper usage nearly in half (more than that if you also use a smaller font).}
+\item[unbound]{This option sets the margins to equal width, widening the text area in the process.  It is thus suitable for creating copies which will not be bound and thus don't need the extra wide margin to one side.  If issued with the twoside option, the margins and text width specified here will override those for two-sided printing, but the other aspects of two-sided printing remain in effect.}
+\end{description}
+If you issue more than one of the font size options, only the largest one will take effect.  However, the draft option will always change the font size to 10pt, regardless of any other options issued.  If you have the tex files for this documentation, you can see the effects of each of these options by editing the document class declaration in Main.tex and re-typsetting the document.
+
+Once you have declared the document class, it's time to load packages.  There are far too many of these for me to possibly cover them all, but ones which have known issues are listed in Appendix \ref{package}.
+
+\section{Variable Declarations}
+
+Once you've initialized all the stuff you need to typeset your document, it's time to start adding content.  Since many elements of this content get used over and over again, the class file allows for you to declare them once and then places them in all the appropriate places.
+
+\subsection{Describe Yourself}\label{self}
+The first batch of these variables that you'll declare are the title of your thesis, your name, the degrees you already hold, the degree you're going for, the specialty in which this degree is, and when you are graduating.  These are declared with some fairly self explanatory commands:
+
+\begin{verbatim}
+\title{...}
+\author{...}
+\degreesheld{...}
+\degree{...}
+\program{...}
+\submitdate{...}
+\end{verbatim}
+
+Note that you should use \verb=\\= to separate multiple degrees if you have more than one.  This will place them on separate lines (a Graduate School requirement).  Also, your submit date should be ``May,'' ``August,'' or ``December'' and the appropriate year.
+
+\subsection{Describe Your Committee}\label{comm}
+Next, you'll want to tell the class file about your committee.  To do this, you'll need each committee member's full name and title (i.e. Ph.D., faculty position, etc., as in ``John Smith, Ph.D., Associate Professor of Interesting Stuff'').  Each member is declared with a separate command (use only the ones you need):
+
+\begin{verbatim}
+\principaladvisor{...}
+\secondadvisor{...}
+
+\firstreader{...}
+\secondreader{...}
+\thirdreader{...}
+\fourthreader{...}
+\fifthreader{...}
+\end{verbatim}
+
+Note that these commands are order sensitive as the class file uses the last one called to determine the number of committee members.  I.e. if you call \verb=\thirdreader{...}= after \verb=\fifthreader{...}= then the class file will think that you have 3 committee members beyond your advisor(s) rather than 5.
+
+If this automatic numbering of your committee isn't working for some reason, then there are two commands which you can issue after the members list to override the behavior: \verb=\twoadvisors=, \verb=\oneadvisor= and \verb=\members{#}=.  The first is used to change the number of advisors to two, the second sets it to one (one advisor is the default for the class file).  The last tells the class file how many members your committee has (not including your advisor(s)).  If you find that you have to issue these commands, please send me a minimal working example that duplicates the problem you experienced so that I can fix it.
+
+The last part of describing your committee is to declare the short version of your advisor's name with \verb=\principalshort{...}=.  In this case, the advisor's title should simply be ''Dr.'' (or whatever is appropriate) and should precede their name (as in ``Dr.~John Smith'').  If you have two advisors, then both should appear as the argument to this command with their short titles separate (as in ``Dr.~John Smith and Dr.~Jane Doe'').
+
+\subsection{Number of Appendices}
+If you have more than one appendix, then you have to tell the class file this with the command \verb=\multipleappendicestrue=.  This is because the Graduate School requires different formatting for a document with a single appendix as opposed to one with multiple appendices (in particular as relating to lettering them and how they appear in the table of contents).  By default, the class file assumes one appendix and will format it accordingly.  If you have more than one, then this command will tell the class file to change to the multiple appendices format.  If you don't have any appendices, then it shouldn't matter if you issue this command or not.
+
+\subsection{Document Type}
+By default, the class file will refer to your document as a dissertation.  If your degree program refers to it as a thesis or project, then you'll want to tell the class file that.  The command \verb=\thesis= will change all occurrences of ``dissertation'' to ``thesis'' and \verb=\project= will change them to ``project.''
+
+\section{Title page}
+
+Now that all the variables are declared, it's time to start the document itself.  This consists of three commands:
+
+\begin{verbatim}
+\begin{document}
+\preliminary
+\titlepage
+\end{verbatim}
+
+The first is the usual command that tells \LaTeX\ where the document starts.  The second tells the class file that what comes next is the front matter of the thesis.  This means that pages should be numbered with lowercase roman numerals.  The last command creates the title page.  Putting it here ensures that every copy of your thesis that you create will include a copy of the title page, making it easier to identify the document (especially important when you're handing out bits and pieces).
+
+After the title page, it's time to include the rest of the preliminary material, but I don't suggest putting all of that in Main.tex.  Instead, all of that should be put in Front.tex, a process which gets us to our next job for Main.tex: coordinating which files are to be processed at this time.
+
+\section{File Coordination}
+Chances are pretty good that your final thesis will be close to, if not well over, 100 pages.  If all of that material were in a single file, finding where it is you want to edit something can be difficult.  To make this easier, \LaTeX\ allows you to split the document up into multiple files and then use the \verb=\include{...}= statement to tell the main file to add the contents of another file at this point.  We're going to make use of that here.  First off, we'll place all the front matter (copyright page, dissertation acceptance statement, library rights statement, abstract(s), preface, dedication, acknowledgements, and table of contents):
+
+\begin{verbatim}
+\include{Front}
+\end{verbatim}
+
+Next comes the main body of the thesis, which is just a bunch of \verb=\include{...}= statements: one for each chapter:
+
+\begin{verbatim}
+\include{Ch1}
+\include{Ch2}
+\include{Ch3}
+...
+...
+...
+\end{verbatim}
+
+\section{Bibliography}\label{bib}
+After the main body of the thesis, it's time to set the bibliography.  It should be noted that the Graduate School requires a single, all inclusive bibliography for your thesis, even if each chapter has its own bibliography.
+
+Since citation styles and the required contents of the bibliography can vary dramatically from discipline to discipline, the Graduate School has no specific requirements for the this section.  As a result, this class file contains no formatting specifications for the section beyond the margins and line spacing.
+
+Bt default the name of this section is ``REFERENCES'' but you can change it to ``WORKS CITED,'' ``BIBLIOGRAPHY,'' or whatever is customary for your discipline.  To do so you'll need the command \verb=\bibtitle{...}=.  Whatever you call the section, however, the title should be in all caps to maintain consistency with the rest of the thesis.
+
+There are two ways of handling your bibliography: with \textsc{Bib}\TeX\ and by hand.
+
+\subsection{\textsc{Bib}\TeX}
+If you're using \textsc{Bib}\TeX\ then you'll need to set several external parameters which tell the class file how to find and format the references.  Do do this use the following series of commands:
+
+\begin{verbatim}
+\bibfiles{...}
+\bibliographystyle{...}
+\references
+\end{verbatim}
+
+The first command tells the class file where the bibliography entries are located.  This should be a \textsc{Bib}\TeX\ file (i.e. one with a ``.bib'' extension).  If you're unfamiliar with \textsc{Bib}\TeX\ then you'll need to familiarize your self with it \citep{Feder:2006}, or one of the various programs designed to help you manage a \textsc{Bib}\TeX\ file (e.g. Bibdesk \citep{BibDesk} for Mac OS X, Referencer \citep{Spray:2007} for Linux, and BibDB \citep{Doron:1999} for Windows).
+
+The second command indicates the style the list should follow.  There are a few styles built into \textsc{Bib}\TeX\ by default (plain, unsrt, alpha, abbrv) but there are also countless bibliography style files (``.bst'') out there that can achieve alternate formats.  Consult with your advisor and committee about which bibliography style you should be using.
+
+The last command simply tells the class file its time to typeset the reference list.  Since this command manually adds an entry to the table of contents you will sometimes run into a peculiar bug within the \LaTeX\ kernel when using it.  This bug causes the processing of manually added table of contents entries to be delayed until after the processing of a subsequent included file.  The result is that if said file adds entries to the table of contents (by containing sectioning commands, for instance) the manually added table of contents entry will be out of place.  This can be fixed in one of two ways:
+\begin{enumerate}
+\item{Use the \verb=\input= command instead of \verb=\include=.  This command allows the placement of other files in the document just like \verb=\inlcude= but doesn't have the same file coordination capabilities described in Section \ref{coord}.}
+\item{Place the command which manually adds to the table of contents inside an included file.  If all table of contents entries are added from within an included file, then the bug about order won't manifest itself.}
+\end{enumerate}
+Since the bug is in the \LaTeX\ kernel, I cannot change the class file to fix it.  As a result, if it effects you, try one of the two above fixes.
+
+Don't forget that if you're using \textsc{Bib}\TeX\ you'll need to process your document at least 4 times for it to come out right: once with \LaTeX, once with \textsc{Bib}\TeX, and twice more with \LaTeX.
+
+\subsection{Bibliographies by hand}
+If you've elected to create your bibliography by hand then you simply need to use:
+\begin{verbatim}
+\begin{thebibliography}{...}
+...
+...
+...
+\end{thebibliography}
+\end{verbatim}
+Since the contents and format of this environment is covered in most \LaTeX\ manuals (e.g. section 11.3.1 in \cite{Kopka:2004}), I'm not going to go over it here.  Note that the same issue that effects \verb=\references= applies to this environment.
+
+\section{More File Coordination}
+
+Having taken care of the bibliography, it's time to work on the appendices:
+
+\begin{verbatim}
+\appendix
+\include{AppA}
+\include{AppB}
+...
+...
+...
+\end{verbatim}
+
+The first command resets the chapter counter and changes it from numbers to letters.  This means that from now on the \verb=\chapter{...}= command will create ``Appendix *'' (where ``*'' is A, B, C, etc.) rather than ``Chapter \#'' (where ``\#'' is 1, 2, 3, etc.).  It is necessary even if you have only one appendix (and thus don't want it lettered).\footnote{If your document has only one appendix, then the letter is left off completely and it is simply designated ``Appendix''.}  The subsequent commands point to and allow the inclusion of the various appendix files.
+
+\section{Biography}\label{bio}
+After the list of appendix inclusions you'll need to write your biography.  According to the graduate school the requirements for the biography are as follows:
+\begin{quote}
+A biography of the candidate must be included in the thesis.  It must  be written in the 
+third person and include the following information:  place of birth, place of high school gradua- 
+tion, place and date of college graduation with degree(s) and major(s), professional or 
+employment experience, scholarly publications, and memberships in professional or honorary 
+societies.  The last sentence must state, "S/He is a candidate for the---------degree in ------- from 
+The University of Maine in Month, Year."
+\end{quote}
+Obviously these are some very stringent requirements, but even so there is still a substantial amount of variation that might be introduced into any given biography so it's left up to you to write all but the last sentence of the biography (which has such specific required wording that the class file can do it for you).  To format your biography correctly, it should be placed between \verb=\begin{biography}= and \verb=\end{biography}=.  You might also consider placing it in a separate file which you then include (as I've done in this document) so that you can exclude it from draft copies of the thesis.
+
+Since the biography is required to be the last page of your thesis, the only command that should appear after it in your document is \verb=\end{document}=, which will tell \LaTeX\ that the document is finished.
+
+
+\section{Using the File Coordination}\label{coord}
+
+In addition to breaking your thesis up into multiple smaller files, the \verb=\include{...}= statements enable another feature of \LaTeX\ that should make your life much easier.
+
+Let's say during the editing process your committee requires you to make changes to chapter 3 but not any of the rest of the document.  Once you've made those changes, do you have to retypeset the whole document and give it all to your committee just so they can approve those changes?  Thanks to the \verb=\include{...}= statements, the answer is no.  Simply introduce the command \verb=\includeonly{Ch3}= into the preamble of your document (somewhere before \verb=\begin{document}=, I suggest just after the packages are loaded) and \LaTeX\ will only process chapter 3, but will look at the aux files for the other chapters so that any reference commands point to the right place.  This will create a document which consists of the title page, chapter 3, and the reference list: a much smaller and easier file to be handing out to your committee.  By changing the argument of this command you can control which chapter (or appendix) is typeset and can even typeset more than one (simply separate each file name by a comma as in ``Ch2,Ch3,AppA'' which will typeset chapters 2 and 3 and appendix A).  Once you're ready to typeset the whole document again, simply delete the \verb=\includeonly{...}= command.
+
+It should be noted that \verb=\include{...}= not only adds the contents of the specified file to this one, it also starts a new page both before and after the file is read in (the equivalent of issuing \verb=\clearpage=).  As a result, you should only use it on files that should start and end on their own pages (like chapters) and not with those that can share their page space with something else (like a section in a chapter).  As with spaces and carriage returns, \LaTeX\ always ignores multiple commands to start a new page in a row so two \verb=\include{...}= statements in a row won't create a blank page in between.  If you have to place in a separate file some material which shouldn't automatically start and end its own page, you'll need to use \verb=\input{...}= instead and there is no equivalent to \verb=\includeonly{...}= for \verb=\input{...}=.
+
+\endinput

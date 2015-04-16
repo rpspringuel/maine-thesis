@@ -1,0 +1,44 @@
+% !TEX root =  Main.tex
+\chapter{Chapters and Appendices}
+
+\section{Chapters}
+While the chapters are probably the hardest part of the thesis for you to actually write, the class file requires very little in each chapter.  Each chapter file should open with \verb=\chapter{...}= and close with \verb=\endinput=.  In between is largely up to you, but there are a few things to keep in mind.
+
+You cannot use \verb=\include{...}= inside chapters because they are already included files.  If you want to breakup a long chapter into multiple files, use \verb=\input{...}= instead.  Note that there is no \verb=\input{...}= equivalent to \verb=\includeonly{...}=.  Every file inside an \verb=\input{...}= command will be processed every time.
+
+Figures and tables should be inside the figure and table environments, respectively, so that they are automatically inserted into the list of figures or tables.  If the caption for a figure or table is particularly long, I also recommend using the optional argument in the \verb=\caption[...]{...}= command to create a short version of the caption that will appear in the table of contents.
+
+Footnotes inside figures or tables will be captured by the figure or table environment and thus won't appear anywhere in the document.  There are several possible solutions for this problem, none of which are implemented by this class file, so if you want to put footnotes in your table, look into it.
+
+\section{Appendices}
+The file that contains an appendix looks just like a file that contains a chapter.  It starts with \verb=\chapter{...}= and ends with \verb=\endinput=.
+
+\section{Headings}
+There are 5 levels of headings within a chapter or appendix: section, subsection, subsubsection, paragraph, and subparagraph.  To create a heading (and start a new element at the appropriate level) simply issue the appropriate command (\verb=\section=, \verb=\subsection=, etc.).  By default headings are numbered down to the subsubsection level using a decimal system (<Chapter \#>.<Section \#>.<Sub\-sec\-tion \#>.<Sub\-sub\-sec\-tion \#>).  You can change the depth to which headings are numbered with the command \verb=\setcounter{secnumdepth}{#}=.  The argument should be a number between 0 (no headings are numbered) and 5 (all headings down to the subparagraph level are numbered).  This command can be issued at anytime in your document and will affect the numbering from that point forward.
+
+In addition to the options described in Section \ref{class} which automatically change the format of the headings to match a specific style, it is possible to manually change the formats by redefining the following commands:
+\begin{verbatim}
+\sectionstyle
+\subsectionstyle
+\subsubsectionstyle
+\paragraphstyle
+\subparagraphstyle
+\end{verbatim}
+These commands should take no arguments and consist purely of formating commands (it is up to you to provide any punctuation a style might demand in the heading name itself).  As an example, if you wanted to make section headings be underlined and boldfaced, you would need to issue the following command in your preamble:
+\begin{verbatim}
+\renewcommand*{\sectionstyle}{\bfseries\underline}
+\end{verbatim}
+If manually redefining the heading styles, remember that the Graduate School prohibits italics in headings.
+
+Similarly there exist the following lengths which can be used to redefine where the text starts after a heading:
+\begin{verbatim}
+\sectionpost
+\subsectionpost
+\subsubsectionpost
+\paragraphpost
+\subparagraphpost
+\end{verbatim}
+These lengths should be altered in the preamble with a \verb=\setlength= command.  If the value the lengths are set to is positive, then they represent the vertical distance between the header and the first paragraph which follows (and should probably be a rubber length to give \LaTeX\ some wiggle room in making things fit on a page).  If they are negative then the absolute value represents the horizontal distance between the header and the first word of the paragraph which follows (and should probably be a fixed length).  For example, the lengths for APA style headings are positive (and rubber) for \verb=\sectionpost= and \verb=\subsectionpost=, but negative (and fixed) for the other three.  This places section and subsection headers on their own line, but subsubsection, paragraph, and subparagraph headers are on the same line as the text which follows them.  On the other hand, the default style uses positive (and rubber) lengths for \verb=\sectionpost=, \verb=\subsectionpost=, and \verb=\subsubsectionpost=, but negative (and fixed) lengths for \verb=\paragraphpost= and \verb=\subparagraphpost=.
+
+For more on the difference between rubber and fixed lengths, consult your \LaTeX\ reference book of choice.
+\endinput

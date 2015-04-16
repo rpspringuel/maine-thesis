@@ -1,0 +1,69 @@
+% !TEX root =  Main.tex
+\chapter{Other Stuff}
+\section{\textbackslash ignore}
+The class file defines the command \verb=\ignore{...}= which is very useful for removing large blocks of text from the thesis without deleting them.  Anything within the argument is treated as if it was commented out and will not appear in the typeset document.
+
+\section{\textbackslash comment}
+There is also a \verb=\comment{...}= command.  If the draft option was issued to the class file, the argument of this command will appear in the right hand margin in red with ``NOTE:'' preceding it in a smaller font (as can be seen in this file if you typeset it in draft mode).  This makes it useful for adding reminders to yourself about things you still need to do, or questions for your advisor when you're asking him to review a draft version of something.  Without the draft option this command functions identically to \verb=\ignore=.\comment{There is a comment here.}
+
+\section{\textbackslash highlight}
+The \verb=\highlight= command is a useful companion to \verb=\comment=.  In draft mode it will highlight its argument (i.e., give it a yellow background).  In final mode, the text appears normally.
+
+\section{\textbackslash pocket}
+If you have supplementary materials such as a DVD or CD which will be stored in a pocket inside the cover of your thesis the Graduate school requires you to list these in the table of contents.  This can be done with the \verb=\pocket{...}= command.  However, like the \verb=\references= command, the entry in the table of the contents that this produces may be out of place if it is put in Main.tex.  See Section \ref{bib} for more details.
+
+Table of contents entries created by this command have the status of chapters (or appendcies, if you've already issued the \verb=\appendix= command) and will increment the appropriate counter.
+
+\section{\textbackslash toclabel}
+If you need to add a label into your table of contents then you can use the command \verb=\toclabel{...}= to do so.  This is the same command that is used to add the word ``Chapter'' (by \verb=\mainmatter=) when it is required and so what you add will look exactly like it does.  The same bug in the \LaTeX\ kernel that effects those commands could thus effect this one.
+
+\section{\textbackslash compresstitlepage}
+In rare cases your title page may spill over onto a second page when typeset with double line spacing (generally due to a long title, many previous degrees, or committee members with long/multiple titles).  When this happens, issue the command \verb=\compresstitlepage= in your preamble.  This will change the line spacing for the committee members to single line spacing.  If that isn't enough to get your title page onto one page, add the optional argument (``[2]'') to change the spacing for the rest of the title page to one-and-a-half spacing.\comment{There is another comment here.}
+
+\section{verbatim and \textbackslash verb}
+Since the Graduate School doesn't want the font to change during the course of the document, the verbatim environment and the \verb=\verb= command have had their font changed from the standard typewriter font of \LaTeX\ to the normal roman font.  This required a change to the font encoding to get what you type in the verbatim environment to be the same characters that appear on the page.  As a result, the mapping of quotation marks, ", to close double quotes, '', doesn't work.  To get '' you will need to type two close quotation marks, '\,', just like you have to type two two open quotation marks, `\,`, to get the double open quotes, ``.
+
+\section{Widows and Clubs}
+The graduate school requires that page breaks occur so that at least 3 lines of any paragraph are on a page.  Thus, if a paragraph starts on a certain page at least the first three lines of that paragraph should be on that page.  Likewise, if a paragraph ends on a page at least the last three lines of that paragraph should be on that page.  This is an unusually stringent requirement for clubs (paragraph starts at the end of a page) and widows (paragraph ends at the beginning of a page) and one which is impossible to force \LaTeX\ to respect.  The club penalty and widow penalty have been set high to large values so that at least two lines of each paragraph should appear on each page, but if the graduate school starts bugging you about this, you are going to have to play with this manually using \verb=\pagebreak= and \verb=\nopagebreak=.  Do this only when preparing the \textit{absolutely final copy} of the thesis as said manual breaks will stick around despite any subsequent edits to the document.
+
+Likewise, the Graduate School has similar standards for the table of contents: at least 3 entries from any given chapter must be on the page (unless the chapter has fewer than 3 entries, in which case all entries should appear on the same page).  I've done my best to make sure this happens, but I can't possibly test every possible pattern of chapters, sections, and subsections that you might have.  If the graduate school is bugging you about this, then place \verb=\addtocontents{toc}{\protect\pagebreak}= just before a chapter, section, or subsection to manually insert a page break into that position in your table of contents.  This command can likewise be used to manually insert page breaks into the list of figures (lof) or the list of tables (lot) by changing the first argument.  It also will run into the same bug that effects \verb=\references=.  See Section \ref{bib} for more details.  If you do have to do this, I'd also appreciate a minimal working example so that I can try to further fine tune the class file's ability to do this automatically.
+
+\section{Two Volume Thesis}
+From the Graduate School's Thesis Guidelines:
+\begin{quote}
+If a thesis is 500 or more pages long or over 2 1/2" thick, inclusive of all material, it 
+must be bound in two volumes.  The break between the two volumes must be at the end of a 
+chapter.  The volumes should be approximately equal in size.  EACH VOLUME CONTAINS 
+A TITLE PAGE AND A TABLE OF CONTENTS.  
+
+The title page for each volume specifies the volume and chapters included in that 
+volume.  The Table of Contents for Volume I lists the material contained in the entire thesis 
+(both volumes).  The pagination is continuous from Volume I to Volume II.  The Title Page and 
+Table of Contents pages in Volume II are assigned Arabic numerals.
+\end{quote}
+
+If your thesis is long enough to warrant two volumes then you'll need to issue the command \verb=\part{2}=.\footnote{Technically the argument can be whatever you want, not just ``2.''  The argument is required, but its value isn't used by the class file anywhere.}  This produces the second title page and adds ``VOLUME II'' to the main table of contents.  To create the table of contents for the second volume, simply issue the \verb=\tableofcontents= command again.  Likewise, if the second volume contains tables or figures issue \verb=\listoftables= or \verb=\listoffigures= again.  The listof environment can also be used again here, though you will have to manually populate it again.
+
+If you're using a package that creates \verb=\listof*= commands for some new element, then you're probably not going to be able to simply reissue the command to get the appropriate list to appear a second time.  Most likely what you'll end up with is a blank page with just the list title.  This is because most packages don't recognize the possibility of a document having more than one copy of the table of contents (or part thereof) and thus don't create or populate a second list file.  As a result, a two volume thesis that makes use of such commands will probably require you to either duplicate the list manually (using the listof environment) or modify the package you're using so that it will automatically create and populate the second copy of the list.
+
+At the moment the class file only supports the creation of a two-volume thesis.  Issuing the \verb=\part= command more than once (in the attempt to create 3 or more volumes) will result in an error.  Later versions may support more than 2 volumes if there turns out to be a demand for that feature.
+
+\section{Thesis in a Foreign Language}
+The class file has not been tested on a thesis written in a foreign language and thus its behavior on such documents is not guaranteed.  Support for these kinds of documents is planned for a future version, but probably won't come until 2015 at the earliest.  Contributions designed to make the class file work with foreign language theses are appreciated: \verb=R.Springuel@umit.maine.edu=.
+
+\section{Hyphenation \& Justification}
+At the graduate school request, automatic hyphenation is turned off and the document should be set left justified (\verb=\raggedright= in LaTeX parlance).  If this creates strange behavior for you, please let me know so that any possible bugs can be resolved.
+
+\section{5-dot Leader Minimum in TOC}
+While I've attempted to chose settings that will allow the class file to fulfill this graduate school requirement automatically, this is not something that LaTeX can be explicitly instructed to do.  If you run into a problem with one of your TOC entries you will have to fix it manually by either changing the appropriate title/caption, or by making use of the optional short title/caption built into the appropriate command.
+
+\endinput
+
+\section{Really Long Thesis}\comment{Remaining Problems: ``Appendices'' not in parttoc; tocdepth for appendices doesn't autoadjust to 0}
+If your thesis is longer than 500 pages (or thicker than 2.5") the Graduate School requires that it be submitted in two volumes.  This volume division must come between two chapters.  To place this division you'll need a few things:
+\begin{itemize}
+\item{You'll need to be using the maineminitoc package to create the table of contents for the second volume with the part table contents commands.  This package loads the minitoc package and sets all the options appropriately so that the second table of contents looks like the first.}
+\item{Add the command \verb=\preparetocs= to the beginning of Front.tex.  This command \textbf{must} come before \verb=\tableofcontents= and should come before any commands which create table of contents entries (like the preface environment).}
+\item{Insert the commands \verb=\part{2}= and \verb=\secondcontents= before the chapter which starts the second volume.}
+\end{itemize}
+This will insert a title page with ``Volume II'' added just below the title and a table of contents to the thesis at the start of the second volume.

@@ -1,0 +1,57 @@
+\documentclass{maine-thesis}
+
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{hyperref}
+
+%\includeonly{Ch1}
+
+\title{maine-thesis: A class file for typesetting thesis documents at the University of Maine}
+\author{<Your Name appears here, see Section \ref{self} for details>}
+\degreesheld{<Degrees you already have,\\see Section \ref{self} for details>}
+\degree{<The degree you want>}
+\program{<Specialty of your degree>}
+\submitdate{<Month \& Year of Graduation>}
+
+\principaladvisor{<Name and Title of your advisor will appear here, see Section \ref{comm} for details>}
+\principalshort{<The short name of your advisor will appear here, see Section \ref{comm} for details>}
+\firstreader{<Name and Title of a committee member appears here>}
+\secondreader{<Name and Title of a committee member appears here>}
+\thirdreader{<Name and Title of a committee member appears here>}
+\fourthreader{<Name and Title of a committee member appears here>}
+\fifthreader{<Name and Title of a committee member appears here>}
+
+\multipleappendicestrue
+
+\makeatletter
+\newcommand{\email}{rpspringuel@gmail.com}
+\makeatother
+
+\begin{document}
+\preliminary
+\titlepage
+
+\include{Front}
+\include{Ch1}
+\include{Ch2}
+\part{2}
+\tableofcontents
+\listoftables
+\include{Ch3}
+\include{Ch4}
+\include{Ch5}
+
+\bibfiles{PER}
+\bibliographystyle{apsper}
+\references
+
+%\begin{thebibliography}{}
+%\end{thebibliography}
+
+\appendix
+\include{AppA}
+\include{AppB}
+
+\include{Biography}
+
+\end{document}
