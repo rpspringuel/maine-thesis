@@ -35,7 +35,7 @@
 \setcounter{head}{1000} %The default value is set very large so that adding new styles shouldn't necessitate changing it.
 
 % ------DECLARATION OF OPTIONS------
-\DeclareOption{10pt}{\renewcommand\docsize{10pt}}
+\DeclareOption{10pt}{\officialfalse\renewcommand\docsize{10pt}}
 \DeclareOption{11pt}{\renewcommand\docsize{11pt}}
 \DeclareOption{12pt}{\renewcommand\docsize{12pt}}
 \DeclareOption{draft}{\drafttrue
