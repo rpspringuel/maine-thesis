@@ -18,7 +18,7 @@
 %%
 
 % ------IDENTIFICATION------
-\ProvidesClass{maine-thesis}[2013/03/08 v1.8 Maine thesis class]
+\ProvidesClass{maine-thesis}[2015/06/28 v1.9 Maine thesis class]
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 
@@ -970,7 +970,7 @@
 \newcommand{\dissacceptance}{%
 	\ifofficial
 		\doublespacing
-		\chapter*{\@type \\ ACCEPTANCE STATEMENT}
+		\chapter*{\@type\ ACCEPTANCE STATEMENT}
 		\vskip 1.0in
 		\hspace{1.5em}On behalf of the Graduate Committee for \@author, 
 		\ifnum\numadv=2
@@ -980,7 +980,6 @@
 		\fi
 		affirm that this manuscript is the final and accepted \MakeLowercase{\@type}. Signatures of all committee members are on file with the Graduate School at the University of Maine, 42 Stodder Hall, Orono, Maine.
 		
-		Submitted for graduation in \@submitdate
 		\vskip 1.0in
 		\singlespacing
 		\noindent\hrulefill
