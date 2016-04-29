@@ -480,9 +480,6 @@
 }
 
 \renewcommand\part{
-	\ClassWarningNoLine{maine-thesis}{Multiple volume support has not been\MessageBreak
-	fully implemented yet.  You may get \MessageBreak
-	unexpected results.}
 	\cleardoublepage
 	\thispagestyle{plain}%
 	\global\@topnum\z@
