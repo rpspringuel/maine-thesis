@@ -1166,9 +1166,11 @@
 	\setcounter{section}{0}
 	\renewcommand*\@chapter{\app@chapter}
 	\renewcommand*\thechapter{\@Alph\c@chapter}
+	\addtocontents{toc}{\protect\renewcommand*\protect\l@chapter{\protect\@dottedtocline{0}{0pt}{7.5em}}}
 	\settocdepth{chapter}
 	\ifnum\value{part}>1
 		\addtocontents{toc2}{\setcounter{tocdepth}{0}}
+		\addtocontents{toc2}{\protect\renewcommand*\protect\l@chapter{\protect\@dottedtocline{0}{0pt}{7.5em}}}
 	\fi
 	\doublespacing
 	\apptrue
