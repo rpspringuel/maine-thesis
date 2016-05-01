@@ -62,6 +62,7 @@
 \RequirePackage[norule]{footmisc}[2009/09/15 v5.5a a miscellany of footnote facilities]
 \RequirePackage{soul}[2003/11/17 v2.4 letterspacing/underlining  (mf)]
 \RequirePackage{afterpackage}[2006/01/17 v1.1 Apply Commands After Package (NCC)]
+\RequirePackage{etoolbox}[2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)]
 \RequirePackage[none]{hyphenat}[2009/09/02 v2.3c hyphenation utilities]
 \AfterPackage{hyperref}{% Graduate School requirements mandate a slight modification to hyperref's redefinition of the caption command.  This is implemented here.  The command is only executed after hyperref is loaded in the document (if it is loaded).
 \long\def\@caption#1[#2]#3{%
@@ -788,6 +789,13 @@
 \renewcommand\@dotsep{1}
 \renewcommand\@tocrmarg{4em}
 \renewcommand\@pnumwidth{1.4em}
+\patchcmd{\@dottedtocline}%
+	{\rightskip\@tocrmarg}%
+	{\rightskip\@tocrmarg plus 4em \hyphenpenalty\@M}%
+	{%
+		\patchcmd{\@dottedtocline}{\hfill}{\hskip 8.4mm plus1fill}{\typeout{5-dot minimum leader patched}}{}%
+	}%
+	{\ClassErrorNoLine{maine-thesis}{Unable to patch \protect\@dottedtocline\MessageBreak 5-dot leader minimum will not be respected}}
 %%I think that some \pagebreak and \nopagebreak commands in here can help with the widow/orphan issue in the TOC.
 \renewcommand*\l@part[2]{%
 	\addpenalty{-\@highpenalty}%
