@@ -17,12 +17,16 @@
 %%  rpspringuel@gmail.com
 %%
 
+%%%%%%%%%%%%%%%%%%%%%
 % ------IDENTIFICATION------
+%%%%%%%%%%%%%%%%%%%%%
 \ProvidesClass{maine-thesis}[2016/05/01 v1.10 Maine thesis class]
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 
+%%%%%%%%%%%%%%%%%%%%%
 % ------INITIAL CODE------
+%%%%%%%%%%%%%%%%%%%%%
 \newif\ifdraft\draftfalse
 \newif\iftwoside\twosidefalse
 \newif\ifofficial\officialtrue
@@ -34,7 +38,9 @@
 \newcounter{head} %Heading styles get numbered so that \ifcase can be used when determining which heading style is currently set instead of a nested set of \if and \else.
 \setcounter{head}{1000} %The default value is set very large so that adding new styles shouldn't necessitate changing it.
 
+%%%%%%%%%%%%%%%%%%%%%
 % ------DECLARATION OF OPTIONS------
+%%%%%%%%%%%%%%%%%%%%%
 \DeclareOption{10pt}{\officialfalse\renewcommand\docsize{10pt}}
 \DeclareOption{11pt}{\renewcommand\docsize{11pt}}
 \DeclareOption{12pt}{\renewcommand\docsize{12pt}}
@@ -50,11 +56,15 @@
 \DeclareOption{chicago}{\setcounter{secnumdefault}{0}\setcounter{head}{1}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 
+%%%%%%%%%%%%%%%%%%%%%
 % ------EXECUTION OF OPTIONS------
+%%%%%%%%%%%%%%%%%%%%%
 \ExecuteOptions{12pt}
 \ProcessOptions
 
+%%%%%%%%%%%%%%%%%%%%%
 % ------PACKAGE LOADING------
+%%%%%%%%%%%%%%%%%%%%%
 \LoadClass[\docsize,\side]{report}[2007/10/19 v1.4h Standard LaTeX document class]
 \RequirePackage[T1]{fontenc}[2005/09/27 v1.99g Standard LaTeX package]
 \RequirePackage{color}[2005/11/14 v1.0j Standard LaTeX Color (DPC)]
@@ -115,8 +125,14 @@
 }
 }
 
+%%%%%%%%%%%%%%%%%%%%%
 % ------MAIN CODE------
-%---Variable Declarations
+%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%
+% Variable Declarations
+%%%%%%%%%%%%%%%%%%%%%
+
 \def\@title{}
 \def\@author{}
 \def\@degreesheld{}
@@ -170,7 +186,9 @@
 \newcommand*\AppendixName{APPENDIX}
 \renewcommand*\appendixname{Appendix}
 
-%---Variable Modification Commands
+%%%%%%%%%%%%%%%%%%%%%
+% Variable Modification Commands
+%%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\author}[1]{%
 	\ifx\empty#1\empty\else\gdef\@author{#1}\fi}
 \renewcommand{\title}[1]{%
@@ -229,7 +247,9 @@
 	\fi
 }
 
-%---Special Commands
+%%%%%%%%%%%%%%%%%%%%%
+% Special Commands
+%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\comment}[1]{
 	\ifdraft
 	\marginpar{
@@ -282,7 +302,9 @@
 	#1
 }
 
-%---General Formating Declarations
+%%%%%%%%%%%%%%%%%%%%%
+% General Formating Declarations
+%%%%%%%%%%%%%%%%%%%%%
 \ifunbound
 	\oddsidemargin 0.05in
 \else
@@ -359,7 +381,9 @@
 \newcommand*\tocspacing{6}
 \newcommand*\loftspacing{10}
 
-%---Header Formatting Declarations
+%%%%%%%%%%%%%%%%%%%%%
+% Header Formatting Declarations
+%%%%%%%%%%%%%%%%%%%%%
 \setcounter{part}{1}
 
 \newcommand*\chaptersize{\normalsize}	
@@ -370,7 +394,7 @@
 \newlength{\paragraphpost}
 \newlength{\subparagraphpost}
 \ifcase\value{head}
-%---APA Style Headings---
+	%---APA Style Headings---
 	\newcommand*{\sectionstyle}{\bfseries\centering}
 	\setlength{\sectionpost}{1.5ex \@plus .2ex}
 	\newcommand*{\subsectionstyle}{\bfseries}
@@ -382,7 +406,7 @@
 	\newcommand*{\subparagraphstyle}{\hspace{3\parindent}\underline}
 	\setlength{\subparagraphpost}{-1em}
 \or
-%---Chicago Style Headings---
+	%---Chicago Style Headings---
 	\newcommand*{\sectionstyle}{\bfseries\centering}
 	\setlength{\sectionpost}{1.5ex \@plus .2ex}
 	\newcommand*{\subsectionstyle}{\centering}
@@ -394,7 +418,7 @@
 	\newcommand*{\subparagraphstyle}{\hspace{\parindent}\bfseries}
 	\setlength{\subparagraphpost}{-1em}
 \else
-%---Modified Version of LaTeX Default Headings---
+	%---Justified Decimal---
 	\newcommand*{\sectionstyle}{\bfseries}
 	\setlength{\sectionpost}{1.5ex \@plus .2ex}
 	\newcommand*{\subsectionstyle}{\hspace{0in}\bfseries}
@@ -660,7 +684,9 @@
 \renewcommand\dbltopfraction{0.8}
 \renewcommand\dblfloatpagefraction{0.8}
 
-%---Float Formatting Declarations
+%%%%%%%%%%%%%%%%%%%%%
+% Float Formatting Declarations
+%%%%%%%%%%%%%%%%%%%%%
 \let\latex@xfloat=\@xfloat
 \def\@xfloat#1[#2]{%
 	\latex@xfloat#1[#2]
@@ -724,7 +750,9 @@
 	\color@endgroup}
 }
 
-%---Table of Contents Formatting
+%%%%%%%%%%%%%%%%%%%%%
+% Table of Contents Formatting
+%%%%%%%%%%%%%%%%%%%%%
 \renewcommand\tableofcontents{%
 	\chapter*{\chaptersize\contentsname%
 		\@mkboth{\contentsname}{\contentsname}}%
@@ -825,7 +853,9 @@
 \let\l@table\l@figure
 \newcommand{\bibalign}{}
 
-%---Special Pages/Environments
+%%%%%%%%%%%%%%%%%%%%%
+% Special Pages/Environments
+%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\references}{%
 	\cleardoublepage
 	\singlespacing
@@ -1137,8 +1167,10 @@
 	\thispagestyle{plain}
 }{\par\@author\ is a candidate for the \@degree\ degree in \@program\ from The University of Maine in \@submitdate.\par\endgroup}
 
-%---Front/Main/Back Separators
 
+%%%%%%%%%%%%%%%%%%%%%
+% Front/Main/Back Separators
+%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\preliminary}{%
 	\pagestyle{plain}
 	\pagenumbering{roman}
@@ -1184,7 +1216,9 @@
 	\apptrue
 }
 
-%---Page Style Definitions
+%%%%%%%%%%%%%%%%%%%%%
+% Page Style Definitions
+%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\ps@bottom}{%
 	\let\@mkboth\markboth
