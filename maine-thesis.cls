@@ -988,7 +988,7 @@
 		\chapter*{LIBRARY RIGHTS STATEMENT}
 		\doublespacing
 		\vskip 1.0in
-		\hspace{1.5em}In presenting this \MakeLowercase{\@type} in partial fulfillment of the requirements for an advanced degree at The University of Maine, I agree that the Library shall make it freely available for inspection.  I further agree that permission for ``fair use'' copying of this thesis for scholarly purposes may be granted by the Librarian.  It is understood that any copying or publication of this  \MakeLowercase{\@type} for financial gain shall not be allowed without my written permission.
+		\hspace{1.5em}In presenting this \MakeLowercase{\@type} in partial fulfillment of the requirements for an advanced degree at The University of Maine, I agree that the Library shall make it freely available for inspection.  I further agree that permission for ``fair use'' copying of this \MakeLowercase{\@type} for scholarly purposes may be granted by the Librarian.  It is understood that any copying or publication of this  \MakeLowercase{\@type} for financial gain shall not be allowed without my written permission.
 		\vskip 1.0in
 		\singlespacing
 		\noindent\hrulefill
