@@ -993,7 +993,7 @@
 		\singlespacing
 		\noindent\hrulefill
 		\vskip 4pt
-		\noindent {\scriptsize\@author \hfill  (Date)}\\
+		\noindent {\@author \hfill  (Date)}\\
 		\vskip 5pt
 		\thispagestyle{empty}
 		\newpage
@@ -1020,14 +1020,14 @@
 		\noindent\hrulefill
 		\vskip 4pt
 		\noindent\begin{tabular}{p{5.20in}r}
-			{\scriptsize\@principaladvisor}&{\scriptsize(Date)}\\
+			{\@principaladvisor}&{(Date)}\\
 		\end{tabular}
 		\ifnum\numadv=2
 			\vskip 1.00in
 			\noindent\hrulefill
 			\vskip 4pt
 			\noindent\begin{tabular}{p{5.20in}r}
-				{\scriptsize\@secondadvisor}&{\scriptsize(Date)}\\
+				{\@secondadvisor}&{(Date)}\\
 			\end{tabular}
 		\fi
 		\vskip 7pt
