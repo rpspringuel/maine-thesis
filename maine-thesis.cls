@@ -1163,8 +1163,7 @@
 	\begingroup
 	\doublespacing
 	\thispagestyle{plain}
-}{\par\@author\ is a candidate for the \@degree\ degree in \@program\ from The University of Maine in \@submitdate.\par\endgroup}
-
+}{\@author\ is a candidate for the \@degree\ degree in \@program\ from The University of Maine in \@submitdate.\par\endgroup}
 
 %%%%%%%%%%%%%%%%%%%%%
 % Front/Main/Back Separators
