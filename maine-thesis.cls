@@ -905,8 +905,6 @@
 				\let\p@enumiv\@empty
 				\renewcommand\theenumiv{\@arabic\c@enumiv}}%
 		\sloppy
-		\clubpenalty4000
-		\widowpenalty4000
 	\sfcode`\.=\@m}
 	{\def\@noitemerr
 		{\@latex@warning{Empty `thebibliography' environment}}%
