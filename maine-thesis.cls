@@ -54,6 +54,9 @@
 \DeclareOption{unbound}{\officialfalse\unboundtrue}
 \DeclareOption{apa}{\setcounter{secnumdefault}{0}\setcounter{head}{0}}
 \DeclareOption{chicago}{\setcounter{secnumdefault}{0}\setcounter{head}{1}}
+\DeclareOption{headings}{\setcounter{secnumdefault}{0}\setcounter{head}{2}}
+\DeclareOption{idecimal}{\setcounter{secnumdefault}{0}\setcounter{head}{3}}
+\DeclareOption{jdecimal}{\setcounter{secnumdefault}{0}\setcounter{head}{1000}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -417,13 +420,37 @@
 	\setlength{\paragraphpost}{.2ex \@plus .1ex}
 	\newcommand*{\subparagraphstyle}{\hspace{\parindent}\bfseries}
 	\setlength{\subparagraphpost}{-1em}
+\or
+	%---Sample Headings from Guidelines
+	\newcommand*{\sectionstyle}{\bfseries\underline\centering}
+	\setlength{\sectionpost}{1.5ex \@plus .2ex}
+	\newcommand*{\subsectionstyle}{\bfseries}
+	\setlength{\subsectionpost}{.3ex \@plus .2ex}
+	\newcommand*{\subsubsectionstyle}{\bfseries\underline}
+	\setlength{\subsubsectionpost}{-1em}
+	\newcommand*{\paragraphstyle}{\hspace{\parindent}\underline}
+	\setlength{\paragraphpost}{-1em}
+	\newcommand*{\subparagraphstyle}{\hspace{\parindent}\bfseries}
+	\setlength{\subparagraphpost}{-1em}
+\or
+	%---Indented Decimal System
+	\newcommand*{\sectionstyle}{\bfseries}
+	\setlength{\sectionpost}{1.5ex \@plus .2ex}
+	\newcommand*{\subsectionstyle}{\hspace{\parindent}\bfseries}
+	\setlength{\subsectionpost}{.3ex \@plus .2ex}
+	\newcommand*{\subsubsectionstyle}{\hspace{2\parindent}\bfseries}
+	\setlength{\subsubsectionpost}{.2ex \@plus .1ex}
+	\newcommand*{\paragraphstyle}{\hspace{3\parindent}\bfseries}
+	\setlength{\paragraphpost}{-1em}
+	\newcommand*{\subparagraphstyle}{\hspace{4\parindent}\underline}
+	\setlength{\subparagraphpost}{-1em}
 \else
 	%---Justified Decimal---
 	\newcommand*{\sectionstyle}{\bfseries}
 	\setlength{\sectionpost}{1.5ex \@plus .2ex}
 	\newcommand*{\subsectionstyle}{\hspace{0in}\bfseries}
 	\setlength{\subsectionpost}{.3ex \@plus .2ex}
-	\newcommand*{\subsubsectionstyle}{\underline}
+	\newcommand*{\subsubsectionstyle}{\bfseries}
 	\setlength{\subsubsectionpost}{.2ex \@plus .1ex}
 	\newcommand*{\paragraphstyle}{\bfseries}
 	\setlength{\paragraphpost}{-1em}
