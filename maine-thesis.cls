@@ -851,7 +851,14 @@
 		\patchcmd{\@dottedtocline}{\hfill}{\hskip 8.4mm plus1fill}{\typeout{5-dot minimum leader patched}}{}%
 	}%
 	{\ClassErrorNoLine{maine-thesis}{Unable to patch \protect\@dottedtocline\MessageBreak 5-dot leader minimum will not be respected}}
-%%I think that some \pagebreak and \nopagebreak commands in here can help with the widow/orphan issue in the TOC.
+
+%We use this count to prevent a page break between two toc entries when the second is one level lower than the first.
+\newcount\mt@lasttocentry
+\mt@lasttocentry=0
+%This if is supposed to keep the first two entries at a level together.
+\newif\ifmt@isfirst
+\mt@isfirsttrue
+
 \renewcommand*\l@part[2]{%
 	\addpenalty{-\@highpenalty}%
 	\addvspace{2.25em \@plus\p@}%
@@ -866,16 +873,54 @@
 			\global\@nobreaktrue
 			\everypar{\global\@nobreakfalse\everypar{}}%
 	\endgroup
+	\mt@lasttocentry=0
 }
-\renewcommand*\l@chapter{\vskip 10pt plus 1pt minus 1pt
+\renewcommand*\l@chapter{%
+	\ifnum\mt@lasttocentry=0\relax%
+		\nopagebreak%
+		\mt@isfirsttrue%
+	\else%
+		\ifmt@isfirst\nopagebreak\fi%
+		\mt@isfirstfalse%
+	\fi%
+	\mt@lasttocentry=1%
+	\vskip 12pt plus 1pt minus 1pt%
 	\@dottedtocline{0}{0em}{1.4em}}
-\renewcommand*\l@section{\ifnum\c@tocdepth>0 \vskip 6pt plus 1pt minus 1pt \fi
+\renewcommand*\l@section{%
+	\ifnum\mt@lasttocentry=1\relax%
+		\nopagebreak%
+		\mt@isfirsttrue%
+	\else%
+		\ifmt@isfirst\nopagebreak\fi%
+		\mt@isfirstfalse%
+	\fi%
+	\mt@lasttocentry=2%
+	\ifnum\c@tocdepth>0 \vskip 5pt plus 1pt minus 1pt \fi%
 	\@dottedtocline{1}{1.5em}{2.3em}}
-\renewcommand*\l@subsection{\ifnum\c@tocdepth>1 \vskip 4pt minus 1pt \fi
+\renewcommand*\l@subsection{%
+	\ifnum\mt@lasttocentry=2\relax%
+		\nopagebreak%
+		\mt@isfirsttrue%
+	\else%
+		\ifmt@isfirst\nopagebreak\fi%
+		\mt@isfirstfalse%
+	\fi%
+	\mt@lasttocentry=3%
+	\ifnum\c@tocdepth>1 \vskip 4pt minus 1pt \fi%
 	\@dottedtocline{2}{3.8em}{3.2em}}
-\renewcommand*\l@subsubsection{\ifnum\c@tocdepth>2 \vskip 3pt minus 1pt \fi
+\renewcommand*\l@subsubsection{%
+	\ifnum\mt@lasttocentry=3\relax%
+		\nopagebreak%
+		\mt@isfirsttrue%
+	\else%
+		\ifmt@isfirst\nopagebreak\fi%
+		\mt@isfirstfalse%
+	\fi%
+	\mt@lasttocentry=4%
+	\ifnum\c@tocdepth>2 \vskip 3pt minus 1pt \fi%
 	\@dottedtocline{3}{7.0em}{4.1em}}
-\renewcommand*\l@figure{\vskip 8pt plus 1pt minus 1pt
+\renewcommand*\l@figure{%
+	\vskip 8pt plus 1pt minus 1pt%
 	\@dottedtocline{1}{0em}{5.8em}}
 \let\l@table\l@figure
 \newcommand{\bibalign}{}
