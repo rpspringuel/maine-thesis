@@ -20,7 +20,7 @@
 %%%%%%%%%%%%%%%%%%%%%
 % ------IDENTIFICATION------
 %%%%%%%%%%%%%%%%%%%%%
-\ProvidesClass{maine-thesis}[2016/08/04 v1.11 Maine thesis class]
+\ProvidesClass{maine-thesis}[2016/11/30 v1.12 Maine thesis class]
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 
@@ -1054,55 +1054,11 @@
 }
 
 \newcommand{\libraryrights}{%
-	\ifofficial
-		\chapter*{LIBRARY RIGHTS STATEMENT}
-		\doublespacing
-		\hspace{1.5em}In presenting this \MakeLowercase{\@type} in partial fulfillment of the requirements for an advanced degree at The University of Maine, I agree that the Library shall make it freely available for inspection.  I further agree that permission for ``fair use'' copying of this \MakeLowercase{\@type} for scholarly purposes may be granted by the Librarian.  It is understood that any copying or publication of this  \MakeLowercase{\@type} for financial gain shall not be allowed without my written permission.
-		\vskip 1.0in
-		\singlespacing
-		\noindent\hrulefill
-		\vskip 4pt
-		\noindent {\@author \hfill  (Date)}\\
-		\vskip 5pt
-		\thispagestyle{empty}
-		\newpage
-	\else
-		\relax
-	\fi
+	\ClassError{maine-thesis}{The Graduate School no longer requires\MessageBreak a Library Rights Statement page}{Please remove \protect\libraryrights\space from your thesis.}%
 }
 
 \newcommand{\dissacceptance}{%
-	\ifofficial
-		\doublespacing
-		\chapter*{\@type\ ACCEPTANCE STATEMENT}
-		\hspace{1.5em}On behalf of the Graduate Committee for \@author, 
-		\ifnum\numadv=2
-			we
-		\else
-			I
-		\fi
-		affirm that this manuscript is the final and accepted \MakeLowercase{\@type}. Signatures of all committee members are on file with the Graduate School at the University of Maine, 42 Stodder Hall, Orono, Maine.
-		
-		\vskip 1.0in
-		\singlespacing
-		\noindent\hrulefill
-		\vskip 4pt
-		\noindent\begin{tabular}{p{5.20in}r}
-			{\@principaladvisor}&{(Date)}\\
-		\end{tabular}
-		\ifnum\numadv=2
-			\vskip 1.00in
-			\noindent\hrulefill
-			\vskip 4pt
-			\noindent\begin{tabular}{p{5.20in}r}
-				{\@secondadvisor}&{(Date)}\\
-			\end{tabular}
-		\fi
-		\vskip 7pt
-		\newpage
-	\else
-		\relax
-	\fi
+	\ClassError{maine-thesis}{The Graduate School no longer requires\MessageBreak a Dissertation Acceptance page}{Please remove \protect\dissacceptance\space from your thesis.}%
 }
 
 \renewenvironment{abstract}{%
