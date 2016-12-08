@@ -11,9 +11,10 @@
 \program{...}				% Degree granting department or program
 \submitdate{...}				% Month and year of graduation (do not separate with a comma)
 
-\principaladvisor{...} 			% Advisors name, title
-% If you have more than one advisor then you'll also need the following command, otherwise comment out or delete it
-\secondadvisor{...}
+\principaladvisor[...]{...} 			% Advisor's [short title and name]{name, long title}
+% If you have more than one advisor then you'll should delete the first argument ("[...]") above and uncomment the following commands
+%\secondadvisor{...}
+%\principalshort{...} 			% Shortened advisor name for abstract.  See guidelines for example.
 
 % Include all committee members names and titles
 \firstreader{...}        
@@ -23,8 +24,6 @@
 \fourthreader{...}
 \fifthreader{...}
 
-\principalshort{...} 			% Shortened advisor name for abstract.  See guidelines for example.
-								 
 % If the thesis has MORE than one appendix, leave the following command in.  Else, comment it out.
 \multipleappendicestrue 
 

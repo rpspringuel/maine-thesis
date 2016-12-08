@@ -204,8 +204,10 @@
 	\ifx\empty#1\empty\else\gdef\@program{#1}\fi}
 \newcommand{\submitdate}[1]{%
 	\ifx\empty#1\empty\else\gdef\@submitdate{#1}\fi}
-\newcommand{\principaladvisor}[1]{%
-	\ifx\empty#1\empty\else\gdef\@principaladvisor{\sloppy#1}\fi}
+\newcommand{\principaladvisor}[2][\empty]{%
+	\ifx\empty#1\empty\else\gdef\@principalshort{\sloppy#1}\fi%
+	\ifx\empty#2\empty\else\gdef\@principaladvisor{\sloppy#2}\fi%
+	}
 \newcommand{\secondadvisor}[1]{%
 	\ifx\empty#1\empty\else\gdef\@secondadvisor{\sloppy#1}\fi
 	\twoadvisors}

@@ -68,7 +68,7 @@ Note that you should use \verb=\\= to separate multiple degrees if you have more
 Next, you'll want to tell the class file about your committee.  To do this, you'll need each committee member's full name and title (i.e. Ph.D., faculty position, etc., as in ``John Smith, Ph.D., Associate Professor of Interesting Stuff'').  Each member is declared with a separate command (use only the ones you need):
 
 \begin{verbatim}
-\principaladvisor{...}
+\principaladvisor[...]{...}
 \secondadvisor{...}
 
 \firstreader{...}
@@ -82,7 +82,19 @@ Note that these commands are order sensitive as the class file uses the last one
 
 If this automatic numbering of your committee isn't working for some reason, then there are two commands which you can issue after the members list to override the behavior: \verb=\twoadvisors=, \verb=\oneadvisor= and \verb=\members{#}=.  The first is used to change the number of advisors to two, the second sets it to one (one advisor is the default for the class file).  The last tells the class file how many members your committee has (not including your advisor(s)).  If you find that you have to issue these commands, please send me a minimal working example that duplicates the problem you experienced so that I can fix it.
 
-The last part of describing your committee is to declare the short version of your advisor's name with \verb=\principalshort{...}=.  In this case, the advisor's title should simply be ''Dr.'' (or whatever is appropriate) and should precede their name (as in ``Dr.~John Smith'').  If you have two advisors, then both should appear as the argument to this command with their short titles separate (as in ``Dr.~John Smith and Dr.~Jane Doe'').
+In a couple of locations, the thesis requires the ``short'' name for your advisor.  In this case, the advisor's title should simply be ``Dr.'' (or whatever is appropriate) and should precede their name (as in ``Dr.~John Smith'').  This short name can be defined in two ways.  If you have just one advisor, then you can make use of the first (optional) argument of \verb=\prinicpaladvisor= (the one appearing between the square brackets):
+
+\begin{verbatim}
+\principaladvisor[Dr.~John Smith]{John Smith, Ph.D., Associate Professor of Interesting Stuff}
+\end{verbatim}
+
+If you have two advisors, then you should leave out the first argument for \verb=\prinicpaladvisor= and use the command \verb=\prinicpalshort= instead.  For this command both names should appear as the argument to the command with their short titles separate:
+
+\begin{verbatim}
+\principaladvisor{John Smith, Ph.D., Associate Professor of Interesting Stuff}
+\secondadvisor{Jane Doe, Ph.D., Professor of More Interesting Stuff}
+\principalshort{Dr.~John Smith and Dr.~Jane Doe}
+\end{verbatim}
 
 \subsection{Number of Appendices}
 If you have more than one appendix, then you have to tell the class file this with the command \verb=\multipleappendicestrue=.  This is because the Graduate School requires different formatting for a document with a single appendix as opposed to one with multiple appendices (in particular as relating to lettering them and how they appear in the table of contents).  By default, the class file assumes one appendix and will format it accordingly.  If you have more than one, then this command will tell the class file to change to the multiple appendices format.  If you don't have any appendices, then it shouldn't matter if you issue this command or not.
