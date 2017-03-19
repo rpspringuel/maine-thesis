@@ -9,7 +9,13 @@ To install this class file simply copy or link `maine-thesis.cls` to your texmf 
 
 ``ln maine-thesis.cls `kpsewhich --var-value TEXMFHOME```
 
-The advantage to linking over copying is that once you've set this up, you need only use `git fetch` to make updates (assuming you keep your clone of the repository).
+On Windows machines the equivalent commands are:
+
+``for /f "usebackq tokens=*" %a in (`kpsewhich --var-value TEXMFHOME`) do copy maine-thesis.cls %a``
+
+``for /f "usebackq tokens=*" %a in (`kpsewhich --var-value TEXMFHOME`) do mklink %a maine-thesis.cls``
+
+The advantage to linking over copying is that once you've set this up, you need only use `git fetch` to make updates, but you do have to keep your copy of the repository.
 
 ## Repository inventory:
 
