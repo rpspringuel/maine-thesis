@@ -51,12 +51,13 @@
 	\officialfalse}
 }
 \DeclareOption{twoside}{\officialfalse\twosidetrue\renewcommand\side{twoside}}
-\DeclareOption{unbound}{\officialfalse\unboundtrue}
+\DeclareOption{unbound}{\officialfalse\unboundtrue
+\def\@margg{1in}}
 \DeclareOption{apa}{\setcounter{secnumdefault}{0}\setcounter{head}{0}}
 \DeclareOption{chicago}{\setcounter{secnumdefault}{0}\setcounter{head}{1}}
 \DeclareOption{headings}{\setcounter{secnumdefault}{0}\setcounter{head}{2}}
-\DeclareOption{idecimal}{\setcounter{secnumdefault}{0}\setcounter{head}{3}}
-\DeclareOption{jdecimal}{\setcounter{secnumdefault}{0}\setcounter{head}{1000}}
+\DeclareOption{idecimal}{\setcounter{secnumdefault}{3}\setcounter{head}{3}}
+\DeclareOption{jdecimal}{\setcounter{secnumdefault}{3}\setcounter{head}{1000}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -77,7 +78,18 @@
 \RequirePackage{afterpackage}[2006/01/17 v1.1 Apply Commands After Package (NCC)]
 \RequirePackage{etoolbox}[2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)]
 \RequirePackage[none]{hyphenat}[2009/09/02 v2.3c hyphenation utilities]
+\RequirePackage{geometry}%added to fix margin errors
 \AfterPackage{hyperref}{% Graduate School requirements mandate a slight modification to hyperref's redefinition of the caption command.  This is implemented here.  The command is only executed after hyperref is loaded in the document (if it is loaded).
+\hypersetup{ pdfdisplaydoctitle=true}
+\AtBeginDocument{
+\hypersetup{
+	pdftitle=\@title,
+	pdfauthor=\@author,
+	pdfcreator=\relax,
+	pdfproducer=\relax
+}
+}%Inputs Document data into PDF Metadata if hyperref is used
+
 \long\def\@caption#1[#2]#3{%
   \expandafter\ifx\csname if@capstart\expandafter\endcsname
                   \csname iftrue\endcsname
@@ -126,7 +138,9 @@
     \par
   \endgroup
 }
+
 }
+\pdfsuppressptexinfo=-1 % supresses nonsense metadata input by pdflatex
 
 %%%%%%%%%%%%%%%%%%%%%
 % ------MAIN CODE------
@@ -310,32 +324,16 @@
 %%%%%%%%%%%%%%%%%%%%%
 % General Formating Declarations
 %%%%%%%%%%%%%%%%%%%%%
-\ifunbound
-	\oddsidemargin 0.05in
-\else
-	\oddsidemargin 0.55in
-\fi
-\iftwoside
-	\evensidemargin 0.05in
-\else
-	\ifunbound
-		\evensidemargin 0.05in
-	\else
-		\evensidemargin 0.55in
-	\fi
-\fi
-\marginparwidth 40pt
-\marginparsep 10pt
-\ifunbound
-	\textwidth 6.4in
-\else
-	\textwidth 5.9in
-\fi
-\topmargin -0.5in
-\headheight 14pt
-\headsep 0.4in
-\textheight 8.8in
-\footskip 30pt
+\geometry{
+		letterpaper,
+		margin=1in,
+		left=\@margg,
+		headsep=0.4in,
+		headheight=14pt,
+		footskip=30pt,
+		marginparwidth=40pt,
+		marginparsep=10pt}%Fixing Margin Errors
+
 \setcounter{secnumdepth}{\value{secnumdefault}}
 \setcounter{tocdepth}{\value{secnumdepth}}
 \raggedbottom
@@ -450,7 +448,7 @@
 	%---Justified Decimal---
 	\newcommand*{\sectionstyle}{\bfseries}
 	\setlength{\sectionpost}{1.5ex \@plus .2ex}
-	\newcommand*{\subsectionstyle}{\hspace{0in}\bfseries}
+	\newcommand*{\subsectionstyle}{\bfseries}
 	\setlength{\subsectionpost}{.3ex \@plus .2ex}
 	\newcommand*{\subsubsectionstyle}{\bfseries}
 	\setlength{\subsubsectionpost}{.2ex \@plus .1ex}
@@ -834,7 +832,7 @@
 	\fi
 }
 
-\newenvironment{listof}[1]{%
+\newenvironment{thesislist}[1]{% renamed to avoid conflicts with "float" package
 	\chapter*{LIST OF \texorpdfstring{\MakeUppercase{#1}}{#1}}
 	\addcontentsline{toc}{chapter}{{\listname\ \texorpdfstring{\MakeUppercase{#1}}{#1}}}
 	\ifnum\value{part}>1
