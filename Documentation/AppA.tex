@@ -73,4 +73,9 @@ The class file was tested with v1.2b, last revised 2010/02/27.  If you're having
 The class file uses this package to turn off hyphenation for the entire document.  As a result, any attempt to load this package with options by using \verb=\usepackage= will result in an option clash error.  Since the only options for this package either disable all hyphenation (the option being used by the class file) or enable it for monospaced (typewriter-style) fonts which aren't allowed in a thesis (the graduate school wants a single font used throughout the document), you shouldn't have to load this package anyway.
 
 The class file was tested with 2009/09/02 v2.3c.  If you're having problems with hyphenat, make sure you have this version or a more recent one before submitting a bug report.
+
+\section{geometry}
+The class file uses this package to set the margins and paper size.  As a result, any attempt to load this package with options by using \verb=\usepackage= will result in an option clash error.  Since the graduate school has very specific requirements for the margins and paper size, both of which are set by the class file, you shouldn't need to load this package anyway.
+
+The class file was tested with v5.6, last revised 2010/09/12.  If you're having problems with geometry, make sure you have this version or a more recent one before submitting a bug report.
 \endinput
