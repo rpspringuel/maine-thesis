@@ -55,8 +55,8 @@
 \DeclareOption{apa}{\setcounter{secnumdefault}{0}\setcounter{head}{0}}
 \DeclareOption{chicago}{\setcounter{secnumdefault}{0}\setcounter{head}{1}}
 \DeclareOption{headings}{\setcounter{secnumdefault}{0}\setcounter{head}{2}}
-\DeclareOption{idecimal}{\setcounter{secnumdefault}{0}\setcounter{head}{3}}
-\DeclareOption{jdecimal}{\setcounter{secnumdefault}{0}\setcounter{head}{1000}}
+\DeclareOption{idecimal}{\setcounter{secnumdefault}{3}\setcounter{head}{3}}
+\DeclareOption{jdecimal}{\setcounter{secnumdefault}{3}\setcounter{head}{1000}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 
 %%%%%%%%%%%%%%%%%%%%%
