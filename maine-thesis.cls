@@ -385,17 +385,19 @@
 \newlength{\subsubsectionpost}
 \newlength{\paragraphpost}
 \newlength{\subparagraphpost}
+\newdimen\headindent
+\headindent=1.5em
 \ifcase\value{head}
 	%---APA Style Headings---
 	\newcommand*{\sectionstyle}{\bfseries\centering}
 	\setlength{\sectionpost}{1.5ex \@plus .2ex}
 	\newcommand*{\subsectionstyle}{\bfseries}
 	\setlength{\subsectionpost}{.3ex \@plus .2ex}
-	\newcommand*{\subsubsectionstyle}{\hspace{0in}\bfseries}
+	\newcommand*{\subsubsectionstyle}{\bfseries}
 	\setlength{\subsubsectionpost}{-1em}
-	\newcommand*{\paragraphstyle}{\hspace{2\parindent}\bfseries\underline}
+	\newcommand*{\paragraphstyle}{\hspace{2\headindent}\bfseries\underline}
 	\setlength{\paragraphpost}{-1em}
-	\newcommand*{\subparagraphstyle}{\hspace{3\parindent}\underline}
+	\newcommand*{\subparagraphstyle}{\hspace{3\headindent}\underline}
 	\setlength{\subparagraphpost}{-1em}
 \or
 	%---Chicago Style Headings---
@@ -407,7 +409,7 @@
 	\setlength{\subsubsectionpost}{.2ex \@plus .1ex}
 	\newcommand*{\paragraphstyle}{}
 	\setlength{\paragraphpost}{.2ex \@plus .1ex}
-	\newcommand*{\subparagraphstyle}{\hspace{\parindent}\bfseries}
+	\newcommand*{\subparagraphstyle}{\hspace{\headindent}\bfseries}
 	\setlength{\subparagraphpost}{-1em}
 \or
 	%---Sample Headings from Guidelines
@@ -417,21 +419,21 @@
 	\setlength{\subsectionpost}{.3ex \@plus .2ex}
 	\newcommand*{\subsubsectionstyle}{\bfseries\underline}
 	\setlength{\subsubsectionpost}{-1em}
-	\newcommand*{\paragraphstyle}{\hspace{\parindent}\underline}
+	\newcommand*{\paragraphstyle}{\hspace{\headindent}\underline}
 	\setlength{\paragraphpost}{-1em}
-	\newcommand*{\subparagraphstyle}{\hspace{\parindent}\bfseries}
+	\newcommand*{\subparagraphstyle}{\hspace{\headindent}\bfseries}
 	\setlength{\subparagraphpost}{-1em}
 \or
 	%---Indented Decimal System
 	\newcommand*{\sectionstyle}{\bfseries}
 	\setlength{\sectionpost}{1.5ex \@plus .2ex}
-	\newcommand*{\subsectionstyle}{\hspace{\parindent}\bfseries}
+	\newcommand*{\subsectionstyle}{\hspace{\headindent}\bfseries}
 	\setlength{\subsectionpost}{.3ex \@plus .2ex}
-	\newcommand*{\subsubsectionstyle}{\hspace{2\parindent}\bfseries}
+	\newcommand*{\subsubsectionstyle}{\hspace{2\headindent}\bfseries}
 	\setlength{\subsubsectionpost}{.2ex \@plus .1ex}
-	\newcommand*{\paragraphstyle}{\hspace{3\parindent}\bfseries}
+	\newcommand*{\paragraphstyle}{\hspace{3\headindent}\bfseries}
 	\setlength{\paragraphpost}{-1em}
-	\newcommand*{\subparagraphstyle}{\hspace{4\parindent}\underline}
+	\newcommand*{\subparagraphstyle}{\hspace{4\headindent}\underline}
 	\setlength{\subparagraphpost}{-1em}
 \else
 	%---Justified Decimal---
