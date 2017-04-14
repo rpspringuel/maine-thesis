@@ -37,6 +37,7 @@
 \setcounter{secnumdefault}{3}
 \newcounter{head} %Heading styles get numbered so that \ifcase can be used when determining which heading style is currently set instead of a nested set of \if and \else.
 \setcounter{head}{1000} %The default value is set very large so that adding new styles shouldn't necessitate changing it.
+\def\@margg{1.5in}
 
 %%%%%%%%%%%%%%%%%%%%%
 % ------DECLARATION OF OPTIONS------
@@ -51,7 +52,8 @@
 	\officialfalse}
 }
 \DeclareOption{twoside}{\officialfalse\twosidetrue\renewcommand\side{twoside}}
-\DeclareOption{unbound}{\officialfalse\unboundtrue}
+\DeclareOption{unbound}{\officialfalse\unboundtrue
+	\def\@margg{1in}}
 \DeclareOption{apa}{\setcounter{secnumdefault}{0}\setcounter{head}{0}}
 \DeclareOption{chicago}{\setcounter{secnumdefault}{0}\setcounter{head}{1}}
 \DeclareOption{headings}{\setcounter{secnumdefault}{0}\setcounter{head}{2}}
@@ -77,6 +79,7 @@
 \RequirePackage{afterpackage}[2006/01/17 v1.1 Apply Commands After Package (NCC)]
 \RequirePackage{etoolbox}[2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)]
 \RequirePackage[none]{hyphenat}[2009/09/02 v2.3c hyphenation utilities]
+\RequirePackage{geometry}
 \AfterPackage{hyperref}{% Graduate School requirements mandate a slight modification to hyperref's redefinition of the caption command.  This is implemented here.  The command is only executed after hyperref is loaded in the document (if it is loaded).
 \long\def\@caption#1[#2]#3{%
   \expandafter\ifx\csname if@capstart\expandafter\endcsname
@@ -310,32 +313,16 @@
 %%%%%%%%%%%%%%%%%%%%%
 % General Formating Declarations
 %%%%%%%%%%%%%%%%%%%%%
-\ifunbound
-	\oddsidemargin 0.05in
-\else
-	\oddsidemargin 0.55in
-\fi
-\iftwoside
-	\evensidemargin 0.05in
-\else
-	\ifunbound
-		\evensidemargin 0.05in
-	\else
-		\evensidemargin 0.55in
-	\fi
-\fi
-\marginparwidth 40pt
-\marginparsep 10pt
-\ifunbound
-	\textwidth 6.4in
-\else
-	\textwidth 5.9in
-\fi
-\topmargin -0.5in
-\headheight 14pt
-\headsep 0.4in
-\textheight 8.8in
-\footskip 30pt
+\geometry{
+	letterpaper,
+	margin=1in,
+	left=\@margg,
+	headsep=0.4in,
+	headheight=14pt,
+	footskip=30pt,
+	marginparwidth=40pt,
+	marginparsep=10pt}
+	
 \setcounter{secnumdepth}{\value{secnumdefault}}
 \setcounter{tocdepth}{\value{secnumdepth}}
 \raggedbottom
