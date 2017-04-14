@@ -80,4 +80,9 @@ The class file uses this package to set the margins and paper size.  As a result
 
 The class file was tested with v5.6, last revised 2010/09/12.  If you're having problems with geometry, make sure you have this version or a more recent one before submitting a bug report.
 
+\section{iftex}
+The class file uses this package to test for the use of the PDF\TeX engine.  This engine adds some spurious tags to the pdf, but also provides a command, \verb=\pdfsuppresstexinfo= to get rid of them.  If we see this engine, we use the command to remove those tags.  If you need this package, then simply make use of it.  There is no need to load it (especially as it has no options).
+
+The class file was tested with v0.2, last revised 2013/04/04.  If you're having problems with iftex, make sure you have this version or a more recent one before submitting a bug report.
+
 \endinput
