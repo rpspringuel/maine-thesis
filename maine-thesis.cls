@@ -326,7 +326,7 @@
 \setcounter{secnumdepth}{\value{secnumdefault}}
 \setcounter{tocdepth}{\value{secnumdepth}}
 \raggedbottom
-\parindent 1.5em
+\AtEndOfClass{\parindent=1.5em\relax}% I delay this setting because there's something else changing \parindent to 0 in this class file and I don't know what.
 \markboth{}{}
 \clubpenalty=10000
 \widowpenalty=10000
@@ -956,7 +956,6 @@
 		\doublespacing
 	\fi
 	\begin{center}
-	\parindent=0pt
 	{\bfseries\MakeUppercase{\@title}}\\
 	\ifcase\@NumParts\or
 		\relax
@@ -1053,7 +1052,6 @@
 \renewenvironment{abstract}{%
 	\doublespacing
 	\begin{center}
-		\parindent=0pt
 		{\bfseries\MakeUppercase{\@title}}
 		\vskip 0.5in
 		By\space\@author\\[4pt]
@@ -1099,7 +1097,6 @@
 \newenvironment{layabstract}[1]{%
 	\doublespacing
 	\begin{center}
-		\parindent=0pt
 		{\bfseries\MakeUppercase{\@title}}
 		\vskip 0.5in
 		By\space\@author\\[4pt]
