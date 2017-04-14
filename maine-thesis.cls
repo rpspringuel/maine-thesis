@@ -437,7 +437,7 @@
 	%---Justified Decimal---
 	\newcommand*{\sectionstyle}{\bfseries}
 	\setlength{\sectionpost}{1.5ex \@plus .2ex}
-	\newcommand*{\subsectionstyle}{\hspace{0in}\bfseries}
+	\newcommand*{\subsectionstyle}{\bfseries}
 	\setlength{\subsectionpost}{.3ex \@plus .2ex}
 	\newcommand*{\subsubsectionstyle}{\bfseries}
 	\setlength{\subsubsectionpost}{.2ex \@plus .1ex}
