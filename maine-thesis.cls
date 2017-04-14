@@ -821,7 +821,7 @@
 	\fi
 }
 
-\newenvironment{listof}[1]{%
+\newenvironment{thesislist}[1]{%
 	\chapter*{LIST OF \texorpdfstring{\MakeUppercase{#1}}{#1}}
 	\addcontentsline{toc}{chapter}{{\listname\ \texorpdfstring{\MakeUppercase{#1}}{#1}}}
 	\ifnum\value{part}>1
