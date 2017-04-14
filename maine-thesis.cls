@@ -342,11 +342,11 @@
 \setcounter{secnumdepth}{\value{secnumdefault}}
 \setcounter{tocdepth}{\value{secnumdepth}}
 \raggedbottom
-\AtEndOfClass{\parindent=1.5em\relax}% I delay this setting because there's something else changing \parindent to 0 in this class file and I don't know what.
+\raggedright
+\parindent=1.5em\relax
 \markboth{}{}
 \clubpenalty=10000
 \widowpenalty=10000
-\raggedright
 
 \def\verbatim@font{\rmfamily}
 
