@@ -78,8 +78,9 @@
 \RequirePackage{etoolbox}[2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)]
 \RequirePackage[none]{hyphenat}[2009/09/02 v2.3c hyphenation utilities]
 \AfterPackage{hyperref}{% Graduate School requirements mandate a slight modification to hyperref's redefinition of the caption command.  This is implemented here.  The command is only executed after hyperref is loaded in the document (if it is loaded).
-\long\def\@caption#1[#2]#3{%
 \hypersetup{ pdfdisplaydoctitle=true}
+\long\def\@caption#1[#2]#3{%
+
 
 \AtBeginDocument{
 \hypersetup{	
