@@ -20,7 +20,7 @@
 %%%%%%%%%%%%%%%%%%%%%
 % ------IDENTIFICATION------
 %%%%%%%%%%%%%%%%%%%%%
-\ProvidesClass{maine-thesis}[2016/11/30 v1.12 Maine thesis class]
+\ProvidesClass{maine-thesis}[2017/05/03 v1.13 Maine thesis class]
 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 
