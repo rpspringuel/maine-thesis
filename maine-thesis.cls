@@ -855,7 +855,7 @@
 	{\rightskip\@tocrmarg}%
 	{\rightskip\@tocrmarg plus 4em \hyphenpenalty\@M}%
 	{%
-		\patchcmd{\@dottedtocline}{\hfill}{\hskip 8.4mm plus1fill}{\typeout{5-dot minimum leader patched}}{}%
+		\patchcmd{\@dottedtocline}{\hfill}{\hskip 9.3mm plus1fill}{\typeout{5-dot minimum leader patched}}{}%
 	}%
 	{\ClassErrorNoLine{maine-thesis}{Unable to patch \protect\@dottedtocline\MessageBreak 5-dot leader minimum will not be respected}}
 
