@@ -1099,15 +1099,15 @@
 	\par\endgroup
 	\ifcopyrightpage
 		\ifofficial
-			\setcounter{page}{4}
-		\else
-			\setcounter{page}{3}
-		\fi
-	\else
-		\ifofficial
 			\setcounter{page}{3}
 		\else
 			\setcounter{page}{2}
+		\fi
+	\else
+		\ifofficial
+			\setcounter{page}{2}
+		\else
+			\setcounter{page}{1}
 		\fi
 	\fi
 }
@@ -1146,15 +1146,15 @@
 	\par\endgroup
 	\ifcopyrightpage
 		\ifofficial
-			\setcounter{page}{4}
-		\else
-			\setcounter{page}{3}
-		\fi
-	\else
-		\ifofficial
 			\setcounter{page}{3}
 		\else
 			\setcounter{page}{2}
+		\fi
+	\else
+		\ifofficial
+			\setcounter{page}{2}
+		\else
+			\setcounter{page}{1}
 		\fi
 	\fi
 }
