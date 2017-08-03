@@ -5,9 +5,9 @@ A LaTeX class file for the typesetting of a Masters or Doctorate Thesis at the U
 
 To install this class file simply copy or link `maine-thesis.cls` to your texmf tree.  On Unix based systems one of the following commands should work:
 
-``cp maine-thesis.cls `kpsewhich --var-value TEXMFHOME```
+`cp maine-thesis.cls $(kpsewhich --var-value TEXMFHOME)`
 
-``ln maine-thesis.cls `kpsewhich --var-value TEXMFHOME```
+`ln maine-thesis.cls $(kpsewhich --var-value TEXMFHOME)`
 
 On Windows machines the equivalent commands are:
 
@@ -27,11 +27,11 @@ The files in the Documentation folder serve both as the documentation for this c
 
 ### skeleton
 
-The skeleton folder contains a basic document structure which you can use as a template for your own these.
+The skeleton folder contains a basic document structure which you can use as a template for your own thesis.
 
 ### Thesisguidelines.pdf
 
-This is the latest copy of the official thesis guidelines published by the Graduate School at the University of Maine.  The class file is intended to implement these guidelines as faithfully as possible.  However, there have been instances where the Graduate School has modified their guidelines without updating this document.  Unfortunately, you'll usually find out about these changes when the Graduate School asks for changes before accepting your thesis.  If this happens to you, please let me know and I will update the class file accordingly.
+This is the latest copy of the [official thesis guidelines](https://umaine.edu/graduate/resource/thesis-guidelines/) published by the Graduate School at the University of Maine.  The class file is intended to implement these guidelines as faithfully as possible.  However, there have been instances where the Graduate School has modified their guidelines without updating this document.  Unfortunately, you'll usually find out about these changes when the Graduate School asks for changes before accepting your thesis.  If this happens to you, please let me know and I will update the class file accordingly.
 
 ## Contributing
 
