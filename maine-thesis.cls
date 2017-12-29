@@ -157,6 +157,7 @@
 
 \def\@title{}
 \def\@author{}
+\def\@authorpronoun{}
 \def\@degreesheld{}
 \def\@degree{}
 \def\@program{}
@@ -213,6 +214,8 @@
 %%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\author}[1]{%
 	\ifx\empty#1\empty\else\gdef\@author{#1}\fi}
+\renewcommand{\authorpronoun}[1]{%
+	\ifx\empty#1\empty\else\gdef\@authorpronoun{#1}\fi}
 \renewcommand{\title}[1]{%
 	\ifx\empty#1\empty\else\gdef\@title{#1}\fi}
 \newcommand{\degreesheld}[1]{%
@@ -1193,7 +1196,7 @@
 	\begingroup
 	\doublespacing
 	\thispagestyle{plain}
-}{\@author\ is a candidate for the \@degree\ degree in \@program\ from The University of Maine in \@submitdate.\par\endgroup}
+}{\@authorpronoun\ is a candidate for the \@degree\ degree in \@program\ from The University of Maine in \@submitdate.\par\endgroup}
 
 %%%%%%%%%%%%%%%%%%%%%
 % Front/Main/Back Separators
