@@ -81,6 +81,7 @@
 \RequirePackage[none]{hyphenat}[2009/09/02 v2.3c hyphenation utilities]
 \RequirePackage{iftex}[2013/04/04 v0.2 Provides if(tex) conditional for PDFTeX, XeTeX, and LuaTeX]
 \RequirePackage{geometry}[2010/09/12 v5.6 Page Geometry]
+\RequirePackage{xstring}[2013/10/13 v1.7c  String manipulations (C Tellechea)]
 \AfterPackage{hyperref}{% There are a few changes that are required for the hyperref package, so we make those changes if it is loaded.
 	\hypersetup{ pdfdisplaydoctitle=true}
 	\AtBeginDocument{
@@ -94,6 +95,7 @@
 	% Graduate School requirements mandate a slight modification to hyperref's
 	% redefinition of the caption command.
 	\long\def\@caption#1[#2]#3{%
+	  \IfStrEq{#2}{#3}{\def\mt@captiontext{#3}}{\def\mt@captiontext{#2\ \ignorespaces#3}}%
 	  \expandafter\ifx\csname if@capstart\expandafter\endcsname
 	                  \csname iftrue\endcsname
 	    \global\let\@currentHref\hc@currentHref
@@ -122,19 +124,19 @@
 	    \expandafter\ifx\csname if@capstart\expandafter\endcsname
 	                    \csname iftrue\endcsname
 	      \global\@capstartfalse
-	      \@makecaption{\csname fnum@#1\endcsname}{\ignorespaces#3}%
+	      \@makecaption{\csname fnum@#1\endcsname}{\ignorespaces\mt@captiontext}%
 	    \else
 	      \@makecaption{\csname fnum@#1\endcsname}{%
 	        \ignorespaces
 	        \ifHy@nesting
-	          \expandafter\hyper@@anchor\expandafter{\@currentHref}{#3}%
+	          \expandafter\hyper@@anchor\expandafter{\@currentHref}{\mt@captiontext}%
 	        \else
 	          \Hy@raisedlink{%
 	            \expandafter\hyper@@anchor\expandafter{%
 	              \@currentHref
 	            }{\relax}%
 	          }%
-	          #3%
+	          \mt@captiontext%
 	        \fi
 	      }%
 	    \fi
@@ -745,6 +747,7 @@
 }
 
 \long\def\@caption#1[#2]#3{%
+	\IfStrEq{#2}{#3}{\def\mt@captiontext{#3}}{\def\mt@captiontext{#2\ \ignorespaces#3}}%
 	\addcontentsline{\csname ext@#1\endcsname}{#1}	{\protect\numberline{\csname fnum@#1\endcsname}{\ignorespaces #2}}%
 	\ifnum\value{part}>1
 		\addcontentsline{\csname ext@#1 2\endcsname}{#1}	{\protect\numberline{\csname fnum@#1\endcsname}{\ignorespaces #2}}%
@@ -753,7 +756,7 @@
 	\@parboxrestore
 	\normalsize
 	\centering
-	\@makecaption{\csname fnum@#1\endcsname}{\ignorespaces #3}\par
+	\@makecaption{\csname fnum@#1\endcsname}{\ignorespaces\mt@captiontext}\par
 	\endgroup
 }
 
