@@ -214,7 +214,7 @@
 %%%%%%%%%%%%%%%%%%%%%
 \renewcommand{\author}[1]{%
 	\ifx\empty#1\empty\else\gdef\@author{#1}\fi}
-\renewcommand{\authorpronoun}[1]{%
+\newcommand{\authorpronoun}[1]{%
 	\ifx\empty#1\empty\else\gdef\@authorpronoun{#1}\fi}
 \renewcommand{\title}[1]{%
 	\ifx\empty#1\empty\else\gdef\@title{#1}\fi}
