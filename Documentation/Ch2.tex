@@ -17,18 +17,21 @@ Like any other \LaTeX\ project, a thesis set using maine-thesis.cls must start w
 \documentclass[options]{maine-thesis}
 \end{verbatim}
 
-It should be noted that while the class file does have several options, the official copy that you produce to submit to the graduate school should be typeset without any.  The options are simply to help you create copies of your thesis which are intended for some other purpose.  Unless the option specifically states that it is allowed on an official copy, then using the option will suppress the Dissertation Acceptance and Library Rights pages.  This serves to distinguish these unofficial copies from the official one and saves you a couple of pages when printing them.
-
 \pagebreak[3]The options are as follows:
 \begin{description}
 \item[10pt]{This option sets the font size to 10pt.  This option is allowed by the graduate school for an official copy, but is not recommended (the smaller font size doesn't convert to microfilm as well as the default).}
 \item[11pt]{This option sets the font size to 11pt.  This option is allowed by the graduate school for an official copy, but is not recommended (the smaller font size doesn't convert to microfilm as well as the default).}
 \item[12pt]{This option sets the font size to 12pt.  This is the default option, and doesn't normally need to be issued.}
-\item[apa]{This option changes the headings to follow the American Psychology Association style with one exception: italics are replaced by underlines (since italics in the headings is prohibited by the Graduate School).  These heading styles are unnumbered and thus cross references using \verb=\ref= will point to just the chapter.  This option is allowed for an official copy of your thesis.}
-\item[chicago]{This option changes the headings to follow the Chicago style guidelines.  These heading styles are unnumbered and thus cross references using \verb=\ref= will point to just the chapter.  This option is allowed for an official copy of your thesis.}
-\item[headings]{This option changes the headings to follow the example given in the Guidelines for unnumbered headings.  As they are unnumbered, cross references using \verb=\ref= will point to just the chapter.  This option is allowed for an official copy of your thesis.}
-\item[idecimal]{This option changes the headings to follow the indented decimal example given in the Guidelines.  This option is allowed for an official copy of your thesis.}
+\item[apa]{This option changes the headings to follow the American Psychology Association style with one exception: italics are replaced by underlines (since italics in the headings is prohibited by the Graduate School).  These heading styles are unnumbered and thus cross references using \verb=\ref= will point to just the chapter.}
+\item[chicago]{This option changes the headings to follow the Chicago style guidelines.  These heading styles are unnumbered and thus cross references using \verb=\ref= will point to just the chapter.}
+\item[headings]{This option changes the headings to follow the example given in the Guidelines for unnumbered headings.  As they are unnumbered, cross references using \verb=\ref= will point to just the chapter.}
+\item[idecimal]{This option changes the headings to follow the indented decimal example given in the Guidelines.}
 \item[jdecimal]{This option is the default headings system (so you don't need to give it explicitly) and matches the left-justified decimal example given in the Guidelines.}
+\end{description}
+
+All of the above options are permitted in the official copy of your these.  There are also several options which are intended to help you create copies of your thesis which are intended for some other purpose.  They may not be used in the official copy of your thesis.  These options are as follows:
+
+\begin{description}
 \item[draft]{This option does a few things:
 	\begin{itemize}
 	\item{it marks the copy of the file as a draft by placing DRAFT in all four corners of each page (moving the page number to the bottom center if the top page style was selected),}
