@@ -206,6 +206,8 @@ The University of Maine in Month, Year."
 \end{quote}
 Obviously these are some very stringent requirements, but even so there is still a substantial amount of variation that might be introduced into any given biography so it's left up to you to write all but the last sentence of the biography (which has such specific required wording that the class file can do it for you).  To format your biography correctly, it should be placed between \verb=\begin{biography}= and \verb=\end{biography}=.  You might also consider placing it in a separate file which you then include (as I've done in this document) so that you can exclude it from draft copies of the thesis.
 
+By default, the class file will use your full name (as defined by the \verb=\author= command in the last sentence.  This is allowed by the graduate school, but if you prefer to use a pronoun (as is suggested in the above requirements) then you should make use of the \verb=\authorpronoun= command to indicate what your preferred pronoun is.  It is recommended that you place this command in the preamble of the document along side the \verb=\author= command, but technically it can appear anywhere before the biography environment.
+
 Since the biography is required to be the last page of your thesis, the only command that should appear after it in your document is \verb=\end{document}=, which will tell \LaTeX\ that the document is finished.
 
 
