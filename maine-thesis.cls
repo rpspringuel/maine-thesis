@@ -31,6 +31,7 @@
 \newif\iftwoside\twosidefalse
 \newif\ifofficial\officialtrue
 \newif\ifunbound\unboundfalse
+\newif\ifmt@legacycaptions\mt@legacycaptionsfalse
 \newcommand\docsize{}
 \newcommand\side{oneside}
 \newcounter{secnumdefault}
@@ -59,6 +60,7 @@
 \DeclareOption{headings}{\setcounter{secnumdefault}{0}\setcounter{head}{2}}
 \DeclareOption{idecimal}{\setcounter{secnumdefault}{3}\setcounter{head}{3}}
 \DeclareOption{jdecimal}{\setcounter{secnumdefault}{3}\setcounter{head}{1000}}
+\DeclareOption{legacycaptions}{\mt@legacycaptionstrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -95,7 +97,11 @@
 	% Graduate School requirements mandate a slight modification to hyperref's
 	% redefinition of the caption command.
 	\long\def\@caption#1[#2]#3{%
-	  \IfStrEq{#2}{#3}{\def\mt@captiontext{#3}}{\def\mt@captiontext{#2\ \ignorespaces#3}}%
+	  \ifmt@legacycaptions%
+	    \def\mt@captiontext{#3}%
+	  \else%
+	    \IfStrEq{#2}{#3}{\def\mt@captiontext{#3}}{\def\mt@captiontext{#2\ \ignorespaces#3}}%
+	  \fi%
 	  \expandafter\ifx\csname if@capstart\expandafter\endcsname
 	                  \csname iftrue\endcsname
 	    \global\let\@currentHref\hc@currentHref
@@ -747,7 +753,11 @@
 }
 
 \long\def\@caption#1[#2]#3{%
-	\IfStrEq{#2}{#3}{\def\mt@captiontext{#3}}{\def\mt@captiontext{#2\ \ignorespaces#3}}%
+	\ifmt@legacycaptions%
+		\def\mt@captiontext{#3}%.
+	\else%
+		\IfStrEq{#2}{#3}{\def\mt@captiontext{#3}}{\def\mt@captiontext{#2\ \ignorespaces#3}}%
+	\fi%
 	\addcontentsline{\csname ext@#1\endcsname}{#1}	{\protect\numberline{\csname fnum@#1\endcsname}{\ignorespaces #2}}%
 	\ifnum\value{part}>1
 		\addcontentsline{\csname ext@#1 2\endcsname}{#1}	{\protect\numberline{\csname fnum@#1\endcsname}{\ignorespaces #2}}%
