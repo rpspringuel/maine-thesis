@@ -1033,7 +1033,13 @@
 		\singlespacing
 	\fi
 	Advisory Committee:
-	\begin{list}{}{\setlength{\itemsep}{0pt}\setlength{\topsep}{0in}\setlength{\partopsep}{0pt}}
+	\begin{list}{}{%
+		\setlength{\itemsep}{0pt}%
+		\setlength{\topsep}{0in}%
+		\setlength{\partopsep}{0pt}%
+		\setlength{\itemindent}{-1.5em}%
+		\setlength{\leftmargin}{1cm}%
+		}
 	\item{\@principaladvisor, %
 		\ifnum\numadv=2%
 			Co-%
