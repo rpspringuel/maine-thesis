@@ -212,7 +212,8 @@
 \renewcommand*\bibname{\@bibtitle}
 \renewcommand*\indexname{INDEX}
 \renewcommand*\partname{VOLUME}
-\renewcommand*\chaptername{Chapter}
+\renewcommand*\chapternametoc{Chapter}
+\renewcommand*\chaptername{CHAPTER}
 \newcommand*\chapternamep{\chaptername s}
 \newcommand*\AppendixName{APPENDIX}
 \renewcommand*\appendixname{Appendix}
@@ -1231,7 +1232,7 @@
 	\doublespacing
 	\pagestyle{#1}
 	\pagenumbering{arabic}
-	\toclabel{\chaptername}
+	\toclabel{\chapternametoc}
 	\ifcase\value{secnumdepth}
 		\settocdepth{chapter}
 	\or
