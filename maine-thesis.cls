@@ -530,7 +530,7 @@
 	\vspace*{0\p@}
 	{\parindent \z@ \raggedright \centering\normalfont\chaptersize
 		\ifnum \c@secnumdepth >\m@ne
-			\bfseries \chaptername\ \thechapter
+			\bfseries \MakeUppercase{\chaptername}\ \thechapter
 			\vskip -3pt
 		\fi
 		\interlinepenalty\@M
