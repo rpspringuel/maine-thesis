@@ -214,7 +214,6 @@
 \renewcommand*\partname{VOLUME}
 \renewcommand*\chaptername{Chapter}
 \newcommand*\chapternamep{\chaptername s}
-\newcommand*\AppendixName{APPENDIX}
 \renewcommand*\appendixname{Appendix}
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -308,10 +307,10 @@
 	\ifapp
 		\ifmultipleappendices
 			\typeout{<---- Appendix \thechapter ---->}
-		\addtocontents{toc}{\protect\@dottedtocline{0}{0em}{1.4em}{\AppendixName\space\thechapter\space -- \texorpdfstring{\MakeUppercase{#1}}{#1}}{Pocket}}
+		\addtocontents{toc}{\protect\@dottedtocline{0}{0em}{1.4em}{\MakeUppercase{\appendixname}\space\thechapter\space -- \texorpdfstring{\MakeUppercase{#1}}{#1}}{Pocket}}
 		\else
 			\typeout{<---- APPENDIX ---->}%
-		\addtocontents{toc}{\protect\@dottedtocline{0}{0em}{1.4em}{\AppendixName\space -- \texorpdfstring{\MakeUppercase{#1}}{#1}}{Pocket}}
+		\addtocontents{toc}{\protect\@dottedtocline{0}{0em}{1.4em}{\MakeUppercase{\appendixname}\space -- \texorpdfstring{\MakeUppercase{#1}}{#1}}{Pocket}}
 		\fi
 	\else
 		\typeout{*** \@chapapp\space\thechapter\space ****}
@@ -664,9 +663,9 @@
 		\ifnum \c@secnumdepth >\m@ne
 			\refstepcounter{chapter}
 			\typeout{<---- Appendix \thechapter ---->}
-			\addcontentsline{toc}{chapter}{\AppendixName\space\thechapter\space -- \texorpdfstring{\MakeUppercase{#1}}{#1}}
+			\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\appendixname}\space\thechapter\space -- \MakeUppercase{#1}}{#1}}
 			\ifnum\value{part}>1
-				\addcontentsline{toc2}{chapter}{\AppendixName\space\thechapter\space -- \texorpdfstring{\MakeUppercase{#1}}{#1}}
+				\addcontentsline{toc2}{chapter}{\texorpdfstring{\MakeUppercase{\appendixname}\space\thechapter\space -- \MakeUppercase{#1}}{#1}}
 			\fi
 		\else
 			\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{#1}}{#1}}
@@ -678,9 +677,9 @@
 		\ifnum \c@secnumdepth >\m@ne
 			\refstepcounter{chapter}
 			\typeout{<---- APPENDIX ---->}%
-			\addcontentsline{toc}{chapter}{\AppendixName\space -- \texorpdfstring{\MakeUppercase{#1}}{#1}}
+			\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\appendixname}\space -- \MakeUppercase{#1}}{#1}}
 			\ifnum\value{part}>1
-				\addcontentsline{toc2}{chapter}{\AppendixName\space -- \texorpdfstring{\MakeUppercase{#1}}{#1}}
+				\addcontentsline{toc2}{chapter}{\texorpdfstring{\MakeUppercase{\appendixname}\space -- \MakeUppercase{#1}}{#1}}
 			\fi
 		\else
 			\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{#1}}{#1}}
@@ -707,9 +706,9 @@
 	{\vspace*{0\p@}
 		\parindent \z@ \raggedright \normalfont
 		\ifmultipleappendices
-			\centering\chaptersize\bfseries \appendixname\space\thechapter
+			\centering\chaptersize\bfseries \MakeUppercase{\appendixname}\space\thechapter
 		\else
-			\centering\chaptersize\bfseries \AppendixName
+			\centering\chaptersize\bfseries \MakeUppercase{\appendixname}
 		\fi
 		\par\nobreak
 		\interlinepenalty\@M
