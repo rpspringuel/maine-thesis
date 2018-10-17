@@ -336,6 +336,13 @@
 	#1
 }
 
+% When using the subfig package, make sure figures and tables are labeled correctly in the ToC 
+\AfterPackage{subfig}{ 
+	\captionsetup{labelsep=period,listofformat=simple}
+	\renewcommand\p@figure{Figure\space}
+	\renewcommand\p@table{Table\space}
+}
+
 %%%%%%%%%%%%%%%%%%%%%
 % General Formating Declarations
 %%%%%%%%%%%%%%%%%%%%%
