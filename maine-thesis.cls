@@ -39,11 +39,12 @@
 \newcounter{head} %Heading styles get numbered so that \ifcase can be used when determining which heading style is currently set instead of a nested set of \if and \else.
 \setcounter{head}{1000} %The default value is set very large so that adding new styles shouldn't necessitate changing it.
 \def\@margg{1.5in}
+\def\mt@pagestyle{bottom}
 
 %%%%%%%%%%%%%%%%%%%%%
 % ------DECLARATION OF OPTIONS------
 %%%%%%%%%%%%%%%%%%%%%
-\DeclareOption{10pt}{\officialfalse\renewcommand\docsize{10pt}}
+\DeclareOption{10pt}{\renewcommand\docsize{10pt}}
 \DeclareOption{11pt}{\renewcommand\docsize{11pt}}
 \DeclareOption{12pt}{\renewcommand\docsize{12pt}}
 \DeclareOption{draft}{\drafttrue
@@ -52,21 +53,23 @@
 	\newcommand{\drafttext}{\sffamily\small{DRAFT}
 	\officialfalse}
 }
-\DeclareOption{twoside}{\officialfalse\twosidetrue\renewcommand\side{twoside}}
-\DeclareOption{unbound}{\officialfalse\unboundtrue
-	\def\@margg{1in}}
+\DeclareOption{twoside}{\officialfalse\unboundfalse\twosidetrue\renewcommand\side{twoside}\def\@margg{1.5in}}
+\DeclareOption{oneside}{\officialfalse\unboundfalse\renewcommand\side{oneside}\def\@margg{1.5in}}
+\DeclareOption{unbound}{\officialtrue\unboundtrue\def\@margg{1in}}
 \DeclareOption{apa}{\setcounter{secnumdefault}{0}\setcounter{head}{0}}
 \DeclareOption{chicago}{\setcounter{secnumdefault}{0}\setcounter{head}{1}}
 \DeclareOption{headings}{\setcounter{secnumdefault}{0}\setcounter{head}{2}}
 \DeclareOption{idecimal}{\setcounter{secnumdefault}{3}\setcounter{head}{3}}
 \DeclareOption{jdecimal}{\setcounter{secnumdefault}{3}\setcounter{head}{1000}}
 \DeclareOption{legacycaptions}{\mt@legacycaptionstrue}
+\DeclareOption{pagenumberbottom}{\def\mt@pagestyle{bottom}}
+\DeclareOption{pagenumbertop}{\def\mt@pagestyle{top}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 
 %%%%%%%%%%%%%%%%%%%%%
 % ------EXECUTION OF OPTIONS------
 %%%%%%%%%%%%%%%%%%%%%
-\ExecuteOptions{12pt}
+\ExecuteOptions{12pt,unbound}
 \ProcessOptions
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -1226,15 +1229,13 @@
 % Front/Main/Back Separators
 %%%%%%%%%%%%%%%%%%%%%
 \newcommand{\preliminary}{%
-	\pagestyle{plain}
 	\pagenumbering{roman}
 	\settocdepth{chapter}
 }
 
-\newcommand{\mainmatter}[1]{%
+\newcommand{\mainmatter}{%
 	\cleardoublepage
 	\doublespacing
-	\pagestyle{#1}
 	\pagenumbering{arabic}
 	\toclabel{\chaptername}
 	\ifcase\value{secnumdepth}
@@ -1285,8 +1286,6 @@
 	\renewcommand{\@evenfoot}{\@oddfoot}
 }
 
-\renewcommand{\ps@plain}{\ps@bottom}
-
 \renewcommand{\ps@empty}{%
 	\let\@mkboth\markboth
 	\renewcommand{\@oddhead}{%
@@ -1311,6 +1310,10 @@
 		\ifdraft\drafttext\hfil\thepage\hfil\drafttext\fi}
 	\renewcommand{\@evenfoot}{\@oddfoot}
 }
+
+
+\pagestyle{\mt@pagestyle}
+\renewcommand{\ps@plain}{\csname ps@\mt@pagestyle\endcsname}
 
 
 \endinput
