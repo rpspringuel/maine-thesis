@@ -296,7 +296,7 @@
 
 \newcommand{\toclabel}[1]{%
 	\addtocontents{toc}{\protect\pagebreak[3]}
-	\addtocontents{toc}{\addvspace{2.25em \@plus\p@}
+	\addtocontents{toc}{\addvspace{1em \@plus\p@}
 	\parindent \z@ \rightskip \@pnumwidth
 	#1}%
 }
