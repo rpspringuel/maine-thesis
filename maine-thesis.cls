@@ -52,9 +52,9 @@
 	\newcommand{\drafttext}{\sffamily\small{DRAFT}
 	\officialfalse}
 }
-\DeclareOption{twoside}{\officialfalse\twosidetrue\renewcommand\side{twoside}}
-\DeclareOption{unbound}{\officialfalse\unboundtrue
-	\def\@margg{1in}}
+\DeclareOption{twoside}{\officialfalse\unboundfalse\twosidetrue\renewcommand\side{twoside}\def\@margg{1.5in}}
+\DeclareOption{oneside}{\officialfalse\unboundfalse\renewcommand\side{oneside}\def\@margg{1.5in}}
+\DeclareOption{unbound}{\officialtrue\unboundtrue\def\@margg{1in}}
 \DeclareOption{apa}{\setcounter{secnumdefault}{0}\setcounter{head}{0}}
 \DeclareOption{chicago}{\setcounter{secnumdefault}{0}\setcounter{head}{1}}
 \DeclareOption{headings}{\setcounter{secnumdefault}{0}\setcounter{head}{2}}
@@ -66,7 +66,7 @@
 %%%%%%%%%%%%%%%%%%%%%
 % ------EXECUTION OF OPTIONS------
 %%%%%%%%%%%%%%%%%%%%%
-\ExecuteOptions{12pt}
+\ExecuteOptions{12pt,unbound}
 \ProcessOptions
 
 %%%%%%%%%%%%%%%%%%%%%

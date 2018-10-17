@@ -22,6 +22,7 @@ Like any other \LaTeX\ project, a thesis set using maine-thesis.cls must start w
 \item[10pt]{This option sets the font size to 10pt.  This option is allowed by the graduate school for an official copy, but is not recommended (the smaller font size doesn't convert to microfilm as well as the default).}
 \item[11pt]{This option sets the font size to 11pt.  This option is allowed by the graduate school for an official copy, but is not recommended (the smaller font size doesn't convert to microfilm as well as the default).}
 \item[12pt]{This option sets the font size to 12pt.  This is the default option, and doesn't normally need to be issued.}
+\item[unbound]{This option sets the margins to equal width.  This is the default option, and doesn't normally need to be issued.}
 \item[apa]{This option changes the headings to follow the American Psychology Association style with one exception: italics are replaced by underlines (since italics in the headings is prohibited by the Graduate School).  These heading styles are unnumbered and thus cross references using \verb=\ref= will point to just the chapter.}
 \item[chicago]{This option changes the headings to follow the Chicago style guidelines.  These heading styles are unnumbered and thus cross references using \verb=\ref= will point to just the chapter.}
 \item[headings]{This option changes the headings to follow the example given in the Guidelines for unnumbered headings.  As they are unnumbered, cross references using \verb=\ref= will point to just the chapter.}
@@ -41,11 +42,16 @@ All of the above options are permitted in the official copy of your these.  Ther
 	\item{it sets the font size to 10pt to reduce the document page count and save paper.}
 	\end{itemize}
 Taken together, these changes make this option useful when you want to distribute copies of your thesis (or parts thereof) to someone for feedback prior to completing it.}
-\item[twoside]{This option sets the margins to allow for binding of a two sided printing.  Thus odd number pages have a larger left-hand margin while even number pages have a larger right-hand margin.  Chapters (or chapter equivalent elements) will always begin on an odd page.  It also moves the page number for even pages to the upper left-hand corner for the top page style so that page numbers are always on the outer edge of the bound copy. 
-Taken together, these changes make this option useful for producing extra copies of your thesis that you want bound for your advisor, your committee members, yourself, or other people.  It will reduce your paper usage nearly in half (more than that if you also use a smaller font).}
-\item[unbound]{This option sets the margins to equal width, widening the text area in the process.  It is thus suitable for creating copies which will not be bound and thus don't need the extra wide margin to one side.  If issued with the twoside option, the margins and text width specified here will override those for two-sided printing, but the other aspects of two-sided printing remain in effect.}
+\item[oneside]{This option sets the margins to allow for binding.  This means the left-hand margin is enlarged to 1.5in.  No other changes are made, but the larger margin leads to a reduced line length and thus different line breaking, page breaking, etc.  When using this option you should review all manual page breaking decisions.
+
+Since the Graduate School no longer requires a printed copy of the thesis, this option is mostly intended for when you department requires a bound copy for themselves using the old one-sided printing rules.  You might want to consult with them about the possibility of using the twoside option below in order to save paper.}
+\item[twoside]{This option sets the margins to allow for binding of a two sided printing.  Thus odd number pages have a larger left-hand margin while even number pages have a larger right-hand margin.  Chapters (or chapter equivalent elements) will always begin on an odd page.  Finally, when page numbers are at the top (pagenumbertop option), they are shifted to always be on the outside edge of the page.  As with the oneside option, the change in margins will affect line breaking and therefore page breaking as compared to the official copy of the thesis.  Double check any manual page breaks to make sure they are still where you want them.
+
+This option is useful for producing extra copies of your thesis that you want bound for your advisor, your committee members, yourself, or other people.  When combined with the 10pt option, it will result in the most economical printing (fewest number of pages).}
 \end{description}
 If you issue more than one of the font size options, only the largest one will take effect.  However, the draft option will always change the font size to 10pt, regardless of any other options issued.  If you have the tex files for this documentation, you can see the effects of each of these options by editing the document class declaration in Main.tex and re-typsetting the document.
+
+If you issue the unbound option explicitly, it will overrule both the oneside and twoside option as far as margins are concerned.  Page number positions are still affected by twoside if page numbers at the top are being used.
 
 Once you have declared the document class, it's time to load packages.  There are far too many of these for me to possibly cover them all, but ones which have known issues are listed in Appendix \ref{package}.
 
