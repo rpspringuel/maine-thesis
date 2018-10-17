@@ -26,19 +26,25 @@ If you use a package other than one of the ones listed above without incident, p
 \section{caption and subfig}
 This class file already formats captions for figures and tables according the requirements of the Graduate School.  As a result, the caption package, which allows you to manipulate how these elements appear, should not be used.
 
-The one exception to this is if you use the caption or subfig package (which depends on the caption package) to create multi-page floats.\footnote{If you need to create subfigures but don't need a figure to span multiple pages, use the subfigure package, as it won't conflict with this class file.} If you do, you'll find that the caption formats and the List of Figures/Tables do not typeset the way the Graduate School wants them to be typeset.  In particular, the separator between ``Figure \#.\#'' and the caption will be ``:\space'' instead of ``.\space'' and the word ``Figure'' or ``Table'' will not accompany the number in the respective list.  To avoid this you need to add the following code to your preamble:
+The one exception to this is if you use the caption or subfig package (which depends on the caption package) to create multi-page floats.\footnote{If you need to create subfigures but don't need a figure to span multiple pages, use the subfigure package, as it won't conflict with this class file.} If you do, you'll find that the caption formats and the List of Figures/Tables do not typeset the way the Graduate School wants them to be typeset.  In particular, the separator between ``Figure \#.\#'' and the caption will be ``:\space'' instead of ``.\space'' and the word ``Figure'' or ``Table'' will not accompany the number in the respective list.  To avoid this, the following code has been added to maine-thesis.cls:
+\begin{verbatim}
+\AfterPackage{subfig}{
+	\captionsetup{labelsep=period,listofformat=simple}
+	\renewcommand\p@figure{Figure\space}
+	\renewcommand\p@table{Table\space}
+}
+\end{verbatim}
+If you have defined additional floats, you will need more lines like those for figures and tables to your preamble.
 \begin{verbatim}
 \captionsetup{labelsep=period,listofformat=simple}
 \makeatletter
-\renewcommand\p@figure{Figure\space}
-\renewcommand\p@table{Table\space}
+\renewcommand\p@<type>{<TypeName>\space}
 \makeatother
 \end{verbatim}
-If you have defined additional floats, you will need more lines like those for figures and tables.
 
 \emph{Note:} If you use the subfig package, the following warning will be raised: ``Package caption Warning: Unsupported document class (or package) detected, usage of the caption package is not recommended.''  It should be safe to ignore this warning, if you don't use any other packages which manipulate the caption command.  For anything beyond that, I can't make any guarantees on what will work and what won't.
 
-This class file was tested with subfig v1.3, last revised 2005/06/28 and caption v3.1h, last revised 2008/04/01.  If you're having problems with either package, make sure you have these versions or more recent ones before submitting a bug report.  The behavior of these packages in a two-volume thesis has not been tested.
+This class file was tested with subfig v1.3, last revised 2005/06/28 and caption v3.3, last revised 2018/10/06.  If you're having problems with either package, make sure you have these versions or more recent ones before submitting a bug report.  The behavior of these packages in a two-volume thesis has not been tested.
 
 \section{color}
 The class file uses this package to color the \verb=\comment= command in draft mode.  As a result, any attempt to load this package with options by using \verb=\usepackage= will result in an option clash error.  Instead, pass whatever options for color you want to the class file and they will automatically be passed along to color when it is loaded.

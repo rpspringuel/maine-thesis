@@ -4,8 +4,9 @@ Changes in Bold were required by the Graduate School
 
 \section{Changes in v1.14}
 \begin{itemize}
+\item{Figures and tables are correctly listed in the TOC when the subfig package is loaded. This is now handled by the class file instead of the user.}
 \item{\bfseries Extra space before ``Chapter'' label in TOC has been removed.}
-\item{``Chapter'' and ``Appendix'' in chapter headings is now printed in all uppercase.}
+\item{\bfseries ``Chapter'' and ``Appendix'' in chapter headings is now printed in all uppercase.}
 \item{\bfseries Tweaks to make 5-dot minimum in TOC leaders better respected.  Thanks to pmbean6 for this fix.}
 \item{\bfseries Use a pronoun instead of author name for the last sentence of author biography.  Users now need to define their preferred pronoun with the \verb=\authorpronoun= command.  Do not forget to capitalize the first letter of the pronoun.  If no pronoun is provided, then the full author name will appear in the last sentence of the biography.}
 \item{\bfseries When figure/table captions are too long to go into the table of contents, the graduate school wants the entry in the table of contents to match the first sentence of caption exactly.  To facilitate this the \verb=\caption= command has been redefined so that the optional argument, if given, is automatically prepended to the caption text.  Older theses, for which this new behavior would be undesirable, can turn it off with the legacycaptions option.}
