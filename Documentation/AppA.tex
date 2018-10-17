@@ -26,15 +26,7 @@ If you use a package other than one of the ones listed above without incident, p
 \section{caption and subfig}
 This class file already formats captions for figures and tables according the requirements of the Graduate School.  As a result, the caption package, which allows you to manipulate how these elements appear, should not be used.
 
-The one exception to this is if you use the caption or subfig package (which depends on the caption package) to create multi-page floats.\footnote{If you need to create subfigures but don't need a figure to span multiple pages, use the subfigure package, as it won't conflict with this class file.} If you do, you'll find that the caption formats and the List of Figures/Tables do not typeset the way the Graduate School wants them to be typeset.  In particular, the separator between ``Figure \#.\#'' and the caption will be ``:\space'' instead of ``.\space'' and the word ``Figure'' or ``Table'' will not accompany the number in the respective list.  To avoid this, the following code has been added to maine-thesis.cls:
-\begin{verbatim}
-\AfterPackage{subfig}{
-	\captionsetup{labelsep=period,listofformat=simple}
-	\renewcommand\p@figure{Figure\space}
-	\renewcommand\p@table{Table\space}
-}
-\end{verbatim}
-If you have defined additional floats, you will need more lines like those for figures and tables to your preamble.
+The one exception to this is if you use the caption or subfig package (which depends on the caption package) to create multi-page floats. The class file will correctly typeset the List of Figures/Tables, but you may have issues listing other floats. If you define additional floats, you will need more lines like those for figures and tables found in the class file to your preamble similar to the example:
 \begin{verbatim}
 \captionsetup{labelsep=period,listofformat=simple}
 \makeatletter
