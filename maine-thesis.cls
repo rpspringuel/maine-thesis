@@ -1091,7 +1091,9 @@
 	\ClassError{maine-thesis}{The Graduate School no longer requires\MessageBreak a Dissertation Acceptance page}{Please remove \protect\dissacceptance\space from your thesis.}%
 }
 
+\newcounter{mt@page}
 \renewenvironment{abstract}{%
+	\setcounter{mt@page}{\value{page}}
 	\doublespacing
 	\begin{center}
 		{\bfseries\MakeUppercase{\@title}}
@@ -1121,22 +1123,11 @@
 }
 {\cleardoublepage
 	\par\endgroup
-	\ifcopyrightpage
-		\ifofficial
-			\setcounter{page}{3}
-		\else
-			\setcounter{page}{2}
-		\fi
-	\else
-		\ifofficial
-			\setcounter{page}{2}
-		\else
-			\setcounter{page}{1}
-		\fi
-	\fi
+	\setcounter{page}{\value{mt@page}}
 }
 
 \newenvironment{layabstract}[1]{%
+	\setcounter{mt@page}{\value{page}}
 	\doublespacing
 	\begin{center}
 		{\bfseries\MakeUppercase{\@title}}
@@ -1168,19 +1159,7 @@
 }
 {\cleardoublepage
 	\par\endgroup
-	\ifcopyrightpage
-		\ifofficial
-			\setcounter{page}{3}
-		\else
-			\setcounter{page}{2}
-		\fi
-	\else
-		\ifofficial
-			\setcounter{page}{2}
-		\else
-			\setcounter{page}{1}
-		\fi
-	\fi
+	\setcounter{page}{\value{mt@page}}
 }
 
 \newenvironment{dedication}{%
