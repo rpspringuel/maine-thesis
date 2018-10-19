@@ -18,27 +18,14 @@ While not thoroughly tested, the following packages have been used with this cla
 \item{tabularx (v2.07, last revised 1999/01/07)}
 \item{tabulary (v0.9, last revised 2008/12/01)}
 \item{float (v1.3d, last revised 2001/11/08)}
+\item{subfig.sty (1.3, last revised 2005/06/28)\footnote{\emph{Note:} If you use the subfig package, the following warning will be raised: ``Package caption Warning: Unsupported document class (or package) detected, usage of the caption package is not recommended.''  It should be safe to ignore this warning, if you don't use any other packages which manipulate the caption command.  For anything beyond that, I can't make any guarantees on what will work and what won’t.}}
 \end{itemize}
 If you experience a problem with any of these packages please make sure you have the version listed above or a more recent one before submitting a bug report.
 
 If you use a package other than one of the ones listed above without incident, please email me (\email) the package name and version so that I can add it to the above list.
 
-\section{caption and subfig}
+\section{caption}
 This class file already formats captions for figures and tables according the requirements of the Graduate School.  As a result, the caption package, which allows you to manipulate how these elements appear, should not be used.
-
-The one exception to this is if you use the caption or subfig package (which depends on the caption package) to create multi-page floats.\footnote{If you need to create subfigures but don't need a figure to span multiple pages, use the subfigure package, as it won't conflict with this class file.} If you do, you'll find that the caption formats and the List of Figures/Tables do not typeset the way the Graduate School wants them to be typeset.  In particular, the separator between ``Figure \#.\#'' and the caption will be ``:\space'' instead of ``.\space'' and the word ``Figure'' or ``Table'' will not accompany the number in the respective list.  To avoid this you need to add the following code to your preamble:
-\begin{verbatim}
-\captionsetup{labelsep=period,listofformat=simple}
-\makeatletter
-\renewcommand\p@figure{Figure\space}
-\renewcommand\p@table{Table\space}
-\makeatother
-\end{verbatim}
-If you have defined additional floats, you will need more lines like those for figures and tables.
-
-\emph{Note:} If you use the subfig package, the following warning will be raised: ``Package caption Warning: Unsupported document class (or package) detected, usage of the caption package is not recommended.''  It should be safe to ignore this warning, if you don't use any other packages which manipulate the caption command.  For anything beyond that, I can't make any guarantees on what will work and what won't.
-
-This class file was tested with subfig v1.3, last revised 2005/06/28 and caption v3.1h, last revised 2008/04/01.  If you're having problems with either package, make sure you have these versions or more recent ones before submitting a bug report.  The behavior of these packages in a two-volume thesis has not been tested.
 
 \section{color}
 The class file uses this package to color the \verb=\comment= command in draft mode.  As a result, any attempt to load this package with options by using \verb=\usepackage= will result in an option clash error.  Instead, pass whatever options for color you want to the class file and they will automatically be passed along to color when it is loaded.
@@ -48,7 +35,7 @@ The class file was tested with v1.0j, last revised 2005/11/14.  If you're having
 \section{footmisc}
 The class file uses this package to eliminate the usual rule that occurs between the body of the text and the footnotes at the bottom of the page.  As a result, any attempt to load this package with options by using \verb=\usepackage= will result in an option clash error.  Instead, pass whatever options for footmisc you want to the class file and they will automatically be passed along to footmisc when it is loaded.
 
-The class file was tested with v5.5a, last revised 2009/09/15.  If you're having problems with hyperref, make sure you have this version or a more recent one before submitting a bug report.
+The class file was tested with v5.5a, last revised 2009/09/15.  If you're having problems with footmisc, make sure you have this version or a more recent one before submitting a bug report.
 
 \section{hyperref}
 The hyperref package can be used to create many links within your document, making the digital copy easier to navigate.  When links are created in the document, they can be highlighted in a variety of ways: colored boxes around the text, colored text, and small capitals.  While these are necessary indicators of the presence of the link in an electronic document, they should not appear in the printed copy.  As a result, you are advised to turn hyperref (comment out the load command) when typesetting the file for printing purposes.  When you go back to typesetting with hyperlinks, you are likely going to need to trash the auxilarly (aux, toc, lof, lot, etc.) files to get the document to typeset correctly.
