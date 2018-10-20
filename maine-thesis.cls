@@ -975,10 +975,12 @@
 				\let\p@enumiv\@empty
 				\renewcommand\theenumiv{\@arabic\c@enumiv}}%
 		\sloppy
-	\sfcode`\.=\@m}
-	{\def\@noitemerr
-		{\@latex@warning{Empty `thebibliography' environment}}%
-	\endlist}
+		\sfcode`\.=\@m
+	}
+	{%end
+		\def\@noitemerr{\@latex@warning{Empty `thebibliography' environment}}%
+		\endlist%
+	}
 
 \renewcommand\titlepage{%
 	\ifnum\value{part}>1
