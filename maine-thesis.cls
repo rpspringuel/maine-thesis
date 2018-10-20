@@ -336,7 +336,7 @@
 }
 
 %This is a dummy command defined to improve hyperref compatibility.
-\newcommand{\texorpdfstring}[2]{
+\newcommand{\texorpdfstring}[2]{%
 	#1
 }
 
