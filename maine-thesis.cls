@@ -184,8 +184,7 @@
 \def\@fifthreader{}
 \def\@bibfiles{}
 \def\@bibtitle{REFERENCES}
-\def\@type{DISSERTATION}
-\def\@Type{Dissertation}
+\def\@type{Dissertation}
 \def\@NumParts{1}
 \def\@FirstLength{0}
 \def\@FirstListStart{}
@@ -269,11 +268,9 @@
 \newcommand{\twoadvisors}{\numadv=2}
 \newcommand{\oneadvisor}{\numadv=1}
 \newcommand{\thesis}{
-	\gdef\@type{THESIS}
-	\gdef\@Type{Thesis}}
+	\gdef\@type{Thesis}}
 \newcommand{\project}{
-	\gdef\@type{PROJECT}
-	\gdef\@Type{Project}}
+	\gdef\@type{Project}}
 \newcommand{\compresstitlepage}[1][1]{
 	\ifcase#1
 		\relax
@@ -1021,7 +1018,7 @@
 	\@author \\
 	\@degreesheld
 	\vfill
-	A \@type\\[4pt]
+	A \MakeUppercase{\@type}\\[4pt]
 	Submitted in Partial Fulfillment of the\\
 	Requirements for the Degree of\\
 	\expandafter{\@degree}\\
@@ -1100,7 +1097,7 @@
 		{\bfseries\MakeUppercase{\@title}}
 		\vskip 0.5in
 		By\space\@author\\[4pt]
-		\@Type\ %
+		\@type\ %
 		\ifnum\numadv=2%
 			Co-%
 		\fi%
@@ -1111,7 +1108,7 @@
 		: \@principalshort
 		\vskip 0.33in
 		\singlespacing
-		An Abstract of the \@Type\ Presented\\
+		An Abstract of the \@type\ Presented\\
 		in Partial Fulfillment of the Requirements for the\\
 		Degree of \@degree\\
 		(in \@program)\\
@@ -1134,7 +1131,7 @@
 		{\bfseries\MakeUppercase{\@title}}
 		\vskip 0.5in
 		By\space\@author\\[4pt]
-		\@Type\ %
+		\@type\ %
 		\ifnum\numadv=2%
 			Co-%
 		\fi%
@@ -1145,7 +1142,7 @@
 		: \@principalshort
 		\vskip 0.33in
 		\singlespacing
-		A Lay Abstract of the \@Type\ Presented\\
+		A Lay Abstract of the \@type\ Presented\\
 		in Partial Fulfillment of the Requirements for the\\
 		Degree of \@degree\\
 		(in \@program)\\
