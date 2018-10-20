@@ -208,7 +208,6 @@
 \newcount\numadv \numadv=1
 \newcounter{partlength}[part]
 
-\newcommand*\listname{LIST OF}
 \renewcommand*\bibname{\@bibtitle}
 \renewcommand*\contentsname{Table of Contents}
 \renewcommand*\indexname{INDEX}
@@ -216,6 +215,11 @@
 \renewcommand*\chaptername{Chapter}
 \newcommand*\chapternamep{\chaptername s}
 \renewcommand*\appendixname{Appendix}
+\newcommand*\listname{List of}
+\newcommand*\prefacename{Preface}
+\newcommand*\acknowledgename{Acknowledgements}
+\newcommand*\dedicationname{Dedication}
+\newcommand*\bioname{Biography of the Author}
 
 %%%%%%%%%%%%%%%%%%%%%
 % Variable Modification Commands
@@ -855,9 +859,9 @@
 
 \newenvironment{thesislist}[1]{%
 	\chapter*{LIST OF \texorpdfstring{\MakeUppercase{#1}}{#1}}
-	\addcontentsline{toc}{chapter}{{\listname\ \texorpdfstring{\MakeUppercase{#1}}{#1}}}
+	\addcontentsline{toc}{chapter}{{\texorpdfstring{\MakeUppercase{\listname\ #1}}{\listname\ #1}}}
 	\ifnum\value{part}>1
-		\addcontentsline{toc2}{chapter}{{\listname\ \texorpdfstring{\MakeUppercase{#1}}{#1}}}
+		\addcontentsline{toc2}{chapter}{{\texorpdfstring{\MakeUppercase{\listname\ #1}}{\listname\ #1}}}
 	\fi
 	\begingroup
 }{\par\endgroup}
@@ -1159,8 +1163,8 @@
 }
 
 \newenvironment{dedication}{%
-	\chapter*{DEDICATION}
-	\addcontentsline{toc}{chapter}{DEDICATION}
+	\chapter*{\MakeUppercase{\dedicationname}}
+	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\dedicationname}}{\dedicationname}}
 	\vskip 0.5in
 	\doublespacing
 	\begingroup
@@ -1168,26 +1172,26 @@
 }{\end{center}\par\endgroup}
 
 \newenvironment{acknowledgements}{%
-	\chapter*{ACKNOWLEDGEMENTS}
-	\addcontentsline{toc}{chapter}{{ACKNOWLEDGEMENTS}}
+	\chapter*{\MakeUppercase{\acknowledgename}}
+	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\acknowledgename}}{\acknowledgename}}
 	\doublespacing
 	\begingroup
 }{\par\endgroup}
 
 \newenvironment{preface}{%
-	\chapter*{PREFACE}
-	\addcontentsline{toc}{chapter}{{PREFACE}}
+	\chapter*{\MakeUppercase{\prefacename}}
+	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\prefacename}}{\prefacename}}
 	\doublespacing
 	\begingroup\setcounter{secnumdepth}{0}
 }{\setcounter{secnumdepth}{\value{secnumdefault}}\par\endgroup}
 
 \newenvironment{biography}{%
-	\chapter*{BIOGRAPHY OF THE AUTHOR}
+	\chapter*{\MakeUppercase{\bioname}}
 	\addtocontents{toc}{\protect\nopagebreak}
-	\addcontentsline{toc}{chapter}{BIOGRAPHY OF THE AUTHOR}
+	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\bioname}}{\bioname}}
 	\ifnum\value{part}>1
 		\addtocontents{toc2}{\protect\nopagebreak}
-		\addcontentsline{toc2}{chapter}{BIOGRAPHY OF THE AUTHOR}
+		\addcontentsline{toc2}{chapter}{\texorpdfstring{\MakeUppercase{\bioname}}{\bioname}}
 	\fi
 	\begingroup
 	\doublespacing
