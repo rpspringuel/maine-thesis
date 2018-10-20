@@ -504,11 +504,11 @@
 	\else
 		\addtocontents{toc}{\protect\pagebreak[3]}
 		\def\@LastLevel{0}
-		\addcontentsline{toc}{chapter}{#1}
+		\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{#1}}{#1}}
 		\ifnum\value{part}>1
 			\addtocontents{toc2}{\protect\pagebreak[3]}
 			\def\@LastLevel{0}
-			\addcontentsline{toc2}{chapter}{#1}
+			\addcontentsline{toc2}{chapter}{\texorpdfstring{\MakeUppercase{#1}}{#1}}
 		\fi
 	\fi
 	\chaptermark{#1}
