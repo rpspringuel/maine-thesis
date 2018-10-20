@@ -208,11 +208,9 @@
 \newcount\numadv \numadv=1
 \newcounter{partlength}[part]
 
-\renewcommand*\contentsname{TABLE OF CONTENTS}
-\renewcommand*\listfigurename{LIST OF FIGURES}
-\renewcommand*\listtablename{LIST OF TABLES}
 \newcommand*\listname{LIST OF}
 \renewcommand*\bibname{\@bibtitle}
+\renewcommand*\contentsname{Table of Contents}
 \renewcommand*\indexname{INDEX}
 \renewcommand*\partname{VOLUME}
 \renewcommand*\chaptername{Chapter}
@@ -804,7 +802,7 @@
 % Table of Contents Formatting
 %%%%%%%%%%%%%%%%%%%%%
 \renewcommand\tableofcontents{%
-	\chapter*{\chaptersize\contentsname%
+	\chapter*{\chaptersize\MakeUppercase{\contentsname}%
 		\@mkboth{\contentsname}{\contentsname}}%
 	\vskip -\tocspacing\p@
 	\doublespacing
@@ -815,16 +813,16 @@
 	\fi
 	\ifnum\value{part}>1
 		\addtocontents{toc}{\protect\nopagebreak}
-		\addcontentsline{toc}{chapter}{\contentsname}
+		\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\contentsname}}{\contentsname}}
 	\fi
 }
 
 \renewcommand\listoftables{%
-	\chapter*{\chaptersize\listtablename%
+	\chapter*{\chaptersize\MakeUppercase{\listtablename}%
 		\@mkboth{\listtablename}{\listtablename}}
-	\addcontentsline{toc}{chapter}{\listtablename}
+	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\listtablename}}{\listtablename}}
 	\ifnum\value{part}>1
-		\addcontentsline{toc2}{chapter}{\listtablename}
+		\addcontentsline{toc2}{chapter}{\texorpdfstring{\MakeUppercase{\listtablename}}{\listtablename}}
 	\fi
 	\vskip -24pt
 	\vskip -\loftspacing\p@
@@ -838,11 +836,11 @@
 }
 
 \renewcommand\listoffigures{%
-	\chapter*{\chaptersize\listfigurename%
+	\chapter*{\chaptersize\MakeUppercase{\listfigurename}%
 		\@mkboth{\listfigurename}{\listfigurename}}
-	\addcontentsline{toc}{chapter}{\listfigurename}
+	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\listfigurename}}{\listfigurename}}
 	\ifnum\value{part}>1
-		\addcontentsline{toc2}{chapter}{\listfigurename}
+		\addcontentsline{toc2}{chapter}{\texorpdfstring{\MakeUppercase{\listfigurename}}{\listfigurename}}
 	\fi
 	\vskip -24pt
 	\vskip -\loftspacing\p@
