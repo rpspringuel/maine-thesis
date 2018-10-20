@@ -213,9 +213,9 @@
 \renewcommand*\indexname{INDEX}
 \renewcommand*\partname{VOLUME}
 \renewcommand*\chaptername{Chapter}
-\newcommand*\chapternamep{\chaptername s}
 \renewcommand*\appendixname{Appendix}
 \newcommand*\listname{List of}
+\newcommand*\chapternamep{\chaptername s}
 \newcommand*\prefacename{Preface}
 \newcommand*\acknowledgename{Acknowledgements}
 \newcommand*\dedicationname{Dedication}
