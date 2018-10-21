@@ -119,11 +119,6 @@
 	  \par\addcontentsline{\csname ext@#1\endcsname}{#1}{%
 	    \protect\numberline{\csname fnum@#1\endcsname}{\ignorespaces #2}%
 	  }%
-	  \ifnum\value{part}>1
-	  \par\addcontentsline{\csname ext@#1\endcsname2}{#1}{%
-	    \protect\numberline{\csname fnum@#1\endcsname}{\ignorespaces #2}%
-	  }%
-	  \fi
 	  \begingroup
 	    \@parboxrestore
 	    \if@minipage
@@ -185,15 +180,6 @@
 \def\@bibfiles{}
 \def\@bibtitle{REFERENCES}
 \def\@type{Dissertation}
-\def\@NumParts{1}
-\def\@FirstLength{0}
-\def\@FirstListStart{}
-\def\@FirstListEnd{}
-\def\@LastLength{0}
-\def\@LastListStart{}
-\def\@LastListEnd{}
-\def\@ChapListStart{}
-\def\@ChapListEnd{}
 \def\@LastLevel{0}
 
 \newif\ifmultipleappendices\multipleappendicesfalse
@@ -202,16 +188,13 @@
 \newif\ifbigtitlepage\bigtitlepagefalse
 \newif\ifverybigtitlepage\verybigtitlepagefalse
 \newif\ifapp\appfalse
-\newif\ifsinglepart\singleparttrue
 
 \newcount\numcomm \numcomm=4
 \newcount\numadv \numadv=1
-\newcounter{partlength}[part]
 
 \renewcommand*\bibname{\@bibtitle}
 \renewcommand*\contentsname{Table of Contents}
 \renewcommand*\indexname{INDEX}
-\renewcommand*\partname{VOLUME}
 \renewcommand*\chaptername{Chapter}
 \renewcommand*\appendixname{Appendix}
 \newcommand*\listname{List of}
@@ -405,7 +388,6 @@
 %%%%%%%%%%%%%%%%%%%%%
 % Header Formatting Declarations
 %%%%%%%%%%%%%%%%%%%%%
-\setcounter{part}{1}
 
 \newcommand*\chaptersize{\normalsize}	
 
@@ -481,48 +463,20 @@
 \def\@chapter[#1]#2{%
 	\ifnum \c@secnumdepth >\m@ne
 		\refstepcounter{chapter}
-		\stepcounter{partlength}
-		\ifcase\value{partlength}\or
-			\edef\@ChapListEnd{\thechapter}
-		\or
-			\edef\@ChapListStart{\@ChapListEnd}
-			\edef\@ChapListEnd{\thechapter}
-		\else
-			\let\temp\@ChapListStart
-			\edef\@ChapListStart{\temp, \@ChapListEnd}
-			\edef\@ChapListEnd{\thechapter}
-		\fi
 		\typeout{*** \@chapapp\space\thechapter\space ****}
 		\addtocontents{toc}{\protect\pagebreak[3]}
 		\def\@LastLevel{0}
 		\addcontentsline{toc}{chapter}{\protect\numberline{\thechapter.}\space\texorpdfstring{\MakeUppercase{#1}}{#1}}
-		\ifnum\value{part}>1
-			\addtocontents{toc2}{\protect\pagebreak[3]}
-			\def\@LastLevel{0}
-			\addcontentsline{toc2}{chapter}{\protect\numberline{\thechapter.}\space\texorpdfstring{\MakeUppercase{#1}}{#1}}
-		\fi
 	\else
 		\addtocontents{toc}{\protect\pagebreak[3]}
 		\def\@LastLevel{0}
 		\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{#1}}{#1}}
-		\ifnum\value{part}>1
-			\addtocontents{toc2}{\protect\pagebreak[3]}
-			\def\@LastLevel{0}
-			\addcontentsline{toc2}{chapter}{\texorpdfstring{\MakeUppercase{#1}}{#1}}
-		\fi
 	\fi
 	\chaptermark{#1}
 	\addtocontents{toc}{\protect\addvspace{\tocspacing\p@}}
-	\ifnum\value{part}>1
-		\addtocontents{toc2}{\protect\addvspace{\tocspacing\p@}}
-	\fi
 	\ifloftspace
 		\addtocontents{lof}{\protect\addvspace{\loftspacing\p@}}
 		\addtocontents{lot}{\protect\addvspace{\loftspacing\p@}}
-		\ifnum\value{part}>1
-			\addtocontents{lof2}{\protect\addvspace{\loftspacing\p@}}
-			\addtocontents{lot2}{\protect\addvspace{\loftspacing\p@}}
-		\fi
 	\fi
 	\@makechapterhead{#2}
 }
@@ -552,88 +506,9 @@
 }
 
 \renewcommand\part{
-	\cleardoublepage
-	\thispagestyle{plain}%
-	\global\@topnum\z@
-	 \@afterindentfalse
-	\secdef\@part\@spart}
-
-\def\@part[#1]#2{
-	\immediate\write\@auxout{\string\gdef\string\@FirstLength{\thepartlength}}
-	\stepcounter{part}
-	\ifnum\value{part}>2
-		\ClassError{maine-thesis}{\protect\part command appears more than once.\MessageBreak
-		A thesis cannot have more than 2 volumes.}
-	\fi
-	\addtocontents{toc}{\protect\pagebreak[3]}
-	\def\@LastLevel{-1}
-	\addcontentsline{toc}{part}{\partname\ \protect\numberline{\thepart}}	
-	\immediate\write\@auxout{\string\gdef\string\@NumParts{2}}			
-	\immediate\write\@auxout{\string\gdef\string\@FirstListStart{\@ChapListStart}}
-	\immediate\write\@auxout{\string\gdef\string\@FirstListEnd{\@ChapListEnd}}
-	\def\@ChapListStart{}
-	\def\@ChapListEnd{}
-	\titlepage
+	\ClassError{maine-thesis}{2-Volume Thesis is no longer supported}{The Graduate School now accepts all theses electronically.\MessageBreak As a result, it no longer has any guidelines for a multi-volume print theses.\MessageBreak If you're preparing a printed thesis, try using of the twoside option to reduce\MessageBreak the page count to something which can be bound in a single volume.}
 }
 
-%In order to support multi-volume theses it was necessary to redefine \@sect to include the necessary code to create toc entries in the later volumes. (i.e. the contents of the \ifnum\value{part}>1 statements)
-\def\@sect#1#2#3#4#5#6[#7]#8{
-	\ifnum #2>\c@secnumdepth 
-		\let \@svsec \@empty 
-	\else 
-		\refstepcounter {#1}\protected@edef \@svsec {\@seccntformat {#1}\relax }
-	\fi
-	\@tempskipa #5\relax 
-	\ifdim \@tempskipa >\z@ 
-		\begingroup #6{\@hangfrom {\hskip #3\relax \@svsec }\interlinepenalty \@M #8\@@par }
-		\endgroup \csname #1mark\endcsname {#7}
-		\ifnum #2 >\@LastLevel
-			\addtocontents{toc}{\protect\nopagebreak}
-		\fi
-		\ifnum #2<\@LastLevel
-			\addtocontents{toc}{\protect\pagebreak[3]}
-		\fi
-		\addcontentsline {toc}{#1}{%
-			\ifnum #2>\c@secnumdepth 
-			\else
-				\protect \numberline {\csname the#1\endcsname }
-			\fi
-			#7}
-		\ifnum\value{part}>1
-			\ifnum #2 >\@LastLevel
-				\addtocontents{toc2}{\protect\nopagebreak}
-			\fi
-			\ifnum #2<\@LastLevel
-				\addtocontents{toc2}{\protect\pagebreak[3]}
-			\fi
-			\addcontentsline {toc2}{#1}{%
-				\ifnum #2>\c@secnumdepth 
-				\else
-					\protect \numberline {\csname the#1\endcsname }
-				\fi
-				#7}
-		\fi
-	\else
-		\def \@svsechd {#6{\hskip #3\relax \@svsec #8}\csname #1mark\endcsname {#7}
-		\addcontentsline {toc}{#1}{%
-			\ifnum #2>\c@secnumdepth 
-			\else 
-				\protect \numberline {\csname the#1\endcsname }
-			\fi
-			#7}
-		\ifnum\value{part}>2
-			\addcontentsline {toc2}{#1}{%
-				\ifnum #2>\c@secnumdepth 
-				\else 
-					\protect \numberline {\csname the#1\endcsname }
-				\fi
-				#7}
-		\fi
-	}
-	\fi
-	\@xsect {#5}
-	\edef\@LastLevel{#2}
-}
 
 \renewcommand\section{
 	\@startsection{section}{1}{\z@}%
@@ -667,38 +542,21 @@
 			\refstepcounter{chapter}
 			\typeout{<---- Appendix \thechapter ---->}
 			\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\appendixname}\space\thechapter\space -- \MakeUppercase{#1}}{#1}}
-			\ifnum\value{part}>1
-				\addcontentsline{toc2}{chapter}{\texorpdfstring{\MakeUppercase{\appendixname}\space\thechapter\space -- \MakeUppercase{#1}}{#1}}
-			\fi
 		\else
 			\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{#1}}{#1}}
-			\ifnum\value{part}>1
-				\addcontentsline{toc2}{chapter}{\texorpdfstring{\MakeUppercase{#1}}{#1}}
-			\fi
 		\fi
 	\else
 		\ifnum \c@secnumdepth >\m@ne
 			\refstepcounter{chapter}
 			\typeout{<---- APPENDIX ---->}%
 			\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\appendixname}\space -- \MakeUppercase{#1}}{#1}}
-			\ifnum\value{part}>1
-				\addcontentsline{toc2}{chapter}{\texorpdfstring{\MakeUppercase{\appendixname}\space -- \MakeUppercase{#1}}{#1}}
-			\fi
 		\else
 			\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{#1}}{#1}}
-			\ifnum\value{part}>1
-				\addcontentsline{toc2}{chapter}{\texorpdfstring{\MakeUppercase{#1}}{#1}}
-			\fi
 		\fi
 	   \fi
 	\addtocontents{toc}{\protect\addvspace{\tocspacing\p@}}
 	\addtocontents{lof}{\protect\addvspace{\loftspacing\p@}}
 	\addtocontents{lot}{\protect\addvspace{\loftspacing\p@}}
-	\ifnum\value{part}>1
-		\addtocontents{toc2}{\protect\addvspace{\tocspacing\p@}}
-		\addtocontents{lof2}{\protect\addvspace{\loftspacing\p@}}
-		\addtocontents{lot2}{\protect\addvspace{\loftspacing\p@}}
-	\fi
 	\chaptermark{#1}
 	\@makeapphead{#2}
 	\@afterheading
@@ -761,9 +619,6 @@
 		\IfStrEq{#2}{#3}{\def\mt@captiontext{#3}}{\def\mt@captiontext{#2\ \ignorespaces#3}}%
 	\fi%
 	\addcontentsline{\csname ext@#1\endcsname}{#1}	{\protect\numberline{\csname fnum@#1\endcsname}{\ignorespaces #2}}%
-	\ifnum\value{part}>1
-		\addcontentsline{\csname ext@#1 2\endcsname}{#1}	{\protect\numberline{\csname fnum@#1\endcsname}{\ignorespaces #2}}%
-	\fi
 	\begingroup
 	\@parboxrestore
 	\normalsize
@@ -810,59 +665,34 @@
 		\@mkboth{\contentsname}{\contentsname}}%
 	\vskip -\tocspacing\p@
 	\doublespacing
-	\ifnum\value{part}=1
-		\@starttoc{toc}
-	\else	
-		\@starttoc{toc2}
-	\fi
-	\ifnum\value{part}>1
-		\addtocontents{toc}{\protect\nopagebreak}
-		\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\contentsname}}{\contentsname}}
-	\fi
+	\@starttoc{toc}
 }
 
 \renewcommand\listoftables{%
 	\chapter*{\chaptersize\MakeUppercase{\listtablename}%
 		\@mkboth{\listtablename}{\listtablename}}
 	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\listtablename}}{\listtablename}}
-	\ifnum\value{part}>1
-		\addcontentsline{toc2}{chapter}{\texorpdfstring{\MakeUppercase{\listtablename}}{\listtablename}}
-	\fi
 	\vskip -24pt
 	\vskip -\loftspacing\p@
 	\doublespacing
 	\setcounter{tocdepth}{\value{secnumdepth}}
-	\ifnum\value{part}=1
-		\@starttoc{lot}
-	\else	
-		\@starttoc{lot2}
-	\fi
+	\@starttoc{lot}
 }
 
 \renewcommand\listoffigures{%
 	\chapter*{\chaptersize\MakeUppercase{\listfigurename}%
 		\@mkboth{\listfigurename}{\listfigurename}}
 	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\listfigurename}}{\listfigurename}}
-	\ifnum\value{part}>1
-		\addcontentsline{toc2}{chapter}{\texorpdfstring{\MakeUppercase{\listfigurename}}{\listfigurename}}
-	\fi
 	\vskip -24pt
 	\vskip -\loftspacing\p@
 	\doublespacing
 	\setcounter{tocdepth}{\value{secnumdepth}}
-	\ifnum\value{part}=1
-		\@starttoc{lof}
-	\else
-		\@starttoc{lof2}
-	\fi
+	\@starttoc{lof}
 }
 
 \newenvironment{thesislist}[1]{%
 	\chapter*{LIST OF \texorpdfstring{\MakeUppercase{#1}}{#1}}
 	\addcontentsline{toc}{chapter}{{\texorpdfstring{\MakeUppercase{\listname\ #1}}{\listname\ #1}}}
-	\ifnum\value{part}>1
-		\addcontentsline{toc2}{chapter}{{\texorpdfstring{\MakeUppercase{\listname\ #1}}{\listname\ #1}}}
-	\fi
 	\begingroup
 }{\par\endgroup}
 
@@ -884,22 +714,6 @@
 \newif\ifmt@isfirst
 \mt@isfirsttrue
 
-\renewcommand*\l@part[2]{%
-	\addpenalty{-\@highpenalty}%
-	\addvspace{2.25em \@plus\p@}%
-	\setlength\@tempdima{3em}%
-	\begingroup
-		\pagebreak[3]
-		\parindent \z@ \rightskip \@pnumwidth
-		\parfillskip -\@pnumwidth
-		{\leavevmode
-		#1\hfil \hb@xt@\@pnumwidth{\hss #2}}\par
-		\nobreak
-			\global\@nobreaktrue
-			\everypar{\global\@nobreakfalse\everypar{}}%
-	\endgroup
-	\mt@lasttocentry=0
-}
 \renewcommand*\l@chapter{%
 	\ifnum\mt@lasttocentry=0\relax%
 		\nopagebreak%
@@ -957,9 +771,6 @@
 	\cleardoublepage
 	\singlespacing
 	\addcontentsline{toc}{chapter}{{\@bibtitle}}
-	\ifnum\value{part}>1
-		\addcontentsline{toc2}{chapter}{{\@bibtitle}}
-	\fi
 	\bibliography{\@bibfiles}
 }
 
@@ -983,11 +794,7 @@
 	}
 
 \renewcommand\titlepage{%
-	\ifnum\value{part}>1
-		\relax
-	\else
-		\thispagestyle{empty}
-	\fi
+	\thispagestyle{empty}
 	\ifverybigtitlepage
 		\onehalfspacing
 	\else
@@ -995,29 +802,6 @@
 	\fi
 	\begin{center}
 	{\bfseries\MakeUppercase{\@title}}\\
-	\ifcase\@NumParts\or
-		\relax
-	\or
-		\textbf{\partname\ \thepart\ %
-		\ifnum\value{part}>1%
-			\ifcase\@LastLength\or%
-				(\chaptername\ \@LastListEnd)%
-			\or%
-				(\chapternamep\ \@LastListStart\ and \@LastListEnd)%
-			\else%
-				(\chapternamep\ \@LastListStart, and \@LastListEnd)%
-			\fi%
-		\else%
-			\ifcase\@FirstLength\or%
-				(\chaptername\ \@FirstListEnd)%
-			\or%
-				(\chapternamep\ \@FirstListStart\ and \@FirstListEnd)%
-			\else%
-				(\chapternamep\ \@FirstListStart, and \@FirstListEnd)%
-			\fi%
-		\fi%
-		}\\
-	\fi
 	By \\
 	\@author \\
 	\@degreesheld
@@ -1191,10 +975,6 @@
 	\chapter*{\MakeUppercase{\bioname}}
 	\addtocontents{toc}{\protect\nopagebreak}
 	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\bioname}}{\bioname}}
-	\ifnum\value{part}>1
-		\addtocontents{toc2}{\protect\nopagebreak}
-		\addcontentsline{toc2}{chapter}{\texorpdfstring{\MakeUppercase{\bioname}}{\bioname}}
-	\fi
 	\begingroup
 	\doublespacing
 	\thispagestyle{plain}
@@ -1229,19 +1009,12 @@
 }
 
 \renewcommand{\appendix}{%
-	\immediate\write\@auxout{\string\gdef\string\@LastListStart{\@ChapListStart}}
-	\immediate\write\@auxout{\string\gdef\string\@LastListEnd{\@ChapListEnd}}
-	\immediate\write\@auxout{\string\gdef\string\@LastLength{\thepartlength}}
 	\setcounter{chapter}{0}
 	\setcounter{section}{0}
 	\renewcommand*\@chapter{\app@chapter}
 	\renewcommand*\thechapter{\@Alph\c@chapter}
 	\addtocontents{toc}{\protect\renewcommand*\protect\l@chapter{\protect\@dottedtocline{0}{0pt}{7.5em}}}
 	\settocdepth{chapter}
-	\ifnum\value{part}>1
-		\addtocontents{toc2}{\setcounter{tocdepth}{0}}
-		\addtocontents{toc2}{\protect\renewcommand*\protect\l@chapter{\protect\@dottedtocline{0}{0pt}{7.5em}}}
-	\fi
 	\doublespacing
 	\apptrue
 }
