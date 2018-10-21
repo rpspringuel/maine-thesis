@@ -705,7 +705,7 @@
 	{%
 		\patchcmd{\@dottedtocline}{\hfill}{\hskip 9.4mm plus1fill}{\typeout{5-dot minimum leader patched}}{}%
 	}%
-	{\ClassErrorNoLine{maine-thesis}{Unable to patch \protect\@dottedtocline\MessageBreak 5-dot leader minimum will not be respected}}
+	{\ClassErrorNoLine{maine-thesis}{Unable to patch \protect\@dottedtocline\MessageBreak 5-dot leader minimum will not be respected}{Please report this error with a MWE.}}
 
 %We use this count to prevent a page break between two toc entries when the second is one level lower than the first.
 \newcount\mt@lasttocentry
