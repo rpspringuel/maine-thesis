@@ -28,28 +28,8 @@ The graduate school requires that page breaks occur so that at least 3 lines of 
 
 Likewise, the Graduate School has similar standards for the table of contents: at least 3 entries from any given chapter must be on the page (unless the chapter has fewer than 3 entries, in which case all entries should appear on the same page).  I've done my best to make sure this happens, but I can't possibly test every possible pattern of chapters, sections, and subsections that you might have.  If the graduate school is bugging you about this, then place \verb=\addtocontents{toc}{\protect\pagebreak}= just before a chapter, section, or subsection to manually insert a page break into that position in your table of contents.  This command can likewise be used to manually insert page breaks into the list of figures (lof) or the list of tables (lot) by changing the first argument.  It also will run into the same bug that effects \verb=\references=.  See Section \ref{bib} for more details.  If you do have to do this, I'd also appreciate a minimal working example so that I can try to further fine tune the class file's ability to do this automatically.
 
-\section{Two Volume Thesis}
-From the Graduate School's Thesis Guidelines:
-\begin{quote}
-If a thesis is 500 or more pages long or over 2 1/2" thick, inclusive of all material, it 
-must be bound in two volumes.  The break between the two volumes must be at the end of a 
-chapter.  The volumes should be approximately equal in size.  EACH VOLUME CONTAINS 
-A TITLE PAGE AND A TABLE OF CONTENTS.  
-
-The title page for each volume specifies the volume and chapters included in that 
-volume.  The Table of Contents for Volume I lists the material contained in the entire thesis 
-(both volumes).  The pagination is continuous from Volume I to Volume II.  The Title Page and 
-Table of Contents pages in Volume II are assigned Arabic numerals.
-\end{quote}
-
-If your thesis is long enough to warrant two volumes then you'll need to issue the command \verb=\part{2}=.\footnote{Technically the argument can be whatever you want, not just ``2.''  The argument is required, but its value isn't used by the class file anywhere.}  This produces the second title page and adds ``VOLUME II'' to the main table of contents.  To create the table of contents for the second volume, simply issue the \verb=\tableofcontents= command again.  Likewise, if the second volume contains tables or figures issue \verb=\listoftables= or \verb=\listoffigures= again.  The listof environment can also be used again here, though you will have to manually populate it again.
-
-If you're using a package that creates \verb=\listof*= commands for some new element, then you're probably not going to be able to simply reissue the command to get the appropriate list to appear a second time.  Most likely what you'll end up with is a blank page with just the list title.  This is because most packages don't recognize the possibility of a document having more than one copy of the table of contents (or part thereof) and thus don't create or populate a second list file.  As a result, a two volume thesis that makes use of such commands will probably require you to either duplicate the list manually (using the listof environment) or modify the package you're using so that it will automatically create and populate the second copy of the list.
-
-At the moment the class file only supports the creation of a two-volume thesis.  Issuing the \verb=\part= command more than once (in the attempt to create 3 or more volumes) will result in an error.  Later versions may support more than 2 volumes if there turns out to be a demand for that feature.
-
 \section{Thesis in a Foreign Language}
-The class file has not been tested on a thesis written in a foreign language and thus its behavior on such documents is not guaranteed.  Support for these kinds of documents is planned for a future version, but probably won't come until 2015 at the earliest.  Contributions designed to make the class file work with foreign language theses are appreciated: \verb=R.Springuel@umit.maine.edu=.
+The class file has not been tested on a thesis written in a foreign language and thus its behavior on such documents is not guaranteed.  Support for these kinds of documents is planned for a future version, but probably won't come until 2019 at the earliest.  Contributions designed to make the class file work with foreign language theses are appreciated: \verb=R.Springuel@umit.maine.edu=.
 
 \section{Hyphenation \& Justification}
 At the graduate school request, automatic hyphenation is turned off and the document should be set left justified (\verb=\raggedright= in LaTeX parlance).  If this creates strange behavior for you, please let me know so that any possible bugs can be resolved.
@@ -58,12 +38,3 @@ At the graduate school request, automatic hyphenation is turned off and the docu
 As of v1.10 the this requirement should be obeyed automatically.  If you run into problems here please report it to me (\email).  As a work around, you can fix this manually by either changing the appropriate title/caption, or by making use of the optional short title/caption built into the appropriate command.
 
 \endinput
-
-\section{Really Long Thesis}\comment{Remaining Problems: ``Appendices'' not in parttoc; tocdepth for appendices doesn't autoadjust to 0}
-If your thesis is longer than 500 pages (or thicker than 2.5") the Graduate School requires that it be submitted in two volumes.  This volume division must come between two chapters.  To place this division you'll need a few things:
-\begin{itemize}
-\item{You'll need to be using the maineminitoc package to create the table of contents for the second volume with the part table contents commands.  This package loads the minitoc package and sets all the options appropriately so that the second table of contents looks like the first.}
-\item{Add the command \verb=\preparetocs= to the beginning of Front.tex.  This command \textbf{must} come before \verb=\tableofcontents= and should come before any commands which create table of contents entries (like the preface environment).}
-\item{Insert the commands \verb=\part{2}= and \verb=\secondcontents= before the chapter which starts the second volume.}
-\end{itemize}
-This will insert a title page with ``Volume II'' added just below the title and a table of contents to the thesis at the start of the second volume.

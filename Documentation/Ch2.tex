@@ -150,7 +150,7 @@ After the main body of the thesis, it's time to set the bibliography.  It should
 
 Since citation styles and the required contents of the bibliography can vary dramatically from discipline to discipline, the Graduate School has no specific requirements for the this section.  As a result, this class file contains no formatting specifications for the section beyond the margins and line spacing.
 
-Bt default the name of this section is ``REFERENCES'' but you can change it to ``WORKS CITED,'' ``BIBLIOGRAPHY,'' or whatever is customary for your discipline.  To do so you'll need the command \verb=\bibtitle{...}=.  Whatever you call the section, however, the title should be in all caps to maintain consistency with the rest of the thesis.
+By default the name of this section is ``REFERENCES'' but you can change it to ``WORKS CITED,'' ``BIBLIOGRAPHY,'' or whatever is customary for your discipline.  To do so you'll need to redefine the command \verb=\bibname=.  For example \verb=\renewcommand{\bibname}{Works Cited}= will change the name to ``WORKS CITED'' (capitalization is enforced by the class file, so you don't need to worry about it when redefining \verb=\bibname=).  \textbf{This is a change from how the class file used to work.}  This change serves to bring the class file more in line with usual \LaTeX\ expectations so that packages like babel will work more smoothly with the class file.
 
 There are two ways of handling your bibliography: with \textsc{Bib}\TeX\ and by hand.
 
