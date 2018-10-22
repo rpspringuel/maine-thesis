@@ -15,14 +15,15 @@
 \bibitem[{\citenamefont{Kopka and Daly}(2004)}]{Kopka:2004}
 \bibinfo{author}{\bibfnamefont{H.}~\bibnamefont{Kopka}} \bibnamefont{and}
   \bibinfo{author}{\bibfnamefont{P.~W.} \bibnamefont{Daly}},
-  \emph{\bibinfo{title}{Guide to \LaTeX}} (\bibinfo{publisher}{Addison-Wesley},
-  \bibinfo{year}{2004}), \bibinfo{edition}{4th} ed.
+  \emph{\bibinfo{title}{Guide to {\LaTeX}}}
+  (\bibinfo{publisher}{Addison-Wesley}, \bibinfo{year}{2004}),
+  \bibinfo{edition}{4th} ed.
 
 \bibitem[{\citenamefont{Mittelbach and Goossens}(2004)}]{Mittelbach:2004}
 \bibinfo{author}{\bibfnamefont{F.}~\bibnamefont{Mittelbach}} \bibnamefont{and}
   \bibinfo{author}{\bibfnamefont{M.}~\bibnamefont{Goossens}}
   (\bibinfo{collaboration}{Braams, Johannes and Carlisle, David and Rowley,
-  Chris}), \emph{\bibinfo{title}{The \LaTeX\ Companion}}
+  Chris}), \emph{\bibinfo{title}{The {\LaTeX} Companion}}
   (\bibinfo{publisher}{Addison-Wesley}, \bibinfo{year}{2004}),
   \bibinfo{edition}{2nd} ed.
 
@@ -30,26 +31,25 @@
 \bibinfo{author}{\bibfnamefont{P.}~\bibnamefont{Flynn}},
   \emph{\bibinfo{title}{Formatting Information: A beginner's guide to
   typesetting with \LaTeX}} (\bibinfo{year}{2005}),
-  \urlprefix\url{http://www.sciweavers.org/books/beginners-introduction-typese%
-tting-latex}.
+  \urlprefix\url{http://www.sciweavers.org/books/beginners-introduction-typesetting-latex}.
 
-\bibitem[{\citenamefont{Feder}()}]{Feder:2006}
+\bibitem[{\citenamefont{Feder}(2006)}]{Feder:2006}
 \bibinfo{author}{\bibfnamefont{A.}~\bibnamefont{Feder}},
-  \emph{\bibinfo{title}{{\textsc{Bib}\TeX}}},
+  \emph{\bibinfo{title}{{\textsc{Bib}\TeX}}} (\bibinfo{year}{2006}),
   \urlprefix\url{http://www.bibtex.org}.
 
 \bibitem[{Bib()}]{BibDesk}
 \emph{\bibinfo{title}{{BibDesk}}},
-  \urlprefix\url{http://bibdesk.sourceforge.net/}.
+  \urlprefix\url{https://bibdesk.sourceforge.io}.
 
-\bibitem[{\citenamefont{Spray}()}]{Spray:2007}
+\bibitem[{\citenamefont{Spray}(2007)}]{Spray:2007}
 \bibinfo{author}{\bibfnamefont{J.}~\bibnamefont{Spray}},
-  \emph{\bibinfo{title}{Referencer}},
+  \emph{\bibinfo{title}{Referencer}} (\bibinfo{year}{2007}),
   \urlprefix\url{http://icculus.org/referencer/}.
 
-\bibitem[{\citenamefont{Doron}()}]{Doron:1999}
+\bibitem[{\citenamefont{Doron}(1999)}]{Doron:1999}
 \bibinfo{author}{\bibfnamefont{E.}~\bibnamefont{Doron}},
-  \emph{\bibinfo{title}{{BibDB}}},
-  \urlprefix\url{http://www.mackichan.com/index.html?bibdb/default.htm}.
+  \emph{\bibinfo{title}{{BibDB}}} (\bibinfo{year}{1999}),
+  \urlprefix\url{https://www.mackichan.com/index.html?bibdb/default.htm}.
 
 \end{thebibliography}

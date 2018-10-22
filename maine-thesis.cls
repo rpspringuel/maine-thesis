@@ -178,7 +178,6 @@
 \def\@fourthreader{}
 \def\@fifthreader{}
 \def\@bibfiles{}
-\def\@bibtitle{REFERENCES}
 \def\@type{Dissertation}
 \def\@LastLevel{0}
 
@@ -192,8 +191,8 @@
 \newcount\numcomm \numcomm=4
 \newcount\numadv \numadv=1
 
-\renewcommand*\bibname{\@bibtitle}
 \renewcommand*\contentsname{Table of Contents}
+\renewcommand*\bibname{References}
 \renewcommand*\indexname{INDEX}
 \renewcommand*\chaptername{Chapter}
 \renewcommand*\appendixname{Appendix}
@@ -247,8 +246,6 @@
 	\members{5}}
 \newcommand{\bibfiles}[1]{%
 	\ifx\empty#1\empty\else\gdef\@bibfiles{#1}\fi}
-\newcommand{\bibtitle}[1]{%
-	\ifx\empty#1\empty\else\gdef\@bibtitle{#1}\fi}
 \newcommand{\members}[1]{\numcomm=#1}
 \newcommand{\twoadvisors}{\numadv=2}
 \newcommand{\oneadvisor}{\numadv=1}
@@ -500,7 +497,7 @@
 	\vspace*{0\p@}
 	{\parindent \z@ \raggedright \centering\normalfont\chaptersize
 		\interlinepenalty\@M
-		\bfseries #1\par\nobreak
+		\bfseries \texorpdfstring{\MakeUppercase{#1}}{#1}\par\nobreak
 		\vskip 15\p@
 	}
 }
@@ -661,16 +658,14 @@
 % Table of Contents Formatting
 %%%%%%%%%%%%%%%%%%%%%
 \renewcommand\tableofcontents{%
-	\chapter*{\chaptersize\MakeUppercase{\contentsname}%
-		\@mkboth{\contentsname}{\contentsname}}%
+	\chapter*{\contentsname}%
 	\vskip -\tocspacing\p@
 	\doublespacing
 	\@starttoc{toc}
 }
 
 \renewcommand\listoftables{%
-	\chapter*{\chaptersize\MakeUppercase{\listtablename}%
-		\@mkboth{\listtablename}{\listtablename}}
+	\chapter*{\listtablename}
 	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\listtablename}}{\listtablename}}
 	\vskip -24pt
 	\vskip -\loftspacing\p@
@@ -680,8 +675,7 @@
 }
 
 \renewcommand\listoffigures{%
-	\chapter*{\chaptersize\MakeUppercase{\listfigurename}%
-		\@mkboth{\listfigurename}{\listfigurename}}
+	\chapter*{\listfigurename}
 	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\listfigurename}}{\listfigurename}}
 	\vskip -24pt
 	\vskip -\loftspacing\p@
@@ -691,7 +685,7 @@
 }
 
 \newenvironment{thesislist}[1]{%
-	\chapter*{LIST OF \texorpdfstring{\MakeUppercase{#1}}{#1}}
+	\chapter*{\listname\ #1}
 	\addcontentsline{toc}{chapter}{{\texorpdfstring{\MakeUppercase{\listname\ #1}}{\listname\ #1}}}
 	\begingroup
 }{\par\endgroup}
@@ -770,12 +764,13 @@
 \newcommand{\references}{%
 	\cleardoublepage
 	\singlespacing
-	\addcontentsline{toc}{chapter}{{\@bibtitle}}
 	\bibliography{\@bibfiles}
+	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\bibname}}{\bibname}}
 }
 
 \renewenvironment{thebibliography}[1]
-	{\chapter*{\@bibtitle}
+	{%begin
+		\chapter*{\bibname}
 		\bibalign\frenchspacing
 		\list{\@biblabel{\@arabic\c@enumiv}}%
 			{\settowidth\labelwidth{\@biblabel{#1}}%
@@ -949,7 +944,7 @@
 }
 
 \newenvironment{dedication}{%
-	\chapter*{\MakeUppercase{\dedicationname}}
+	\chapter*{\dedicationname}
 	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\dedicationname}}{\dedicationname}}
 	\vskip 0.5in
 	\doublespacing
@@ -958,21 +953,21 @@
 }{\end{center}\par\endgroup}
 
 \newenvironment{acknowledgements}{%
-	\chapter*{\MakeUppercase{\acknowledgename}}
+	\chapter*{\acknowledgename}
 	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\acknowledgename}}{\acknowledgename}}
 	\doublespacing
 	\begingroup
 }{\par\endgroup}
 
 \newenvironment{preface}{%
-	\chapter*{\MakeUppercase{\prefacename}}
+	\chapter*{\prefacename}
 	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\prefacename}}{\prefacename}}
 	\doublespacing
 	\begingroup\setcounter{secnumdepth}{0}
 }{\setcounter{secnumdepth}{\value{secnumdefault}}\par\endgroup}
 
 \newenvironment{biography}{%
-	\chapter*{\MakeUppercase{\bioname}}
+	\chapter*{\bioname}
 	\addtocontents{toc}{\protect\nopagebreak}
 	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\bioname}}{\bioname}}
 	\begingroup
@@ -1024,7 +1019,6 @@
 %%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\ps@bottom}{%
-	\let\@mkboth\markboth
 	\renewcommand{\@oddhead}{%
 		\ifdraft\drafttext\hfil\today\hfil\drafttext\else\fi}%
 	\renewcommand{\@evenhead}{\@oddhead}
@@ -1035,7 +1029,6 @@
 }
 
 \renewcommand{\ps@empty}{%
-	\let\@mkboth\markboth
 	\renewcommand{\@oddhead}{%
 		\ifdraft\drafttext\hfil\today\hfil\drafttext\else\fi}%
 	\renewcommand{\@evenhead}{\@oddhead}
@@ -1045,7 +1038,6 @@
 }
 
 \newcommand{\ps@top}{%
-	\let\@mkboth\markboth
 	\renewcommand{\@oddhead}{%
 		\ifdraft\drafttext\fi\hfil
 		\ifdraft\today\else\thepage\fi
