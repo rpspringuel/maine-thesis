@@ -764,8 +764,9 @@
 \newcommand{\references}{%
 	\cleardoublepage
 	\singlespacing
-	\bibliography{\@bibfiles}
+	\phantomsection
 	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\bibname}}{\bibname}}
+	\bibliography{\@bibfiles}
 }
 
 \renewenvironment{thebibliography}[1]
