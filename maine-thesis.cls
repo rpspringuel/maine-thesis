@@ -988,7 +988,6 @@
 	\cleardoublepage
 	\doublespacing
 	\pagenumbering{arabic}
-	\toclabel{\chaptername}
 	\ifcase\value{secnumdepth}
 		\settocdepth{chapter}
 	\or
