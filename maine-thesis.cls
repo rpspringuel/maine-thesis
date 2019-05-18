@@ -29,7 +29,7 @@
 %%%%%%%%%%%%%%%%%%%%%
 \newif\ifdraft\draftfalse
 \newif\iftwoside\twosidefalse
-\newif\ifofficial\officialtrue
+\newif\ifmt@official\mt@officialtrue
 \newif\ifunbound\unboundfalse
 \newif\ifmt@legacycaptions\mt@legacycaptionsfalse
 \newcommand\docsize{}
@@ -51,11 +51,11 @@
 	\ExecuteOptions{10pt}
 	\PassOptionsToClass{draft}{report}
 	\newcommand{\drafttext}{\sffamily\small{DRAFT}
-	\officialfalse}
+	\mt@officialfalse}
 }
-\DeclareOption{twoside}{\officialfalse\unboundfalse\twosidetrue\renewcommand\side{twoside}\def\@margg{1.5in}}
-\DeclareOption{oneside}{\officialfalse\unboundfalse\renewcommand\side{oneside}\def\@margg{1.5in}}
-\DeclareOption{unbound}{\officialtrue\unboundtrue\def\@margg{1in}}
+\DeclareOption{twoside}{\mt@officialfalse\unboundfalse\twosidetrue\renewcommand\side{twoside}\def\@margg{1.5in}}
+\DeclareOption{oneside}{\mt@officialfalse\unboundfalse\renewcommand\side{oneside}\def\@margg{1.5in}}
+\DeclareOption{unbound}{\mt@officialtrue\unboundtrue\def\@margg{1in}}
 \DeclareOption{apa}{\setcounter{secnumdefault}{0}\setcounter{head}{0}}
 \DeclareOption{chicago}{\setcounter{secnumdefault}{0}\setcounter{head}{1}}
 \DeclareOption{headings}{\setcounter{secnumdefault}{0}\setcounter{head}{2}}
