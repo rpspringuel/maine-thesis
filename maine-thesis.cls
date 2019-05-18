@@ -879,7 +879,7 @@
 	\doublespacing
 	\begin{center}
 		{\bfseries\MakeUppercase{\@title}}
-		\vskip 0.5in
+		\vskip 0.25in % amount of space needs adjusting
 		By\space\@author\\[4pt]
 		\@type\ %
 		\ifnum\numadv=2%
@@ -989,8 +989,7 @@
 	\doublespacing
 	\pagenumbering{arabic}
 	\ifcase\value{secnumdepth}
-		\settocdepth{chapter}
-	\or
+		\or
 		\settocdepth{section}
 	\or
 		\settocdepth{subsection}
