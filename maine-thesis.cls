@@ -32,6 +32,7 @@
 \newif\ifmt@official\mt@officialtrue
 \newif\ifunbound\unboundfalse
 \newif\ifmt@legacycaptions\mt@legacycaptionsfalse
+\newif\ifmt@loftspace\mt@loftspacefalse
 \newcommand\docsize{}
 \newcommand\side{oneside}
 \newcounter{secnumdefault}
@@ -65,6 +66,7 @@
 \DeclareOption{pagenumberbottom}{\def\mt@pagestyle{bottom}}
 \DeclareOption{pagenumbertop}{\def\mt@pagestyle{top}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
+\DeclareOption{loftspacing}{\mt@loftspacetrue\mt@officialfalse}
 
 %%%%%%%%%%%%%%%%%%%%%
 % ------EXECUTION OF OPTIONS------
@@ -183,7 +185,6 @@
 
 \newif\ifmultipleappendices\multipleappendicesfalse
 \newif\ifcopyrightpage\copyrightpagefalse
-\newif\ifloftspace\loftspacetrue
 \newif\ifbigtitlepage\bigtitlepagefalse
 \newif\ifverybigtitlepage\verybigtitlepagefalse
 \newif\ifapp\appfalse
@@ -300,7 +301,7 @@
 		\addtocontents{toc}{\protect\@dottedtocline{0}{0em}{1.4em}{\protect\numberline{\thechapter.}\space\texorpdfstring{\MakeUppercase{#1}}{#1}}{Pocket}}
 	\fi
 	\addtocontents{toc}{\protect\addvspace{\tocspacing\p@}}
-	\ifloftspace
+	\ifmt@loftspace
 		\addtocontents{lof}{\protect\addvspace{\loftspacing\p@}}
 		\addtocontents{lot}{\protect\addvspace{\loftspacing\p@}}
 	\fi
@@ -471,7 +472,7 @@
 	\fi
 	\chaptermark{#1}
 	\addtocontents{toc}{\protect\addvspace{\tocspacing\p@}}
-	\ifloftspace
+	\ifmt@loftspace
 		\addtocontents{lof}{\protect\addvspace{\loftspacing\p@}}
 		\addtocontents{lot}{\protect\addvspace{\loftspacing\p@}}
 	\fi
