@@ -553,8 +553,10 @@
 		\fi
 	   \fi
 	\addtocontents{toc}{\protect\addvspace{\tocspacing\p@}}
-	\addtocontents{lof}{\protect\addvspace{\loftspacing\p@}}
-	\addtocontents{lot}{\protect\addvspace{\loftspacing\p@}}
+	\ifmt@loftspacing
+		\addtocontents{lof}{\protect\addvspace{\loftspacing\p@}}
+		\addtocontents{lot}{\protect\addvspace{\loftspacing\p@}}
+	\fi
 	\chaptermark{#1}
 	\@makeapphead{#2}
 	\@afterheading
