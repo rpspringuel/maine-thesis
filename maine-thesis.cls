@@ -973,7 +973,7 @@
 	\begingroup
 	\doublespacing
 	\thispagestyle{plain}
-}{\ifx\@authorpronoun\empty\@author\else\@authorpronoun\fi\ is a candidate for the \@degree\ degree in \@program\ from The University of Maine in \@submitdate.\par\endgroup}
+}{\ifx\@authorpronoun\empty\@author\else\@authorpronoun\fi\ is a candidate for the \@degree\ degree in \@program\ from the University of Maine in \@submitdate.\par\endgroup}
 
 %%%%%%%%%%%%%%%%%%%%%
 % Front/Main/Back Separators
