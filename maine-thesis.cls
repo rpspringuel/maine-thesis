@@ -481,7 +481,7 @@
 	{\parindent \z@ \raggedright \centering\normalfont\chaptersize
 		\ifnum \c@secnumdepth >\m@ne
 			\bfseries \MakeUppercase{\chaptername}\ \thechapter
-			\vskip -3pt
+			\par\nobreak
 		\fi
 		\interlinepenalty\@M
 		\bfseries\texorpdfstring{\MakeUppercase{#1}}{#1}\par\nobreak
