@@ -553,7 +553,7 @@
 		\fi
 	   \fi
 	\addtocontents{toc}{\protect\addvspace{\tocspacing\p@}}
-	\ifmt@loftspacing
+	\ifmt@loftspace
 		\addtocontents{lof}{\protect\addvspace{\loftspacing\p@}}
 		\addtocontents{lot}{\protect\addvspace{\loftspacing\p@}}
 	\fi
