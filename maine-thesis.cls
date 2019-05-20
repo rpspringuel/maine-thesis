@@ -665,8 +665,6 @@
 \renewcommand\listoftables{%
 	\chapter*{\listtablename}
 	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\listtablename}}{\listtablename}}
-	\vskip -24pt
-	\vskip -\loftspacing\p@
 	\doublespacing
 	\setcounter{tocdepth}{\value{secnumdepth}}
 	\@starttoc{lot}
@@ -675,8 +673,6 @@
 \renewcommand\listoffigures{%
 	\chapter*{\listfigurename}
 	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\listfigurename}}{\listfigurename}}
-	\vskip -24pt
-	\vskip -\loftspacing\p@
 	\doublespacing
 	\setcounter{tocdepth}{\value{secnumdepth}}
 	\@starttoc{lof}
