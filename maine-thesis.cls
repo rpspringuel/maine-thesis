@@ -300,7 +300,6 @@
 		\typeout{*** \@chapapp\space\thechapter\space ****}
 		\addtocontents{toc}{\protect\@dottedtocline{0}{0em}{1.4em}{\protect\numberline{\thechapter.}\space\texorpdfstring{\MakeUppercase{#1}}{#1}}{Pocket}}
 	\fi
-	\addtocontents{toc}{\protect\addvspace{\tocspacing\p@}}
 	\ifmt@loftspace
 		\addtocontents{lof}{\protect\addvspace{\loftspacing\p@}}
 		\addtocontents{lot}{\protect\addvspace{\loftspacing\p@}}
@@ -380,7 +379,6 @@
 	\vskip \baselineskip
 }
 
-\newcommand*\tocspacing{6}
 \newcommand*\loftspacing{10}
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -471,7 +469,6 @@
 		\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{#1}}{#1}}
 	\fi
 	\chaptermark{#1}
-	\addtocontents{toc}{\protect\addvspace{\tocspacing\p@}}
 	\ifmt@loftspace
 		\addtocontents{lof}{\protect\addvspace{\loftspacing\p@}}
 		\addtocontents{lot}{\protect\addvspace{\loftspacing\p@}}
@@ -552,7 +549,6 @@
 			\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{#1}}{#1}}
 		\fi
 	   \fi
-	\addtocontents{toc}{\protect\addvspace{\tocspacing\p@}}
 	\ifmt@loftspace
 		\addtocontents{lof}{\protect\addvspace{\loftspacing\p@}}
 		\addtocontents{lot}{\protect\addvspace{\loftspacing\p@}}
@@ -662,7 +658,6 @@
 %%%%%%%%%%%%%%%%%%%%%
 \renewcommand\tableofcontents{%
 	\chapter*{\contentsname}%
-	\vskip -\tocspacing\p@
 	\doublespacing
 	\@starttoc{toc}
 }
