@@ -478,7 +478,6 @@
 
 \def\@makechapterhead#1{%
 	\cleardoublepage
-	\vspace*{0\p@}
 	{\parindent \z@ \raggedright \centering\normalfont\chaptersize
 		\ifnum \c@secnumdepth >\m@ne
 			\bfseries \MakeUppercase{\chaptername}\ \thechapter
@@ -492,7 +491,6 @@
 
 \def\@makeschapterhead#1{%
 	\cleardoublepage
-	\vspace*{0\p@}
 	{\parindent \z@ \raggedright \centering\normalfont\chaptersize
 		\interlinepenalty\@M
 		\bfseries \texorpdfstring{\MakeUppercase{#1}}{#1}\par\nobreak
@@ -560,7 +558,7 @@
 
 \def\@makeapphead#1{%
 	\cleardoublepage
-	{\vspace*{0\p@}
+	{
 		\parindent \z@ \raggedright \normalfont
 		\ifmultipleappendices
 			\centering\chaptersize\bfseries \MakeUppercase{\appendixname}\space\thechapter
