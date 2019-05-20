@@ -878,8 +878,7 @@
 	\setcounter{mt@page}{\value{page}}
 	\doublespacing
 	\begin{center}
-		{\bfseries\MakeUppercase{\@title}}
-		\vskip 0.25in % amount of space needs adjusting
+		{\bfseries\MakeUppercase{\@title}}\\
 		By\space\@author\\[4pt]
 		\@type\ %
 		\ifnum\numadv=2%
@@ -912,8 +911,7 @@
 	\setcounter{mt@page}{\value{page}}
 	\doublespacing
 	\begin{center}
-		{\bfseries\MakeUppercase{\@title}}
-		\vskip 0.5in
+		{\bfseries\MakeUppercase{\@title}}\\
 		By\space\@author\\[4pt]
 		\@type\ %
 		\ifnum\numadv=2%
