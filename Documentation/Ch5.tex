@@ -12,10 +12,10 @@ The \verb=\highlight= command is a useful companion to \verb=\comment=.  In draf
 \section{\textbackslash pocket}
 If you have supplementary materials such as a DVD or CD which will be stored in a pocket inside the cover of your thesis the Graduate school requires you to list these in the table of contents.  This can be done with the \verb=\pocket{...}= command.  However, like the \verb=\references= command, the entry in the table of the contents that this produces may be out of place if it is put in Main.tex.  See Section \ref{bib} for more details.
 
-Table of contents entries created by this command have the status of chapters (or appendcies, if you've already issued the \verb=\appendix= command) and will increment the appropriate counter.
+Table of contents entries created by this command have the status of chapters (or appendicies, if you've already issued the \verb=\appendix= command) and will increment the appropriate counter.
 
 \section{\textbackslash toclabel}
-If you need to add a label into your table of contents then you can use the command \verb=\toclabel{...}= to do so.  This is the same command that is used to add the word ``Chapter'' (by \verb=\mainmatter=) when it is required and so what you add will look exactly like it does.  The same bug in the \LaTeX\ kernel that effects those commands could thus effect this one.
+If you need to add a label into your table of contents then you can use the command \verb=\toclabel{...}= to do so.  Due to a bug in the \LaTeX\ kernel that effects this command you may need to put the command inside a chapter file rather than in Main.tex. Otherwise the label may not end up in the correct place in the TOC.
 
 \section{\textbackslash compresstitlepage}
 In rare cases your title page may spill over onto a second page when typeset with double line spacing (generally due to a long title, many previous degrees, or committee members with long/multiple titles).  When this happens, issue the command \verb=\compresstitlepage= in your preamble.  This will change the line spacing for the committee members to single line spacing.  If that isn't enough to get your title page onto one page, add the optional argument (``[2]'') to change the spacing for the rest of the title page to one-and-a-half spacing.\comment{There is another comment here.}
