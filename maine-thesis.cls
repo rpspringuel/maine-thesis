@@ -29,9 +29,10 @@
 %%%%%%%%%%%%%%%%%%%%%
 \newif\ifdraft\draftfalse
 \newif\iftwoside\twosidefalse
-\newif\ifofficial\officialtrue
+\newif\ifmt@official\mt@officialtrue
 \newif\ifunbound\unboundfalse
 \newif\ifmt@legacycaptions\mt@legacycaptionsfalse
+\newif\ifmt@loftspace\mt@loftspacefalse
 \newcommand\docsize{}
 \newcommand\side{oneside}
 \newcounter{secnumdefault}
@@ -51,11 +52,11 @@
 	\ExecuteOptions{10pt}
 	\PassOptionsToClass{draft}{report}
 	\newcommand{\drafttext}{\sffamily\small{DRAFT}
-	\officialfalse}
+	\mt@officialfalse}
 }
-\DeclareOption{twoside}{\officialfalse\unboundfalse\twosidetrue\renewcommand\side{twoside}\def\@margg{1.5in}}
-\DeclareOption{oneside}{\officialfalse\unboundfalse\renewcommand\side{oneside}\def\@margg{1.5in}}
-\DeclareOption{unbound}{\officialtrue\unboundtrue\def\@margg{1in}}
+\DeclareOption{twoside}{\mt@officialfalse\unboundfalse\twosidetrue\renewcommand\side{twoside}\def\@margg{1.5in}}
+\DeclareOption{oneside}{\mt@officialfalse\unboundfalse\renewcommand\side{oneside}\def\@margg{1.5in}}
+\DeclareOption{unbound}{\mt@officialtrue\unboundtrue\def\@margg{1in}}
 \DeclareOption{apa}{\setcounter{secnumdefault}{0}\setcounter{head}{0}}
 \DeclareOption{chicago}{\setcounter{secnumdefault}{0}\setcounter{head}{1}}
 \DeclareOption{headings}{\setcounter{secnumdefault}{0}\setcounter{head}{2}}
@@ -65,6 +66,7 @@
 \DeclareOption{pagenumberbottom}{\def\mt@pagestyle{bottom}}
 \DeclareOption{pagenumbertop}{\def\mt@pagestyle{top}}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
+\DeclareOption{loftspacing}{\mt@loftspacetrue\mt@officialfalse}
 
 %%%%%%%%%%%%%%%%%%%%%
 % ------EXECUTION OF OPTIONS------
@@ -183,7 +185,6 @@
 
 \newif\ifmultipleappendices\multipleappendicesfalse
 \newif\ifcopyrightpage\copyrightpagefalse
-\newif\ifloftspace\loftspacetrue
 \newif\ifbigtitlepage\bigtitlepagefalse
 \newif\ifverybigtitlepage\verybigtitlepagefalse
 \newif\ifapp\appfalse
@@ -299,8 +300,7 @@
 		\typeout{*** \@chapapp\space\thechapter\space ****}
 		\addtocontents{toc}{\protect\@dottedtocline{0}{0em}{1.4em}{\protect\numberline{\thechapter.}\space\texorpdfstring{\MakeUppercase{#1}}{#1}}{Pocket}}
 	\fi
-	\addtocontents{toc}{\protect\addvspace{\tocspacing\p@}}
-	\ifloftspace
+	\ifmt@loftspace
 		\addtocontents{lof}{\protect\addvspace{\loftspacing\p@}}
 		\addtocontents{lot}{\protect\addvspace{\loftspacing\p@}}
 	\fi
@@ -379,7 +379,6 @@
 	\vskip \baselineskip
 }
 
-\newcommand*\tocspacing{6}
 \newcommand*\loftspacing{10}
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -470,8 +469,7 @@
 		\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{#1}}{#1}}
 	\fi
 	\chaptermark{#1}
-	\addtocontents{toc}{\protect\addvspace{\tocspacing\p@}}
-	\ifloftspace
+	\ifmt@loftspace
 		\addtocontents{lof}{\protect\addvspace{\loftspacing\p@}}
 		\addtocontents{lot}{\protect\addvspace{\loftspacing\p@}}
 	\fi
@@ -480,11 +478,10 @@
 
 \def\@makechapterhead#1{%
 	\cleardoublepage
-	\vspace*{0\p@}
 	{\parindent \z@ \raggedright \centering\normalfont\chaptersize
 		\ifnum \c@secnumdepth >\m@ne
 			\bfseries \MakeUppercase{\chaptername}\ \thechapter
-			\vskip -3pt
+			\par\nobreak
 		\fi
 		\interlinepenalty\@M
 		\bfseries\texorpdfstring{\MakeUppercase{#1}}{#1}\par\nobreak
@@ -494,7 +491,6 @@
 
 \def\@makeschapterhead#1{%
 	\cleardoublepage
-	\vspace*{0\p@}
 	{\parindent \z@ \raggedright \centering\normalfont\chaptersize
 		\interlinepenalty\@M
 		\bfseries \texorpdfstring{\MakeUppercase{#1}}{#1}\par\nobreak
@@ -551,9 +547,10 @@
 			\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{#1}}{#1}}
 		\fi
 	   \fi
-	\addtocontents{toc}{\protect\addvspace{\tocspacing\p@}}
-	\addtocontents{lof}{\protect\addvspace{\loftspacing\p@}}
-	\addtocontents{lot}{\protect\addvspace{\loftspacing\p@}}
+	\ifmt@loftspace
+		\addtocontents{lof}{\protect\addvspace{\loftspacing\p@}}
+		\addtocontents{lot}{\protect\addvspace{\loftspacing\p@}}
+	\fi
 	\chaptermark{#1}
 	\@makeapphead{#2}
 	\@afterheading
@@ -561,7 +558,7 @@
 
 \def\@makeapphead#1{%
 	\cleardoublepage
-	{\vspace*{0\p@}
+	{
 		\parindent \z@ \raggedright \normalfont
 		\ifmultipleappendices
 			\centering\chaptersize\bfseries \MakeUppercase{\appendixname}\space\thechapter
@@ -659,7 +656,6 @@
 %%%%%%%%%%%%%%%%%%%%%
 \renewcommand\tableofcontents{%
 	\chapter*{\contentsname}%
-	\vskip -\tocspacing\p@
 	\doublespacing
 	\@starttoc{toc}
 }
@@ -667,8 +663,6 @@
 \renewcommand\listoftables{%
 	\chapter*{\listtablename}
 	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\listtablename}}{\listtablename}}
-	\vskip -24pt
-	\vskip -\loftspacing\p@
 	\doublespacing
 	\setcounter{tocdepth}{\value{secnumdepth}}
 	\@starttoc{lot}
@@ -677,8 +671,6 @@
 \renewcommand\listoffigures{%
 	\chapter*{\listfigurename}
 	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\listfigurename}}{\listfigurename}}
-	\vskip -24pt
-	\vskip -\loftspacing\p@
 	\doublespacing
 	\setcounter{tocdepth}{\value{secnumdepth}}
 	\@starttoc{lof}
