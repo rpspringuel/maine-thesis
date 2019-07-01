@@ -756,8 +756,9 @@
 \newcommand{\references}{%
 	\cleardoublepage
 	\singlespacing
-	\bibliography{\@bibfiles}
+	\phantomsection
 	\addcontentsline{toc}{chapter}{\texorpdfstring{\MakeUppercase{\bibname}}{\bibname}}
+	\bibliography{\@bibfiles}
 }
 
 \renewenvironment{thebibliography}[1]
@@ -869,8 +870,7 @@
 	\setcounter{mt@page}{\value{page}}
 	\doublespacing
 	\begin{center}
-		{\bfseries\MakeUppercase{\@title}}
-		\vskip 0.5in
+		{\bfseries\MakeUppercase{\@title}}\\
 		By\space\@author\\[4pt]
 		\@type\ %
 		\ifnum\numadv=2%
@@ -903,8 +903,7 @@
 	\setcounter{mt@page}{\value{page}}
 	\doublespacing
 	\begin{center}
-		{\bfseries\MakeUppercase{\@title}}
-		\vskip 0.5in
+		{\bfseries\MakeUppercase{\@title}}\\
 		By\space\@author\\[4pt]
 		\@type\ %
 		\ifnum\numadv=2%
@@ -979,10 +978,8 @@
 	\cleardoublepage
 	\doublespacing
 	\pagenumbering{arabic}
-	\toclabel{\chaptername}
 	\ifcase\value{secnumdepth}
-		\settocdepth{chapter}
-	\or
+		\or
 		\settocdepth{section}
 	\or
 		\settocdepth{subsection}
