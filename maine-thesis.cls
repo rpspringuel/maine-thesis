@@ -561,6 +561,9 @@
 	{
 		\parindent \z@ \raggedright \normalfont
 		\ifmultipleappendices
+			\ifnum\value{chapter}=1
+				\centering\chaptersize\bfseries \MakeUppercase{APPENDICES}\par\nobreak
+			\fi
 			\centering\chaptersize\bfseries \MakeUppercase{\appendixname}\space\thechapter
 		\else
 			\centering\chaptersize\bfseries \MakeUppercase{\appendixname}
@@ -998,9 +1001,6 @@
 	\renewcommand*\@chapter{\app@chapter}
 	\renewcommand*\thechapter{\@Alph\c@chapter}
 	\addtocontents{toc}{\protect\renewcommand*\protect\l@chapter{\protect\@dottedtocline{0}{0pt}{7.5em}}}
-	\ifmultipleappendices%
-		\toclabel{Appendices}
-	\fi%
 	\settocdepth{chapter}
 	\doublespacing
 	\apptrue
