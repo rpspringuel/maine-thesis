@@ -1001,6 +1001,9 @@
 	\renewcommand*\@chapter{\app@chapter}
 	\renewcommand*\thechapter{\@Alph\c@chapter}
 	\addtocontents{toc}{\protect\renewcommand*\protect\l@chapter{\protect\@dottedtocline{0}{0pt}{7.5em}}}
+	\ifmultipleappendices%
+		\toclabel{Appendices}
+	\fi%
 	\settocdepth{chapter}
 	\doublespacing
 	\apptrue
