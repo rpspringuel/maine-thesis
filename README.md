@@ -1,6 +1,8 @@
 # maine-thesis
 A LaTeX class file for the typesetting of a Masters or Doctorate Thesis at the University of Maine (Orono, ME).
-
+## Changes 
+- Added GLSA (Graduate School Land Acknowledgment)
+- apalike_edit.bst for changes to the APA citation. 
 ## Installation
 
 To install this class file simply copy or link `maine-thesis.cls` to your texmf tree.  On Unix based systems one of the following commands should work:
